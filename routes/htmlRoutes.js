@@ -1,8 +1,13 @@
-var path = require('path');
 
-var app = express();
+module.exports = function(app){
 
-    //when user clicks button to /survey, get survey.html
-    app.get('/', function(req, res) {
-        res.sendFile( path.join( __dirname, "../public/index.html" ) );
-    });
+    //root route renders and sends student view 
+    app.get("/", function(req, res){
+        res.render("student")
+    })
+
+    //session route renders and sends session route
+    app.get("session", function(req, res){
+        res.render("session")
+    })
+}

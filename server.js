@@ -19,6 +19,15 @@ app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
 
+//requiring all the routes
+
+//api routes
+require("./routes/apiRoutes")(app);
+
+//html routes
+require("./routes/htmlRoutes")(app);
+
+
 var server = app.listen(port, function(){
     console.log("Server is listening on port " + port)
 })
