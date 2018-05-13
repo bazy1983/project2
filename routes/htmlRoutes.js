@@ -7,7 +7,7 @@ module.exports = function(app){
     })
 
     //session route renders and sends session route
-    app.get("session", function(req, res){
-        res.render("session")
+    app.get("/dashboard", function(req, res){
+        res.render("teacher")
     })
 }
