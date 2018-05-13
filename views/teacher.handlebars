@@ -1,0 +1,89 @@
+<!--BEGIN TEACHER REGISTRATION DIV-->  
+<div class="register">
+    <p>Email Address:<input type="text" id="email" class="form-control" required></p>
+    
+    <p>Username:<input type="text" id="username" class="form-control" required></p>
+    
+    <p>Password:<input type="text" id="password" class="form-control" required></p>
+
+    <p>First Name:<input type="text" id="first_name" class="form-control" required></p>
+
+    <p>Last Name:<input type="text" id="last_name" class="form-control" required></p>
+
+    <p>Authorization Code:<input type="text" id="authtoken" class="form-control" required></p>
+
+    <div class="submit"> 
+        <button type="submit" class="btn btn-light" value="">Submit</button>
+    </div>
+
+</div>
+<!--END TEACHER REGISTRATION DIV-->
+
+<!--BEGIN TEACHER LOGIN DIV-->  
+    <div class="login" id="teacher">
+        <p>Username:<input type="text" id="username" class="form-control" required></p>
+        <p>Password:<input type="text" id="password" class="form-control" required></p>
+        <div class="submit">
+            <button type="submit" class="btn btn-light" value="">Submit</button>
+        </div>
+    </div>
+<!--END TEACHER LOGIN DIV-->
+
+
+
+<!--BEGIN TEACHER MAIN DASHBOARD DIV-->  
+<div class="dashboard">
+    <div class="test">
+        <button type="button" class="btn btn-light">Administer Test</button>
+    </div>
+    
+    <div class="add-q">
+        <button type="button" class="btn btn-light">Add New Question</button>
+    </div>
+
+    <div class="results">
+        <button type="button" class="btn btn-light">View Results</button>
+    </div>
+</div>
+<!--END TEACHER MAIN DASHBOARD DIV-->  
+
+
+<!--BEGIN TEACHER START QUIZ DIV-->  
+    <div submit="start-button">
+        <button type="button" class="btn btn-light" value="">Start Quiz</button>
+    </div> 
+<!--END TEACHER START QUIZ DIV-->
+
+
+<!--BEGIN TEACHER CREATE QUIZ BUTTONS DIV-->  
+<div class="new-question">
+    <p>Enter Question:</p>
+    <input type="text" id="new-question" class="form-control" required>
+        
+    <p>Option A:<input type="text" id="answer1" class="form-control" required></p>
+    <p>Option B:<input type="text" id="answer2" class="form-control" required></p>
+    <p>Option C:<input type="text" id="answer3" class="form-control" required></p>
+    <p>Option D:<input type="text" id="answer4" class="form-control" required></p>
+
+    <div class="form-group">
+        <label for="correct-answer">Correct Answer:</label>
+            <select multiple class="form-control" required id="correct-answer">
+                <option value="1">A</option>
+                <option value="2">B</option>
+                <option value="3">C</option>
+                <option value="4">D</option>
+            </select>
+        </div>
+    </div> 
+    
+    <button type="submit" class="btn btn-light" value="">Submit</button>
+</div>
+<!--END TEACHER CREATE QUIZ BUTTONS DIV-->
+
+
+<!--BEGIN TEACHER RESULTS DIV-->  
+    <div submit="teacher results">
+        >>canvas js charts go here
+    </div> 
+<!--END TEACHER QUIZ BUTTONS DIV-->
+
