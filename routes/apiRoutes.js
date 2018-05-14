@@ -14,6 +14,8 @@ module.exports = function(app){
 
             if (req.query.username === username && req.query.password === password){
                 res.send({id: userID})
+            } else {
+                res.send ({message : "either user id or password is incorrect"})
             }
     })
 }
