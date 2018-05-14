@@ -1,54 +1,90 @@
-<!--BEGIN TEACHER NAV BAR--> 
-<nav class="navbar navbar-inverse">
+<!--BEGIN TEACHER REGISTRATION DIV-->  
+<nav class="navbar">
     <div class="container-fluid">
-        <ul class="navbar-brand" href="#">Quizzie-Moto</ul>
-
+        <div class="navbar-brand" href="#">Quizzie-Moto</div>
+    
         <div class="nav navbar-nav navbar-right">
-            <!-- Trigger registration modal -->
-
-            <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#registerModal">
-                <span class="glyphicon glyphicon-user"></span> Sign Up</button></li>
+            <form class="form-inline">
+            
+            <!-- Trigger teacher registration modal -->
+            <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#teacherRegister" data-whatever="register">Sign Up</button>
+                
             <!-- Trigger login modal -->
-            <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#loginModal">
-                <span class="glyphicon glyphicon-log-in"></span>Login</button></li>  
-
+            <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#teacherLogin" data-whatever="login">Login</button>
+            </form>
+        
         </div>
     </div>
 </nav>
-<!--END TEACHER NAV BAR--> 
+<!-- END TEACHER NAVBAR-->
 
 
-<!--BEGIN TEACHER REGISTRATION DIV-->  
-<div class="register">
-    <p>Email Address:<input type="text" id="email" class="form-control" required></p>
-    
-    <p>Username:<input type="text" id="username" class="form-control" required></p>
-    
-    <p>Password:<input type="text" id="password" class="form-control" required></p>
-
-    <p>First Name:<input type="text" id="first_name" class="form-control" required></p>
-
-    <p>Last Name:<input type="text" id="last_name" class="form-control" required></p>
-
-    <p>Authorization Code:<input type="text" id="authtoken" class="form-control" required></p>
-
-    <div class="submit"> 
-        <button type="submit" class="btn btn-light" value="">Submit</button>
-    </div>
-
-</div>
-<!--END TEACHER REGISTRATION DIV-->
-
-<!--BEGIN TEACHER LOGIN DIV-->  
-    <div class="login" id="teacher">
-        <p>Username:<input type="text" id="username" class="form-control" required></p>
-        <p>Password:<input type="text" id="password" class="form-control" required></p>
-        <div class="submit">
-            <button type="submit" class="btn btn-light" value="">Submit</button>
+<!-- BEGIN TEACHER REGISTRATION MODAL-->
+<div class="modal fade" id="teacherRegister" tabindex="-1" role="dialog" aria-labelledby="teacherRegisterLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="teacherRegisterLabel">New Teacher Registration</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+            </div>
+      
+             <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <div class="register">
+                            <p>First Name:<input type="text" id="first_name" class="form-control" required></p>
+                            <p>Last Name:<input type="text" id="last_name" class="form-control" required></p>
+                            <p>Email Address:<input type="text" id="email" class="form-control" required></p>
+                            <p>Username:<input type="text" id="registerUsername" class="form-control" aria-label="Username" aria-describedby="basic-addon1" required></p>
+                            <p>Password:<input type="password" id="registerPassword" class="form-control" required></p>
+                            <p>Authorization Code:<input type="text" id="authtoken" class="form-control" required></p>   
+                            
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-light">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-<!--END TEACHER LOGIN DIV-->
+</div>
+<!--END TEACHER REGISTRATION MODAL-->
 
+<!-- BEGIN TEACHER LOGIN MODAL-->
+<div class="modal fade" id="teacherLogin" tabindex="-1" role="dialog" aria-labelledby="teacherLoginLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="teacherLoginLabel">Teacher Login</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+          
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <div class="login">
+                            <p>Username:<input type="text" id="loginUsername" class="form-control" aria-label="Username" required></p>
+                            <p>Password:<input type="password" id="loginPassword" class="form-control" required></p>
+                            
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-light">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>  
+<!-- END TEACHER LOGIN MODAL-->
 
 
 <!--BEGIN TEACHER MAIN DASHBOARD DIV-->  
