@@ -23,7 +23,7 @@ app.set('view engine', 'handlebars');
 //requiring all the routes
 
 //teacher api routes
-require("./routes/apiRoutes")(app);
+require("./routes/teacherRoutes")(app);
 
 //student api routes
 require("./routes/studentRoutes")(app);
