@@ -1,6 +1,6 @@
 // this model is used to save tests ahead of time before the actual session
 
-odule.exports = function(sequelize, DataTypes){
+module.exports = function(sequelize, DataTypes){
     var test = sequelize.define("test", {
         question_ids : {
             type : DataTypes.STRING,

@@ -1,6 +1,6 @@
 // this model is used to save student results for every session
 
-odule.exports = function(sequelize, DataTypes){
+module.exports = function(sequelize, DataTypes){
     var test_result = sequelize.define("test_result", {
         student_result : {
             type : DataTypes.STRING,
@@ -20,5 +20,5 @@ odule.exports = function(sequelize, DataTypes){
         });
 
     };
-    return test
+    return test_result
 }

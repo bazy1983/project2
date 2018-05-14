@@ -3,6 +3,7 @@ var bodyParser = require("body-parser");
 var exphbs = require("express-handlebars");
 var app = express();
 var socket = require("socket.io");
+var db = require('./models')
 var port = process.env.PORT || 3000; //host server port or local 3000 port
 
 // parse application/x-www-form-urlencoded
@@ -27,6 +28,14 @@ require("./routes/apiRoutes")(app);
 //html routes
 require("./routes/htmlRoutes")(app);
 
+
+
+db.sequelize.sync()
+// .then(function() {
+//     app.listen(PORT, function() {
+//       console.log("App listening on PORT " + PORT);
+//     });
+//   });
 
 var server = app.listen(port, function(){
     console.log("Server is listening on port " + port)
