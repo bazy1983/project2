@@ -24,7 +24,12 @@ module.exports = function(sequelize, DataTypes) {
         },
         active_int : DataTypes.BOOLEAN,
 
-        //association
     });
+    //association
+    user.associate = function(models){
+        user.hasMany(models.test, {
+            onDelete : "cascade"
+        });
+    };
     return user
 }
