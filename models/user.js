@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-    var teacher = sequelize.define("teacher", {
+    var user = sequelize.define("user", {
         username : {
             type : DataTypes.STRING,
             allawNull : false,
@@ -18,10 +18,13 @@ module.exports = function(sequelize, DataTypes) {
             allawNull : false
         },
         email : DataTypes.STRING,
-        role_id : DataTypes.INTEGER,
+        role_id : {
+            type : DataTypes.INTEGER,
+            defaultValue: 3 //student  (1 for admin, 2 teacher, 3 student)
+        },
         active_int : DataTypes.BOOLEAN,
 
         //association
     });
-    return teacher
+    return user
 }
