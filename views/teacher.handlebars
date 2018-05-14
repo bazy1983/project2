@@ -84,66 +84,66 @@
     </div>
 </div>  
 <!-- END TEACHER LOGIN MODAL-->
-
-<div class="row">
-  <div class="col-sm-4">.col-sm-4</div>
-  <div class="col-sm-8">.col-sm-8</div>
-
-
-<!--BEGIN TEACHER MAIN DASHBOARD DIV-->
+<!--BEGIN TEACHER MAIN DASHBOARD DIV-->  
 <div class="dashboard">
-    <div class="test">
-        <button type="button" class="btn btn-light">Administer Test</button>
-    </div>
-    
-    <div class="add-q">
-        <button type="button" class="btn btn-light">Add New Question</button>
-    </div>
+    <p>
+    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample1" aria-expanded="false" aria-controls="multiCollapseExample1">Toggle first element</button>
+    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Toggle second element</button>
+    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample3" aria-expanded="false" aria-controls="multiCollapseExample3">Toggle third element</button>
+    </p>
+</div>
 
-    <div class="results">
-        <button type="button" class="btn btn-light">View Results</button>
+<!--BEGIN TEACHER ADMINISTER QUIZ TOGGLE-->  
+<div class="collapse multi-collapse" id="multiCollapseExample1">
+    <div class="card card-body">
+        ONE pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
     </div>
 </div>
-<!--END TEACHER MAIN DASHBOARD DIV-->  
 
+<!--END TEACHER ADMINISTER QUIZ TOGGLE-->  
+
+<!--BEGIN TEACHER CREATE QUIZ BUTTONS DIV-->  
+    <div class="collapse multi-collapse" id="multiCollapseExample2">
+        <div class="card card-body">
+          TWO pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+          <div class="add question">
+                <p>Enter Question:</p>
+                <input type="text" id="new-question" class="form-control" required>
+                
+                <p>Option A:<input type="text" id="answer1" class="form-control" required></p>
+                <p>Option B:<input type="text" id="answer2" class="form-control" required></p>
+                <p>Option C:<input type="text" id="answer3" class="form-control" required></p>
+                <p>Option D:<input type="text" id="answer4" class="form-control" required></p>
+        
+                <div class="form-group">
+                    <label for="correct-answer">Correct Answer:</label>
+                    <select multiple class="form-control" required id="correct-answer">
+                        <option value="1">A</option>
+                        <option value="2">B</option>
+                        <option value="3">C</option>
+                        <option value="4">D</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-light" value="">Submit</button>
+            </div> 
+    
+        </div>
+    </div>
+
+<!--END TEACHER CREATES QUIZ TOGGLE--> 
+
+<!--BEGIN TEACHER DASHBOARD TOGGLE--> 
+    <div class="collapse multi-collapse" id="multiCollapseExample3">
+        <div class="card card-body">
+            canvas js charts go here
+            
+        </div>
+    </div>
+<!--END TEACHER DASHBOARD TOGGLE--> 
 
 <!--BEGIN TEACHER START QUIZ DIV-->  
     <div submit="start-button">
         <button type="button" class="btn btn-light" value="">Start Quiz</button>
     </div> 
-<!--END TEACHER START QUIZ DIV-->
-
-
-<!--BEGIN TEACHER CREATE QUIZ BUTTONS DIV-->  
-<div class="new-question">
-    <p>Enter Question:</p>
-    <input type="text" id="new-question" class="form-control" required>
-        
-    <p>Option A:<input type="text" id="answer1" class="form-control" required></p>
-    <p>Option B:<input type="text" id="answer2" class="form-control" required></p>
-    <p>Option C:<input type="text" id="answer3" class="form-control" required></p>
-    <p>Option D:<input type="text" id="answer4" class="form-control" required></p>
-
-    <div class="form-group">
-        <label for="correct-answer">Correct Answer:</label>
-            <select multiple class="form-control" required id="correct-answer">
-                <option value="1">A</option>
-                <option value="2">B</option>
-                <option value="3">C</option>
-                <option value="4">D</option>
-            </select>
-        </div>
-    </div> 
-    
-    <button type="submit" class="btn btn-light" value="">Submit</button>
-</div>
-<!--END TEACHER CREATE QUIZ BUTTONS DIV-->
-
-
-<!--BEGIN TEACHER RESULTS DIV-->  
-    <div submit="teacher results">
-        >>canvas js charts go here
-    </div> 
-<!--END TEACHER QUIZ BUTTONS DIV-->
 
 </div>
