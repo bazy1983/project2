@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({ extended: true })) //set extended to true to pre
 app.use(bodyParser.json())
 
 //serve static client css and js files
-app.use(express.static(__dirname +  "public"))
+app.use(express.static("public"))
 
 //express handlebars express extension to render handlebars partials
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
@@ -46,15 +46,19 @@ var server = app.listen(port, function(){
 
 var io = socket(server);
 
-
+var clients = 0;
 //socket.io connection to emit and listen to keywords
 io.on("connection", function(socket){
     console.log("client connected to socket ID: ", socket.id);
+    clients ++;
+    console.log("people connected to server: "+ clients)
 
     // socket.on("someKeyword", function(data){
     //     io.emit("someOtherKeyword", data)
     // })
     socket.on('disconnect', function () {
+        clients--;
+        console.log("people connected to server: "+ clients)
         //io.emit('user disconnected');
       });
 })

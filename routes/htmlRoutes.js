@@ -1,3 +1,4 @@
+var path = require("path");
 
 module.exports = function(app){
 
@@ -10,4 +11,10 @@ module.exports = function(app){
     app.get("/dashboard", function(req, res){
         res.render("teacher")
     })
+
+
+    //testing purposes only
+    app.get("/test", function(req, res) {
+        res.sendFile(path.join(__dirname, "../public/test/index.html"));
+      });
 }
