@@ -2,6 +2,7 @@ $(document).ready(function(){
 
     //TEACHER LOGIN
     //==================
+    var teacherInfo;
     $("#teacherloginbtn").on("click", function(event){
         event.preventDefault()
         let teacherUsername = $("#loginUsername").val().trim(),
@@ -14,6 +15,8 @@ $(document).ready(function(){
             }
             $.get("/teacherLogin", teacherLogin, function(data){
                 console.log(data)
+                teacherInfo = data; // use it later on for test session
+                $('#teacherLogin').modal('hide')
                 //some dom manipulation
             })
             .fail(function(err){
@@ -69,6 +72,7 @@ $(document).ready(function(){
         $.get("/questionCategories", function(data){
             //build category dropdown list
             console.log(data);
+            $("#all-topics").empty();
             for(let i = 0; i<data.length; i++){
                 $("#all-topics").append($("<option value = '"+data[i].id +"'>").text(data[i].topic_name))
             }
@@ -105,5 +109,18 @@ $(document).ready(function(){
         }
     })
 
-    
+    //MAKE NEW QUIZ
+    //==================
+
+    //build topic dropdown
+    $("#makeNewTestCollapse").on("click", function(){
+        $.get("/questionCategories", function(data){
+            //build category dropdown list
+            console.log(data);
+            $("#all-topics-test").empty();
+            for(let i = 0; i<data.length; i++){
+                $("#all-topics-test").append($("<option value = '"+data[i].id +"'>").text(data[i].topic_name))
+            }
+        })
+    })
 })
