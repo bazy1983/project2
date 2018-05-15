@@ -104,6 +104,23 @@ $(document).ready(function(){
             console.log("one or more fields are not filled in")
         }
     })
+// END TEACHER CREATES QUESTIONS 
 
+// DASHBOARD TOGGLE STUFF HERE
+
+// BEGIN START QUIZ 
+
+$("#sessionID").on("click", function () {
+    var newRandom = Math.floor(Math.random()*1000000);
+    $("#sessionNumber").text(newRandom);
+    $.post("/sessionId", {session: newRandom}, function(){
+        console.log("new session id sent to server")
+    })
+})
+
+// END START QUIZ
+
+// BEGIN QUIZ RESULTS 
+// END QUIZ RESULTS 
     
 })
