@@ -56,7 +56,7 @@ $(document).ready(function(){
                 console.log("Token error")
             })
         } else {
-            console.log("one or more fields is empty")
+            console.log("one or more fields are empty")
         }
     })
 
