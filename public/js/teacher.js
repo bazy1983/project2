@@ -2,7 +2,7 @@ $(document).ready(function(){
 
     //TEACHER LOGIN
     //==================
-    var teacherInfo;
+    // var teacherInfo;
     $("#teacherloginbtn").on("click", function(event){
         event.preventDefault()
         let teacherUsername = $("#loginUsername").val().trim(),
@@ -121,7 +121,6 @@ $(document).ready(function(){
     })
 // END TEACHER CREATES QUESTIONS 
 
-<<<<<<< HEAD
 // DASHBOARD TOGGLE STUFF HERE
 
 // BEGIN START QUIZ 
@@ -139,7 +138,6 @@ $("#sessionID").on("click", function () {
 // BEGIN QUIZ RESULTS 
 // END QUIZ RESULTS 
     
-=======
     //MAKE NEW QUIZ
     //==================
 
@@ -178,5 +176,4 @@ $("#sessionID").on("click", function () {
     })
 
 
->>>>>>> b3705e6c1f2812a7c086c94001c3f449e9a0bb08
 })
