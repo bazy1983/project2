@@ -2,6 +2,7 @@ $(document).ready(function(){
 
     //TEACHER LOGIN
     //==================
+    var teacherInfo;
     $("#teacherloginbtn").on("click", function(event){
         event.preventDefault()
         let teacherUsername = $("#loginUsername").val().trim(),
@@ -14,6 +15,8 @@ $(document).ready(function(){
             }
             $.get("/teacherLogin", teacherLogin, function(data){
                 console.log(data)
+                teacherInfo = data; // use it later on for test session
+                $('#teacherLogin').modal('hide')
                 //some dom manipulation
             })
             .fail(function(err){
@@ -69,6 +72,7 @@ $(document).ready(function(){
         $.get("/questionCategories", function(data){
             //build category dropdown list
             console.log(data);
+            $("#all-topics").empty();
             for(let i = 0; i<data.length; i++){
                 $("#all-topics").append($("<option value = '"+data[i].id +"'>").text(data[i].topic_name))
             }
@@ -84,6 +88,7 @@ $(document).ready(function(){
             newAnswerD = $("#answer4").val().trim(),
             newCorrect = $("#correct-answer").val();
         var newTopic = $("#new-topic").val().trim();
+        var existingTopic = $(".existingTopicNewQuestion").val();
         if(newQuestion && newAnswerA && newAnswerB && newAnswerC && newAnswerD && newCorrect){
             let question = {
                 question_text : newQuestion,
@@ -93,19 +98,30 @@ $(document).ready(function(){
                 answer4 : newAnswerD,
                 correct_answer : newCorrect
             };
-            $.post("/create-new-topic", {topic_name : newTopic}, function(dbTopic){
-                console.log(dbTopic)
-                question.topicId = dbTopic.id
+            //if new topic is created
+            if(newTopic){
+                //post new topic then post question with new topic
+                $.post("/create-new-topic", {topic_name : newTopic}, function(dbTopic){
+                    console.log(dbTopic)
+                    question.topicId = dbTopic.id
+                    $.post("/create-new-question", question, function(data){
+                        console.log(data)
+                    })
+                })
+                //else use existing topic
+            }else{
+                question.topicId = existingTopic;
                 $.post("/create-new-question", question, function(data){
                     console.log(data)
                 })
-            })
+            }
         } else {
             console.log("one or more fields are not filled in")
         }
     })
 // END TEACHER CREATES QUESTIONS 
 
+<<<<<<< HEAD
 // DASHBOARD TOGGLE STUFF HERE
 
 // BEGIN START QUIZ 
@@ -123,4 +139,44 @@ $("#sessionID").on("click", function () {
 // BEGIN QUIZ RESULTS 
 // END QUIZ RESULTS 
     
+=======
+    //MAKE NEW QUIZ
+    //==================
+
+    //build topic dropdown
+    $("#makeNewTestCollapse").on("click", function(){
+        $.get("/questionCategories", function(data){
+            //build category dropdown list
+            // console.log(data);
+            $("#all-topics-test").empty();
+            for(let i = 0; i<data.length; i++){
+                $("#all-topics-test").append($("<option value = '"+data[i].id +"'>").text(data[i].topic_name))
+            }
+        })
+    })
+
+    $(".newQuizTopic").on("change", function(){
+        let topicId = $(".newQuizTopic").val()
+        $.get("/allQuestionsForTopic/" + topicId, function(data){
+            // console.log(data)
+            if(data){ //when array is not empty
+                $("#questionTable").empty();
+                for(let i = 0; i<data.length; i++){
+                    let tableRow = $("<tr dataID = '"+data[0].id+"'>");
+                    let tableCount = $("<th>").text(i+1)
+                    let tableQuestion = $("<td>").text(data[i].question_text)
+                    let tableInfo = tableRow.append(tableCount, tableQuestion)
+                    $("#questionTable").append(tableInfo);
+                }
+            }
+        })
+    })
+
+    $("#questionTable").on("click", "tr", function(){
+        console.log(this)
+        $(this).addClass("RowSelected table-danger")
+    })
+
+
+>>>>>>> b3705e6c1f2812a7c086c94001c3f449e9a0bb08
 })
