@@ -32,7 +32,6 @@ require("./routes/studentRoutes")(app);
 require("./routes/htmlRoutes")(app);
 
 
-
 db.sequelize.sync()
 // .then(function() {
 //     app.listen(PORT, function() {

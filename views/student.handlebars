@@ -7,7 +7,7 @@
             <form class="form-inline">
                 <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
                 <input type="password" class="form-control" id="inputPassword" placeholder="Password">
-                <button type="submit" class="btn btn-light btn-md">SUBMIT</button>
+                <button type="button" class="btn btn-light btn-md">SUBMIT</button>
             </form>
         </div>
     </div>
@@ -17,45 +17,23 @@
 
 <!--BEGIN STUDENT INPUT KEY DIV-->  
 <div class="container">
-    <div class="col-sm-12 text-center">
-        <form>
+        <form class="col-sm-5">
             <div class="form-group">
-                <label for="inputkey">Enter the Quiz Key:</label>
-                <input type="text" class="form-control" id="inputkey" placeholder="Quiz Key">
+                <input type="text" class="form-control" id="inputkey" placeholder="Enter quiz key on the instructor's screen">
             </div>
-            <button type="submit" class="btn btn-primary btn-lg btn-block" value="">Submit</button>
+            <button type="button" class="btn btn-primary" value="">Join Quiz!</button>
         </form>
-    </div>
 </div>
 <!--END STUDENT INPUT KEY DIV-->
 
 <!--BEGIN STUDENT WAITING SCREEN DIV-->  
-    <div class="waiting">
-     <p>Please wait for the quiz to start....</p>
-    </div>
+    <div class="waiting"></div>
 <!--END STUDENT WAITING SCREEN DIV-->
 
-
 <!--BEGIN STUDENT QUIZ BUTTONS DIV-->  
-    <div class="quiz-buttons">
-        <div class="button" value="1">A</div>
-        <div class="button" value="2">B</div>
-        <div class="button" value="3">C</div>
-        <div class="button" value="4">D</div>
-    </div>
+    <div class="quiz-buttons"></div>
 <!--END STUDENT QUIZ BUTTONS DIV-->
 
-
-<!--BEGIN TIMER DIV -->  
-    <div class="timer">
-        <p class="countdown lead"></p>
-        timer div
-    </div>
-<!--END TIMER DIV -->  
-
-
 <!--BEGIN STUDENT RESULTS DIV-->  
-    <div class="student-results">
-        >>canvas js results go here
-    </div>
+    <div class="student-results"></div>
 <!--END STUDENT RESULTS DIV -->
