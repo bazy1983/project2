@@ -88,6 +88,7 @@ $(document).ready(function(){
             newAnswerD = $("#answer4").val().trim(),
             newCorrect = $("#correct-answer").val();
         var newTopic = $("#new-topic").val().trim();
+        var existingTopic = $(".existingTopicNewQuestion").val();
         if(newQuestion && newAnswerA && newAnswerB && newAnswerC && newAnswerD && newCorrect){
             let question = {
                 question_text : newQuestion,
@@ -97,13 +98,23 @@ $(document).ready(function(){
                 answer4 : newAnswerD,
                 correct_answer : newCorrect
             };
-            $.post("/create-new-topic", {topic_name : newTopic}, function(dbTopic){
-                console.log(dbTopic)
-                question.topicId = dbTopic.id
+            //if new topic is created
+            if(newTopic){
+                //post new topic then post question with new topic
+                $.post("/create-new-topic", {topic_name : newTopic}, function(dbTopic){
+                    console.log(dbTopic)
+                    question.topicId = dbTopic.id
+                    $.post("/create-new-question", question, function(data){
+                        console.log(data)
+                    })
+                })
+                //else use existing topic
+            }else{
+                question.topicId = existingTopic;
                 $.post("/create-new-question", question, function(data){
                     console.log(data)
                 })
-            })
+            }
         } else {
             console.log("one or more fields are not filled in")
         }
