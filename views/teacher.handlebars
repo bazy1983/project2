@@ -5,13 +5,13 @@
 
         <div class="nav navbar-nav navbar-right">
             <form class="form-inline">
-
                 <!-- Trigger teacher registration modal -->
-                <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#teacherRegister" data-whatever="register">Sign Up</button>
+                <button type="button" class="btn btn-light" data-toggle="modal" data-target="#teacherRegister" data-whatever="register">Sign Up</button>
 
                 <!-- Trigger login modal -->
-                <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#teacherLogin" data-whatever="login">Login</button>
+                <button type="button" class="btn btn-light" data-toggle="modal" data-target="#teacherLogin" data-whatever="login">Login</button>
             </form>
+        </div>
 
         </div>
     </div>
@@ -104,11 +104,11 @@
 <!--BEGIN TEACHER MAIN DASHBOARD DIV-->
 <div class="dashboard">
     <p>
-        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample1" aria-expanded="false"
+        <button class="btn btn-light" type="button" data-toggle="collapse" data-target="#multiCollapseExample1" aria-expanded="false"
             aria-controls="multiCollapseExample1">Administer test</button>
-        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" aria-expanded="false"
+        <button class="btn btn-light" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" aria-expanded="false"
             aria-controls="multiCollapseExample2">Create new question</button>
-        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample3" aria-expanded="false"
+        <button class="btn btn-light" type="button" data-toggle="collapse" data-target="#multiCollapseExample3" aria-expanded="false"
             aria-controls="multiCollapseExample3">View results</button>
     </p>
 </div>
@@ -116,6 +116,7 @@
 <!--BEGIN TEACHER ADMINISTER QUIZ TOGGLE-->
 <div class="collapse multi-collapse" id="multiCollapseExample1">
     <div class="card card-body">
+        <h2>Start A Quiz</h2>
         <div class="btn-group" role="group" aria-label="Basic example">
             <button type="button" class="btn btn-secondary">category 1</button>
             <button type="button" class="btn btn-secondary">category 2</button>
@@ -138,9 +139,9 @@
 <!--BEGIN TEACHER CREATE QUIZ BUTTONS DIV-->
 <div class="collapse multi-collapse" id="multiCollapseExample2">
     <div class="card card-body">
-        Enter stuff here
+        <h2>Add A New Question</h2>
         <div class="add question">
-            <p>Enter Question:</p>
+            <p>Add A Question:</p>
             <input type="text" id="new-question" class="form-control" required>
 
             <p>Option A:
@@ -176,15 +177,15 @@
 <!--BEGIN TEACHER DASHBOARD TOGGLE-->
 <div class="collapse multi-collapse" id="multiCollapseExample3">
     <div class="card card-body">
-        canvas js charts go here
-
+        <h2>Results</h2>
     </div>
 </div>
 <!--END TEACHER DASHBOARD TOGGLE-->
 
 <!--BEGIN TEACHER START QUIZ DIV-->
 <div submit="start-button">
-    <button type="button" class="btn btn-light" value="">Start Quiz</button>
+    <button class="btn btn-light" id="sessionID">Generate Session</button>
+    <p id="sessionNumber"></p>
 </div>
 <!--END TEACHER START QUIZ DIV-->
 
@@ -193,11 +194,11 @@
     <div class="row">
         <div class="col-10">
 
-            <div class="question">Questions Div</div>
+            <div class="question">Questions</div>
         
-            <div class="answers">Answer Buttons</div>
+            <div class="answers">Answers</div>
                     
-            <div class="results">Results Div</div> 
+            <div class="results">Results</div> 
     
             <div class="timer"><span class="seconds"></span>Timer</div>
         </div>
