@@ -3,7 +3,7 @@
 module.exports = function(sequelize, DataTypes){
     var test = sequelize.define("test", {
         question_ids : {
-            type : DataTypes.STRING,
+            type : DataTypes.JSON,
             allowNull : false
         },  
     })

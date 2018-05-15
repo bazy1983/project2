@@ -22,8 +22,10 @@ module.exports = function(sequelize, DataTypes) {
             type : DataTypes.INTEGER,
             defaultValue: 3 //student  (1 for admin, 2 teacher, 3 student)
         },
-        active_int : DataTypes.BOOLEAN,
-
+        active_int : {
+            type : DataTypes.BOOLEAN,
+            defaultValue : true
+        }
     });
     //association
     user.associate = function(models){
