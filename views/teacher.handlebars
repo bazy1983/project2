@@ -196,8 +196,7 @@
     <div class="card card-body">
         <h2>Create New Test</h2>
         <p>Topic
-            <select class="form-control" required id="all-topics-test"></select>
-            <button type="button" class="btn btn-secondary">Get All Questions</button>
+            <select class="form-control newQuizTopic" required id="all-topics-test"></select>
         </p>
         <table class="table table-hover">
             <thead>
@@ -206,11 +205,8 @@
                     <th style = "width : 90%" scope="col">Question</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Otto</td>
-                </tr>
+            <tbody id = "questionTable">
+                {{!-- here goes all questiona --}}
 
             </tbody>
         </table>

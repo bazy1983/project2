@@ -127,11 +127,35 @@ $(document).ready(function(){
     $("#makeNewTestCollapse").on("click", function(){
         $.get("/questionCategories", function(data){
             //build category dropdown list
-            console.log(data);
+            // console.log(data);
             $("#all-topics-test").empty();
             for(let i = 0; i<data.length; i++){
                 $("#all-topics-test").append($("<option value = '"+data[i].id +"'>").text(data[i].topic_name))
             }
         })
     })
+
+    $(".newQuizTopic").on("change", function(){
+        let topicId = $(".newQuizTopic").val()
+        $.get("/allQuestionsForTopic/" + topicId, function(data){
+            // console.log(data)
+            if(data){ //when array is not empty
+                $("#questionTable").empty();
+                for(let i = 0; i<data.length; i++){
+                    let tableRow = $("<tr dataID = '"+data[0].id+"'>");
+                    let tableCount = $("<th>").text(i+1)
+                    let tableQuestion = $("<td>").text(data[i].question_text)
+                    let tableInfo = tableRow.append(tableCount, tableQuestion)
+                    $("#questionTable").append(tableInfo);
+                }
+            }
+        })
+    })
+
+    $("#questionTable").on("click", "tr", function(){
+        console.log(this)
+        $(this).addClass("RowSelected table-danger")
+    })
+
+
 })

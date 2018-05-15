@@ -116,6 +116,20 @@ module.exports = function(app){
         })
     })
 
+    app.get("/allQuestionsForTopic/:id", function(req, res){
+        db.question.findAll({
+            where: {topicId : req.params.id}
+        })
+        .then(function(data){
+            res.send(data)            
+        })
+        .catch(function(err){
+            console.log("something went wrong while getting questions")
+            console.log(err);
+            res.status(404).end()
+        })
+    })
+
     //get all questions for selected test
     app.get("/testQuestions", function(req, res){
         console.log(req.query)
