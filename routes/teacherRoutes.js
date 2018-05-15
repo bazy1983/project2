@@ -26,7 +26,7 @@ module.exports = function(app){
                      res.send(user)
                      
                  } else {
-                     res.status(403).send("Unauthorized Access")
+                     res.status(401).send("Unauthorized Access")
                  } 
             } else {
                 res.status(404).send ({message : "either user id or password is incorrect"})
@@ -46,7 +46,7 @@ module.exports = function(app){
             db.user.create(req.body)
             .then(function(data){
                 console.log(data);
-                res.send(data)
+                res.send("Your new account is pending confirmation")
             })
             .catch(function(err){
                 console.log("creating new teacher failed")
@@ -79,6 +79,42 @@ module.exports = function(app){
             console.log(err)
         })
     });
+
+    app.get("/questionCategories", function(req, res){
+        db.topic.findAll({})
+        .then(function(data){
+            res.send(data)
+        })
+        .catch(function(err){
+            console.log("something went wrong while getting all categories");
+            console.log(err)
+            res.status(500).end()
+        })
+    });
+
+    app.post("/create-new-topic", function(req, res){
+        db.topic.create(req.body)
+        .then(function(data){
+            res.send(data)
+        })
+        .catch(function(err){
+            console.log("create new topic failed");
+            console.log(err);
+            res.status(409).send("Topic with same name found").end()
+        })
+        
+    })
+
+    app.post("/create-new-question", function(req, res){
+        db.question.create(req.body)
+        .then(function(data){
+            res.status(202).end()
+        })
+        .catch(function(err){
+            console.log("create new question failed")
+            res.status(417).end()
+        })
+    })
 
     //get all questions for selected test
     app.get("/testQuestions", function(req, res){

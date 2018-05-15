@@ -2,7 +2,8 @@ module.exports = function(sequelize, DataTypes){
     var topic = sequelize.define("topic", {
         topic_name : {
             type : DataTypes.STRING,
-            allowNull : false
+            allowNull : false,
+            unique : true
         },  
     })
 

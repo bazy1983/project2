@@ -60,5 +60,50 @@ $(document).ready(function(){
         }
     })
 
+    //ADD NEW QUESTION
+    //==================
+    var questionCategory;
+
+    //build topic dropdown
+    $("#addNewQuestionCollapse").on("click", function(){
+        $.get("/questionCategories", function(data){
+            //build category dropdown list
+            console.log(data);
+            for(let i = 0; i<data.length; i++){
+                $("#all-topics").append($("<option value = '"+data[i].id +"'>").text(data[i].topic_name))
+            }
+        })
+    })
+
+    $("#addNewQuestionbtn").on("click", function(event){
+        event.preventDefault();
+        let newQuestion = $("#new-question").val().trim(),
+            newAnswerA = $("#answer1").val().trim(),
+            newAnswerB = $("#answer2").val().trim(),
+            newAnswerC = $("#answer3").val().trim(),
+            newAnswerD = $("#answer4").val().trim(),
+            newCorrect = $("#correct-answer").val();
+        var newTopic = $("#new-topic").val().trim();
+        if(newQuestion && newAnswerA && newAnswerB && newAnswerC && newAnswerD && newCorrect){
+            let question = {
+                question_text : newQuestion,
+                answer1 : newAnswerA,
+                answer2 : newAnswerB,
+                answer3 : newAnswerC,
+                answer4 : newAnswerD,
+                correct_answer : newCorrect
+            };
+            $.post("/create-new-topic", {topic_name : newTopic}, function(dbTopic){
+                console.log(dbTopic)
+                question.topicId = dbTopic.id
+                $.post("/create-new-question", question, function(data){
+                    console.log(data)
+                })
+            })
+        } else {
+            console.log("one or more fields are not filled in")
+        }
+    })
+
     
 })
