@@ -227,8 +227,9 @@ $("#sessionID").on("click", function () {
     //query test table to get questions
     $.get("/testIdQuestions/"+ testID, function(data){
         console.log(data);
-    $.get("/questionsPerTest", data.question_ids, function(questionData){
+    $.get("/questionsPerTest", {allIds:data.question_ids}, function(questionData){
         console.log(questionData);
+
 
     })
      
