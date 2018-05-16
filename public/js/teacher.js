@@ -5,6 +5,8 @@ $(document).ready(function(){
    // BEGIN LOAD LOGIN IN DASHBOARD
     $(window).on("load", function(){
         $("#teacherLogin").modal("show");
+
+    
     // CLOSE LOAD LOGIN IN DASHBOARD
  
     //==================
@@ -15,6 +17,7 @@ $(document).ready(function(){
             teacherPassword = $("#loginPassword").val().trim()
         // if there are values 
         if (teacherUsername && teacherPassword){
+            console.log("line #20")
             var teacherLogin = {
             username : teacherUsername,
             password : teacherPassword
@@ -27,18 +30,26 @@ $(document).ready(function(){
             })
             .fail(function(err){
                 if(err.status === 403){
-                    console.log(err.responseJSON)
+                    // console.log(err.responseJSON)
+                    // TESTING 
+                    // console.log("line #36")
+
+                    
                 } else {
                     //404 not found
-                    console.log(err.responseJSON)
+                    // console.log(err.responseJSON)
+                    //TESTING
+                    // console.log("line #42")
+
                 }
             })
         } else {
             console.log("form must be filled in")
+            $("#errorMessage").text("form must be filled in")
         }
     })
-
 });
+
 
     //TEACHER REGISTRATION
     //=========================
