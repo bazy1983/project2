@@ -31,15 +31,10 @@ $(document).ready(function(){
             .fail(function(err){
                 if(err.status === 403){
                     // console.log(err.responseJSON)
-                    // TESTING 
-                    // console.log("line #36")
 
-                    
                 } else {
                     //404 not found
                     // console.log(err.responseJSON)
-                    //TESTING
-                    // console.log("line #42")
 
                 }
             })
