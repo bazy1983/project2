@@ -160,6 +160,37 @@ module.exports = function(app){
         })
     });
 
+    app.get("/testIdQuestions/:id", function(req, res){
+        db.test.findOne({
+            where : {
+                id : req.params.id
+            }
+        })
+        .then(function(data){
+            res.send(data);
+        })
+        .catch(function(err){
+            console.log("Something went wrong while selecting id");
+            console.log(err);
+            res.status(500).end()
+        })
+    });
+
+    app.get("questionsPerTest", function(req, res){
+        console.log(req.query)
+        db.question.findAll({
+            where : req.query
+        })
+        .then(function(data){
+            res.send(data);
+        })
+        .catch(function(err){
+            console.log("your query was wrong");
+            console.log(err);
+            res.status(500).end();
+        })
+    })
+
     //posting session id to be used as keys for socket.io
     app.post("/sessionId", function(req, res){
         console.log(req.body)
