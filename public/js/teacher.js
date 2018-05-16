@@ -224,8 +224,19 @@ $("#sessionID").on("click", function () {
 
     $("#testTable").on("mouseenter", "tr", function(){
         var testID = $(this).attr("dataID");
+    //query test table to get questions
+    $.get("/testIdQuestions/"+ testID, function(data){
+        console.log(data);
+    $.get("/questionsPerTest", data.question_ids, function(questionData){
+        console.log(questionData);
+
+    })
+     
+     })
         
     })
+
+  
 
 
 })
