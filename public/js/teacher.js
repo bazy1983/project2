@@ -10,7 +10,7 @@ $(document).ready(function(){
     // CLOSE LOAD LOGIN IN DASHBOARD
  
     //==================
-    // var teacherInfo;
+    
     $("#teacherloginbtn").on("click", function(event){
         event.preventDefault()
         let teacherUsername = $("#loginUsername").val().trim(),
@@ -24,7 +24,7 @@ $(document).ready(function(){
             }
             $.get("/teacherLogin", teacherLogin, function(data){
                 console.log(data)
-                teacherInfo = data; // use it later on for test session
+                sessionStorage.setItem("id", data.id) ; // use it later on for test session
                 $('#teacherLogin').modal('hide')
                 //some dom manipulation
             })
@@ -85,7 +85,7 @@ $(document).ready(function(){
     $("#addNewQuestionCollapse").on("click", function(){
         $.get("/questionCategories", function(data){
             //build category dropdown list
-            console.log(data);
+            //console.log(data);
             $("#all-topics").empty();
             for(let i = 0; i<data.length; i++){
                 $("#all-topics").append($("<option value = '"+data[i].id +"'>").text(data[i].topic_name))
@@ -116,17 +116,17 @@ $(document).ready(function(){
             if(newTopic){
                 //post new topic then post question with new topic
                 $.post("/create-new-topic", {topic_name : newTopic}, function(dbTopic){
-                    console.log(dbTopic)
+                    //console.log(dbTopic)
                     question.topicId = dbTopic.id
                     $.post("/create-new-question", question, function(data){
-                        console.log(data)
+                        //console.log(data)
                     })
                 })
                 //else use existing topic
             }else{
                 question.topicId = existingTopic;
                 $.post("/create-new-question", question, function(data){
-                    console.log(data)
+                    //console.log(data)
                 })
             }
         } else {
@@ -186,13 +186,25 @@ $("#sessionID").on("click", function () {
 
     //adding selected class to selected questions to build test
     $("#questionTable").on("click", "tr", function(){
-        console.log(this)
+        //console.log(this)
         $(this).toggleClass("RowSelected table-danger")
     })
 
+    var questionJSON = [];
     $(".composeTestBTN").on("click", function(){
-        let allQuestions = $("RowSelected")
-        console.log(allQuestions)
+        var allQuestions = $(".RowSelected");
+        //console.log(allQuestions)
+        for(let i = 0; i < allQuestions.length; i ++){
+            questionJSON.push({id : allQuestions[i].attributes.dataid.value})
+        }
+        let newTest = {
+            userId : sessionStorage.getItem("id"),
+            question_ids : questionJSON
+        }
+
+        $.post("/makeAtest", newTest , function(data){
+            console.log(data);
+        })
     })
 
 

@@ -130,6 +130,17 @@ module.exports = function(app){
         })
     })
 
+    app.post("/makeAtest", function(req, res){
+        db.test.create(req.body)
+        .then(function(data){
+            res.send("A new Test is saved successfully")
+        })
+        .catch(function(err){
+            console.log("something went wrong while saving the test");
+            res.status(500).end();
+        })
+    })
+
     //get all questions for selected test
     app.get("/testQuestions", function(req, res){
         console.log(req.query)
