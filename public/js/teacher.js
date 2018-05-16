@@ -199,7 +199,8 @@ $("#sessionID").on("click", function () {
         }
         let newTest = {
             userId : sessionStorage.getItem("id"),
-            question_ids : questionJSON
+            question_ids : questionJSON,
+            desc : $("#testDescription").val().trim()
         }
 
         $.post("/makeAtest", newTest , function(data){
@@ -207,5 +208,17 @@ $("#sessionID").on("click", function () {
         })
     })
 
-
+    $("#getAllTests").on("click", function(){
+        let userID = sessionStorage.getItem("id");
+        $.get("/getAllTests/"+ userID, function(data){
+            for (let i = 0; i <data.length; i++){
+                let tableRow = $("<tr dataID = '"+data[i].id+"'>");
+                    let tableCount = $("<th>").text(i+1);
+                    let tableDesc = $("<td>").text(data[i].desc);
+                    let tableDate = $("<td>").text(data[i].createdAt);
+                    let tableInfo = tableRow.append(tableCount, tableDesc, tableDate)
+                    $("#testTable").append(tableInfo);
+            }
+        })
+    })
 })

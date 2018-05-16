@@ -9,6 +9,10 @@ module.exports = function(sequelize, DataTypes){
         secret_key : {
             type : DataTypes.INTEGER,
             defaultValue : 0
+        },
+        desc : {
+            type : DataTypes.STRING,
+            defaultValue : "TEST"
         }
     })
 

@@ -116,6 +116,7 @@ module.exports = function(app){
         })
     })
 
+    //get all question for partcular topic -- create test view
     app.get("/allQuestionsForTopic/:id", function(req, res){
         db.question.findAll({
             where: {topicId : req.params.id}
@@ -130,6 +131,7 @@ module.exports = function(app){
         })
     })
 
+    //create new test by selecting questions
     app.post("/makeAtest", function(req, res){
         db.test.create(req.body)
         .then(function(data){
@@ -142,9 +144,20 @@ module.exports = function(app){
     })
 
     //get all questions for selected test
-    app.get("/testQuestions", function(req, res){
-        console.log(req.query)
-        //query question table using question id
+    app.get("/getAllTests/:id", function(req, res){
+
+        db.test.findAll({
+            where : {
+                userId : req.params.id
+            }
+        })
+        .then(function(data){
+            res.send(data)
+        })
+        .catch(function(err){
+            console.log("grabbing tests for particular teacher went wrong")
+            res.status(404).end()
+        })
     });
 
     //posting session id to be used as keys for socket.io
