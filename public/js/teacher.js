@@ -204,7 +204,7 @@ $("#sessionID").on("click", function () {
         }
 
         $.post("/makeAtest", newTest , function(data){
-            console.log(data);
+           // console.log(data);
         })
     })
 
@@ -221,4 +221,11 @@ $("#sessionID").on("click", function () {
             }
         })
     })
+
+    $("#testTable").on("mouseenter", "tr", function(){
+        var testID = $(this).attr("dataID");
+        
+    })
+
+
 })
