@@ -166,7 +166,7 @@ $("#sessionID").on("click", function () {
             }
         })
     })
-
+    //on topic dropdown change, grab all questions for that particular topic
     $(".newQuizTopic").on("change", function(){
         let topicId = $(".newQuizTopic").val()
         $.get("/allQuestionsForTopic/" + topicId, function(data){
@@ -174,7 +174,7 @@ $("#sessionID").on("click", function () {
             if(data){ //when array is not empty
                 $("#questionTable").empty();
                 for(let i = 0; i<data.length; i++){
-                    let tableRow = $("<tr dataID = '"+data[0].id+"'>");
+                    let tableRow = $("<tr dataID = '"+data[i].id+"'>");
                     let tableCount = $("<th>").text(i+1)
                     let tableQuestion = $("<td>").text(data[i].question_text)
                     let tableInfo = tableRow.append(tableCount, tableQuestion)
@@ -184,9 +184,15 @@ $("#sessionID").on("click", function () {
         })
     })
 
+    //adding selected class to selected questions to build test
     $("#questionTable").on("click", "tr", function(){
         console.log(this)
-        $(this).addClass("RowSelected table-danger")
+        $(this).toggleClass("RowSelected table-danger")
+    })
+
+    $(".composeTestBTN").on("click", function(){
+        let allQuestions = $("RowSelected")
+        console.log(allQuestions)
     })
 
 

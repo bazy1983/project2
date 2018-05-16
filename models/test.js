@@ -5,7 +5,11 @@ module.exports = function(sequelize, DataTypes){
         question_ids : {
             type : DataTypes.JSON,
             allowNull : false
-        },  
+        },
+        secret_key : {
+            type : DataTypes.INTEGER,
+            defaultValue : 0
+        }
     })
 
     test.associate = function(models){

@@ -53,7 +53,7 @@ $(document).ready(function(){
     // GAME FUNCTION (STUDENT)
     //==================
     
-    //include set interval timer
+   
     //get questions and answers from quiz json object 
     //loop through and render buttons with associated values on student page 
     //check if each answer is correct after each question.
