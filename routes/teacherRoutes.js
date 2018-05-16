@@ -178,7 +178,7 @@ module.exports = function(app){
         })
     });
 
-    app.get("questionsPerTest", function(req, res){
+    app.get("/questionsPerTest", function(req, res){
         console.log(req.query)
         db.question.findAll({
             where : req.query
