@@ -4,6 +4,7 @@ module.exports = function(app){
 
     //root route renders and sends student view 
     app.get("/", function(req, res){
+        // renders student partial
         res.render("student")
     })
 
