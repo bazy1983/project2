@@ -4,12 +4,13 @@ module.exports = function(app){
 
     //root route renders and sends student view 
     app.get("/", function(req, res){
-        // renders student partial
+        // renders student  using / route
         res.render("student")
     })
 
     //session route renders and sends session route
     app.get("/dashboard", function(req, res){
+        // renders teacher partial using dashboard route 
         res.render("teacher")
     })
 

@@ -1,6 +1,12 @@
 $(document).ready(function(){
 
     //TEACHER LOGIN
+
+   // BEGIN LOAD LOGIN IN DASHBOARD
+    $(window).on("load", function(){
+        $("#teacherLogin").modal("show");
+    // CLOSE LOAD LOGIN IN DASHBOARD
+ 
     //==================
     // var teacherInfo;
     $("#teacherloginbtn").on("click", function(event){
@@ -31,6 +37,8 @@ $(document).ready(function(){
             console.log("form must be filled in")
         }
     })
+
+});
 
     //TEACHER REGISTRATION
     //=========================
