@@ -139,6 +139,7 @@ module.exports = function(app){
         })
         .catch(function(err){
             console.log("something went wrong while saving the test");
+            console.log(err)
             res.status(500).end();
         })
     })
@@ -156,6 +157,7 @@ module.exports = function(app){
         })
         .catch(function(err){
             console.log("grabbing tests for particular teacher went wrong")
+            console.log("err")
             res.status(404).end()
         })
     });
