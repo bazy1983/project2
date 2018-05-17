@@ -49,7 +49,23 @@ $(document).ready(function(){
 
 ////if login = success, show waiting page 
 
-/////once teacher starts quiz, trigger trivia game function
+
+//input session id 
+$("#sessionEntry").on("click", function(){
+    console.log("clicked")
+    // let studentSessionId = {sessionId : $("#inputkey").val().trim() + "student"};
+    // sessionStorage.setItem("studentSession", $("#inputkey").val().trim() + "student")
+    // sessionStorage.setItem("teacherSession", $("#inputkey").val().trim() + "teacher")
+    // socket.emit("studentSocket", studentSessionId)
+})
+
+socket.on(sessionStorage.getItem("teacherSession"), function(data){
+    console.log("Student view")
+    console.log(data)
+})
+
+
+/////once teacher starts quiz
     // GAME FUNCTION (STUDENT)
     //==================
     
@@ -61,5 +77,6 @@ $(document).ready(function(){
         //call next question - repeat loop through all questions selected 
     //at conclusion of game, display the score for the student in results div
 
+    
 
 })

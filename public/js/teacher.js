@@ -1,5 +1,6 @@
 $(document).ready(function () {
 
+    var socket = io(); // websocket connection
     //TEACHER LOGIN
 
     // BEGIN LOAD LOGIN IN DASHBOARD
@@ -17,7 +18,7 @@ $(document).ready(function () {
                 teacherPassword = $("#loginPassword").val().trim()
             // if there are values 
             if (teacherUsername && teacherPassword) {
-                console.log("line #20")
+                
                 var teacherLogin = {
                     username: teacherUsername,
                     password: teacherPassword
@@ -140,7 +141,8 @@ $(document).ready(function () {
     var sendSessionQuestion; //that to set socket.io keyword in server
     $("#sessionID").on("click", function () {
         let newRandom = Math.floor(Math.random() * 1000000);
-        sendSessionQuestion = newRandom + "question"
+        sendSessionQuestion = newRandom + "teacher";
+        sessionStorage.setItem("session", sendSessionQuestion)
         $("#sessionNumber").text(newRandom);
         $.post("/sessionId", { session: newRandom }, function () {
             console.log("new session id sent to server")
@@ -235,7 +237,7 @@ $(document).ready(function () {
         $.get("/testIdQuestions/" + testID, function (data) {
             //console.log(data);
             $.get("/questionsPerTest", { allIds: data.question_ids }, function (questionData) {
-                console.log(questionData);
+                //console.log(questionData);
 
             })
         })
@@ -245,14 +247,14 @@ $(document).ready(function () {
         $(this).toggleClass("testSelected table-warning").siblings().removeClass("testSelected table-warning");
     })
 
-    //
+    var questions;
     $("#startNewSession").on("click", function(){
         var selectedTestId = $(".testSelected").attr("dataid");
         console.log(selectedTestId)
         $.get("/testIdQuestions/" + selectedTestId, function (data) {
             //console.log(data);
             $.get("/questionsPerTest", { allIds: data.question_ids }, function (questionData) {
-                console.log(questionData);
+                questions = questionData
                 gameSession()
 
             })
@@ -260,24 +262,39 @@ $(document).ready(function () {
     })
 
     //question  recursive function
-    var i = 0;
+    var iterator = 0;
     function gameSession(){
-        var counter = 10
-        var q = [1,2,3,4,5]
-        console.log(q[i])
-        console.log("emit new socket")
+        if(iterator === questions.length){
+            clearInterval(timer)
+
+            //end of quiz
+            return
+        }
+        var counter = 10;
+        var currentSessionID = sessionStorage.getItem("session")     
+        console.log(questions[iterator])
+        let oneQuestionAtTime = questions[iterator];
+        oneQuestionAtTime.sessionID = currentSessionID
+        //DOM display question
+        // $.post("/questionToStudent", oneQuestionAtTime, function(){
+        //     console.log("sent question to student")
+        // })
+        socket.emit("teacherSocket", oneQuestionAtTime)
         var timer = setInterval(function(){
             console.log("time: " + counter)
             counter--
-            if(i === q.length-1){
+            //DOM display counter
+            if(counter < 0) {
                 clearInterval(timer)
-            }
-            if(counter === 0) {
-                i++
-                clearInterval(timer)
-                gameSession()
+                console.log("Correct answer is: " + questions[iterator].correct_answer)
+                //DOM display correct answer
+                setTimeout(function(){
+                    iterator++
+                    gameSession()
+                },2000)
             }
         }, 1000)
+
     }
 
 

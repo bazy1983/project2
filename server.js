@@ -52,9 +52,17 @@ io.on("connection", function(socket){
     clients ++;
     console.log("people connected to server: "+ clients)
 
-    // socket.on("someKeyword", function(data){
-    //     io.emit("someOtherKeyword", data)
-    // })
+    //listening to teacher socket and emit to student using teacher session id
+    socket.on("teacherSocket", function(teacherData){
+        io.emit(teacherData.sessionID, teacherData)
+    })
+
+    //listening to student socket and emit to teacher using student session id
+    socket.on("studentSocket", function(studentData){
+        io.emit(studentData.sessionId, studentData )
+
+    })
+
     socket.on('disconnect', function () {
         clients--;
         console.log("people connected to server: "+ clients)

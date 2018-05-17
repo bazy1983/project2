@@ -201,12 +201,13 @@ module.exports = function(app){
         res.status(200).end();
     });
 
-    //send 
-    app.post("/question", function(req, res){
-        console.log(req.body);
-        //emit a socket with question data to student view
-        res.status(200).end();
-    })
+    // //send 
+    // app.post("/questionToStudent", function(req, res){
+    //     console.log(req.body);
+    //     //emit a socket with question data to student view
+        
+    //     res.status(200).end();
+    // })
 
     //a marker from teacher's view to indicate the end of the quiz
     app.get("/end", function(req, res){
