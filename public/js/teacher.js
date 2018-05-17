@@ -217,7 +217,7 @@ $(document).ready(function () {
             for (let i = 0; i < data.length; i++) {
                 let formatedDate = moment(data[i].createdAt).format("MMM Do YYYY");
                 //console.log("date:" + formatedDate)
-                let tableRow = $("<tr dataID = '" + data[i].id + "'>");
+                let tableRow = $("<tr dataID = '" + data[i].id + "' secret = '"+data[i].secret_key+"'>");
                 let tableCount = $("<th>").text(i + 1);
                 let tableDesc = $("<td>").text(data[i].desc);
                 let tableDate = $("<td>").text(formatedDate);
@@ -228,6 +228,7 @@ $(document).ready(function () {
         })
     })
 
+    //when clicking on view button
     $("#testTable").on("click", "td button", function () {
         var testID = $(this).parent().parent().attr("dataID");
         //query test table to get questions
@@ -235,10 +236,49 @@ $(document).ready(function () {
             //console.log(data);
             $.get("/questionsPerTest", { allIds: data.question_ids }, function (questionData) {
                 console.log(questionData);
+
+            })
+        })
+    })
+    //adding some classes to selected test table row, and remove them from its siblings
+    $("#testTable").on("click", "tr", function(){
+        $(this).toggleClass("testSelected table-warning").siblings().removeClass("testSelected table-warning");
+    })
+
+    //
+    $("#startNewSession").on("click", function(){
+        var selectedTestId = $(".testSelected").attr("dataid");
+        console.log(selectedTestId)
+        $.get("/testIdQuestions/" + selectedTestId, function (data) {
+            //console.log(data);
+            $.get("/questionsPerTest", { allIds: data.question_ids }, function (questionData) {
+                console.log(questionData);
+                gameSession()
+
             })
         })
     })
 
+    //question  recursive function
+    var i = 0;
+    function gameSession(){
+        var counter = 10
+        var q = [1,2,3,4,5]
+        console.log(q[i])
+        console.log("emit new socket")
+        var timer = setInterval(function(){
+            console.log("time: " + counter)
+            counter--
+            if(i === q.length-1){
+                clearInterval(timer)
+            }
+            if(counter === 0) {
+                i++
+                clearInterval(timer)
+                gameSession()
+            }
+        }, 1000)
+    }
 
 
 
