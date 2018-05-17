@@ -190,17 +190,18 @@ $("#sessionID").on("click", function () {
         $(this).toggleClass("RowSelected table-danger")
     })
 
-    var questionJSON = [];
+    var questionJSON = []; //prepare question id array
     $(".composeTestBTN").on("click", function(){
         var allQuestions = $(".RowSelected");
         //console.log(allQuestions)
         for(let i = 0; i < allQuestions.length; i ++){
-            questionJSON.push({id : allQuestions[i].attributes.dataid.value})
+            questionJSON.push(allQuestions[i].attributes.dataid.value) //question id
         }
         let newTest = {
-            userId : sessionStorage.getItem("id"),
+            userId : sessionStorage.getItem("id"), //get teacher id stored in sessionStorage
             question_ids : questionJSON,
-            desc : $("#testDescription").val().trim()
+            desc : $("#testDescription").val().trim(),
+            secret_key : Math.floor(Math.random() * 10000)
         }
 
         $.post("/makeAtest", newTest , function(data){
@@ -208,14 +209,17 @@ $("#sessionID").on("click", function () {
         })
     })
 
+    //get all tests created by a teacher
     $("#getAllTests").on("click", function(){
         let userID = sessionStorage.getItem("id");
         $.get("/getAllTests/"+ userID, function(data){
             for (let i = 0; i <data.length; i++){
+                let formatedDate = moment(data[i].createdAt).format("MMM Do YYYY");
+                console.log("date:" + formatedDate)
                 let tableRow = $("<tr dataID = '"+data[i].id+"'>");
                     let tableCount = $("<th>").text(i+1);
                     let tableDesc = $("<td>").text(data[i].desc);
-                    let tableDate = $("<td>").text(data[i].createdAt);
+                    let tableDate = $("<td>").text(formatedDate);
                     let tableInfo = tableRow.append(tableCount, tableDesc, tableDate)
                     $("#testTable").append(tableInfo);
             }
@@ -226,7 +230,7 @@ $("#sessionID").on("click", function () {
         var testID = $(this).attr("dataID");
     //query test table to get questions
     $.get("/testIdQuestions/"+ testID, function(data){
-        console.log(data);
+        //console.log(data);
     $.get("/questionsPerTest", {allIds:data.question_ids}, function(questionData){
         console.log(questionData);
 
