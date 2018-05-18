@@ -54,6 +54,7 @@ io.on("connection", function(socket){
 
     //listening to teacher socket and emit to student using teacher session id
     socket.on("teacherSocket", function(teacherData){
+        console.log(teacherData.sessionID);
         io.emit(teacherData.sessionID, teacherData)
     })
 

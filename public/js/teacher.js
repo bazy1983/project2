@@ -143,8 +143,8 @@ $(document).ready(function () {
     var sendSessionQuestion; //that to set socket.io keyword in server
     $("#sessionID").on("click", function () {
         let newRandom = Math.floor(Math.random() * 1000000);
-        sendSessionQuestion = newRandom + "teacher";
-        sessionStorage.setItem("session", sendSessionQuestion)
+        sessionStorage.setItem("teacherSession", newRandom + "teacher")
+        sessionStorage.setItem("studentSession", newRandom + "student")
         $("#sessionNumber").text(newRandom);
         $.post("/sessionId", {
             session: newRandom
@@ -249,7 +249,8 @@ $(document).ready(function () {
         })
     })
     //adding some classes to selected test table row, and remove them from its siblings
-    $("#testTable").on("click", "tr", function () {
+    var iterator;
+    $("#testTable").on("click", "tr", function(){
         $(this).toggleClass("testSelected table-warning").siblings().removeClass("testSelected table-warning");
     })
 
@@ -263,6 +264,7 @@ $(document).ready(function () {
                 allIds: data.question_ids
             }, function (questionData) {
                 questions = questionData
+                iterator = 0
                 gameSession()
 
             })
@@ -270,17 +272,15 @@ $(document).ready(function () {
     })
 
     //question  recursive function
-    var iterator = 0;
-
-    function gameSession() {
-        if (iterator === questions.length) {
+    function gameSession(){
+        if(iterator === questions.length){
             clearInterval(timer)
 
             //end of quiz
             return
         }
         var counter = 10;
-        var currentSessionID = sessionStorage.getItem("session")
+        var currentSessionID = sessionStorage.getItem("teacherSession")     
         console.log(questions[iterator])
         let oneQuestionAtTime = questions[iterator];
         oneQuestionAtTime.sessionID = currentSessionID
