@@ -282,8 +282,12 @@ $(document).ready(function () {
         socket.emit("teacherSocket", oneQuestionAtTime)
         var timer = setInterval(function(){
             console.log("time: " + counter)
+            // TESTING HERE
+            $(".seconds").html(counter);
+            // FINISH TESTING HERE
             counter--
             //DOM display counter
+
             if(counter < 0) {
                 clearInterval(timer)
                 console.log("Correct answer is: " + questions[iterator].correct_answer)
