@@ -272,7 +272,7 @@ $(document).ready(function () {
             socket.emit("end", sessionStorage.getItem("endSession"))
             return
         }
-        var counter = 10;
+        var counter = 4;
         var currentSessionID = sessionStorage.getItem("teacherSession")     
         console.log(questions[iterator])
         let oneQuestionAtTime = questions[iterator];
@@ -282,7 +282,10 @@ $(document).ready(function () {
         socket.emit("teacherSocket", oneQuestionAtTime)
         //SHOW QUESTION 
         $(".question").html(oneQuestionAtTime.question_text);
-        // SHOW QUESTIONS
+        $("#a1").html(oneQuestionAtTime.answer1);
+        $("#a2").html(oneQuestionAtTime.answer2);
+        $("#s3").html(oneQuestionAtTime.answer3);
+        $("#a4").html(oneQuestionAtTime.answer4);
         var timer = setInterval(function () {
             console.log("time: " + counter)
             // SHOWING TIMER
