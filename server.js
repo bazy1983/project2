@@ -64,6 +64,7 @@ io.on("connection", function(socket){
     //listening to student socket and emit to teacher using student session id
     socket.on("studentSocket", function(studentData){
         //change emit keywork on the fly to target a session
+        console.log(studentData)
         io.emit(studentData.sessionId, studentData )
 
     })

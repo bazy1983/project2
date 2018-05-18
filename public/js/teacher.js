@@ -9,9 +9,7 @@ $(document).ready(function () {
 
 
         // CLOSE LOAD LOGIN IN DASHBOARD
-
         //==================
-
         $("#teacherloginbtn").on("click", function (event) {
             event.preventDefault()
             let teacherUsername = $("#loginUsername").val().trim(),
@@ -94,6 +92,8 @@ $(document).ready(function () {
         })
     })
 
+    //ADD NEW QUESTION
+    //===================
     $("#addNewQuestionbtn").on("click", function (event) {
         event.preventDefault();
         let newQuestion = $("#new-question").val().trim(),
@@ -139,28 +139,19 @@ $(document).ready(function () {
 
     // DASHBOARD TOGGLE STUFF HERE
 
-    // BEGIN START QUIZ 
+    // CREATE SESSION ID 
     var sendSessionQuestion; //that to set socket.io keyword in server
     $("#sessionID").on("click", function () {
         let newRandom = Math.floor(Math.random() * 1000000);
-        sessionStorage.setItem("teacherSession", newRandom + "teacher")
-        sessionStorage.setItem("studentSession", newRandom + "student")
-        sessionStorage.setItem("endSession", newRandom + "end")
+        sessionStorage.setItem("teacherSession", newRandom + "teacher");
+        sessionStorage.setItem("studentSession", newRandom + "student");
+        sessionStorage.setItem("endSession", newRandom + "end");
         $("#sessionNumber").text(newRandom);
-        $.post("/sessionId", {
-            session: newRandom
-        }, function () {
-            console.log("new session id sent to server")
+        //listening for students joining the session
+        socket.on(sessionStorage.getItem("studentSession"), function(data){
+            console.log(data);
         })
     })
-
-    // END START QUIZ
-
-    // BEGIN QUIZ RESULTS 
-    // END QUIZ RESULTS 
-
-    //MAKE NEW QUIZ
-    //==================
 
     //build topic dropdown
     $("#makeNewTestCollapse").on("click", function () {
@@ -249,6 +240,7 @@ $(document).ready(function () {
             })
         })
     })
+
     //adding some classes to selected test table row, and remove them from its siblings
     var iterator;
     $("#testTable").on("click", "tr", function(){
@@ -274,10 +266,10 @@ $(document).ready(function () {
 
     //question  recursive function
     function gameSession(){
-        if(iterator === questions.length){
+        
+        if(iterator === questions.length){ //end of quiz
             clearInterval(timer)
             socket.emit("end", sessionStorage.getItem("endSession"))
-            //end of quiz
             return
         }
         var counter = 10;

@@ -1,4 +1,4 @@
-
+$(document).ready(function(){
     var socket = io(); // websocket connection
     // //STUDENT QUIZ KEY
     // //==================
@@ -31,7 +31,8 @@
             }
             $.get("/studentLogin", studentLogin, function (data) {
                 //console.log(data)
-                sessionStorage.setItem("id", data.id)
+                sessionStorage.setItem("id", data.id);
+                sessionStorage.setItem("name", data.first_name + " " + data.last_name)
                 //some dom manipulation
             })
                 .fail(function (err) {
@@ -56,7 +57,11 @@
     $("#sessionEntry").on("click", function (e) {
         e.preventDefault();
         console.log("clicked")
-        let studentSessionId = {sessionId : $("#inputkey").val().trim() + "student"};
+        let studentSessionId = {
+            sessionId : $("#inputkey").val().trim() + "student",
+            userId : sessionStorage.getItem("id"),
+            name : sessionStorage.getItem("name")
+        };
         sessionStorage.setItem("studentSession", $("#inputkey").val().trim() + "student");
         sessionStorage.setItem("teacherSession", $("#inputkey").val().trim() + "teacher");
         sessionStorage.setItem("endSession",  $("#inputkey").val().trim() + "end")
@@ -131,4 +136,4 @@
     //at conclusion of game, display the score for the student in results div
 
 
-
+})
