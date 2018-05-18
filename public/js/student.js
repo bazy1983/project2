@@ -73,6 +73,7 @@
         })
     })
     var studentAnswers = [];
+    //pushing student object needs work
     $(".quiz-buttons").on("click", "button", function(){
         console.log($(this).attr("choice"))
         let answersObj = {

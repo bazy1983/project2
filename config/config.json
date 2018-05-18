@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "root",
+    "password": "07702535961Mm",
+    "database": "quiz",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "a44e67d74fz633qt",
+    "password": "nlisv33b3234410k",
+    "database": "gcqx0oxyoooutsux",
+    "host": "wm63be5w8m7gs25a.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+    "dialect": "mysql"
+  }
+}
