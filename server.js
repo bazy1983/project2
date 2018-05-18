@@ -21,6 +21,7 @@ app.set('view engine', 'handlebars');
 
 
 //requiring all the routes
+//=============================
 
 //teacher api routes
 require("./routes/teacherRoutes")(app);
@@ -33,11 +34,7 @@ require("./routes/htmlRoutes")(app);
 
 
 db.sequelize.sync()
-// .then(function() {
-//     app.listen(PORT, function() {
-//       console.log("App listening on PORT " + PORT);
-//     });
-//   });
+
 
 var server = app.listen(port, function(){
     console.log("Server is listening on port " + port)
@@ -54,12 +51,13 @@ io.on("connection", function(socket){
 
     //listening to teacher socket and emit to student using teacher session id
     socket.on("teacherSocket", function(teacherData){
-        console.log(teacherData.sessionID);
+        //console.log(teacherData.sessionID);
         io.emit(teacherData.sessionID, teacherData)
     })
 
     //listening to student socket and emit to teacher using student session id
     socket.on("studentSocket", function(studentData){
+        //change emit keywork on the fly to target a session
         io.emit(studentData.sessionId, studentData )
 
     })

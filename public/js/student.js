@@ -30,7 +30,8 @@
                 password: studentPassword
             }
             $.get("/studentLogin", studentLogin, function (data) {
-                console.log(data)
+                //console.log(data)
+                sessionStorage.setItem("id", data.id)
                 //some dom manipulation
             })
                 .fail(function (err) {
@@ -51,6 +52,7 @@
 
 
     //input session id 
+    var studentAnswers = []; //student answers array of objects
     $("#sessionEntry").on("click", function (e) {
         e.preventDefault();
         console.log("clicked")
@@ -60,33 +62,43 @@
         socket.emit("studentSocket", studentSessionId);
 
         socket.on(sessionStorage.getItem("teacherSession"), function (data) {
-            $(".quiz-buttons").empty();
-            console.log("Student view listening to teacher")
             console.log(data)
+            let answersObj = {
+                questionID : data.id,
+                correct : data.correct_answer,
+                answer : 0,
+                isCorrect : false
+            };
+            studentAnswers.push(answersObj);
+            $(".quiz-buttons").empty();
             //append buttons
             let answerOne = $("<button question = '"+data.id+"' choice = '"+1+"' correct = '"+data.correct_answer+"'>").text("A"),
             answertwo = $("<button question = '"+data.id+"' choice = '"+2+"' correct = '"+data.correct_answer+"'>").text("B"),
             answerthree = $("<button question = '"+data.id+"' choice = '"+3+"' correct = '"+data.correct_answer+"'>").text("C"),
             answerfour = $("<button question = '"+data.id+"' choice = '"+4+"' correct = '"+data.correct_answer+"'>").text("D");
             $(".quiz-buttons").append(answerOne, answertwo, answerthree, answerfour);
-            
+            console.log(studentAnswers)
         })
     })
-    var studentAnswers = [];
+
+
+    /////once teacher starts quiz
+    // GAME FUNCTION (STUDENT)
+    //==================
+    
     //pushing student object needs work
     $(".quiz-buttons").on("click", "button", function(){
         console.log($(this).attr("choice"))
-        let answersObj = {
-            questionID : $(this).attr("question"),
-            studentAnswer : $(this).attr("choice"),
-        };
+        let questionIndex = studentAnswers.length-1;
+        console.log("index" + questionIndex)
+        studentAnswers[questionIndex].answer = $(this).attr("choice")
         if($(this).attr("choice") == $(this).attr("correct")){
-            answersObj.isCorrect = true;
+            studentAnswers[questionIndex].isCorrect = true;
         } else {
-            answersObj.isCorrect = false;
+            studentAnswers[questionIndex].isCorrect = false;
         }
-        studentAnswers.push(answersObj);
         console.log(studentAnswers)
+        
     })
 
 
@@ -94,9 +106,7 @@
     
 
 
-    /////once teacher starts quiz
-    // GAME FUNCTION (STUDENT)
-    //==================
+    
 
 
     //get questions and answers from quiz json object 
