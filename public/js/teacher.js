@@ -285,9 +285,7 @@ $(document).ready(function () {
         let oneQuestionAtTime = questions[iterator];
         oneQuestionAtTime.sessionID = currentSessionID
         //DOM display question
-        $.post("/questionToStudent", oneQuestionAtTime, function () {
-            console.log("sent question to student")
-        })
+        
         socket.emit("teacherSocket", oneQuestionAtTime)
         //SHOW QUESTION 
         $(".question").html(oneQuestionAtTime.question_text);

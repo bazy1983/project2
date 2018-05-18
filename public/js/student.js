@@ -57,14 +57,40 @@
         let studentSessionId = {sessionId : $("#inputkey").val().trim() + "student"};
         sessionStorage.setItem("studentSession", $("#inputkey").val().trim() + "student")
         sessionStorage.setItem("teacherSession", $("#inputkey").val().trim() + "teacher")
-        socket.emit("studentSocket", studentSessionId)
+        socket.emit("studentSocket", studentSessionId);
+
+        socket.on(sessionStorage.getItem("teacherSession"), function (data) {
+            $(".quiz-buttons").empty();
+            console.log("Student view listening to teacher")
+            console.log(data)
+            //append buttons
+            let answerOne = $("<button question = '"+data.id+"' choice = '"+1+"' correct = '"+data.correct_answer+"'>").text("A"),
+            answertwo = $("<button question = '"+data.id+"' choice = '"+2+"' correct = '"+data.correct_answer+"'>").text("B"),
+            answerthree = $("<button question = '"+data.id+"' choice = '"+3+"' correct = '"+data.correct_answer+"'>").text("C"),
+            answerfour = $("<button question = '"+data.id+"' choice = '"+4+"' correct = '"+data.correct_answer+"'>").text("D");
+            $(".quiz-buttons").append(answerOne, answertwo, answerthree, answerfour);
+            
+        })
+    })
+    var studentAnswers = [];
+    $(".quiz-buttons").on("click", "button", function(){
+        console.log($(this).attr("choice"))
+        let answersObj = {
+            questionID : $(this).attr("question"),
+            studentAnswer : $(this).attr("choice"),
+        };
+        if($(this).attr("choice") == $(this).attr("correct")){
+            answersObj.isCorrect = true;
+        } else {
+            answersObj.isCorrect = false;
+        }
+        studentAnswers.push(answersObj);
+        console.log(studentAnswers)
     })
 
 
-    socket.on(sessionStorage.getItem("teacherSession"), function (data) {
-        console.log("Student view listening to teacher")
-        console.log(data)
-    })
+
+    
 
 
     /////once teacher starts quiz
