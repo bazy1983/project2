@@ -1,19 +1,19 @@
 
     var socket = io(); // websocket connection
-    //STUDENT QUIZ KEY
-    //==================
-    $("#inputkey").on("click", function (event) {
-        event.preventDefault()
-        let inputKey = $("#inputkey").val().trim();
+    // //STUDENT QUIZ KEY
+    // //==================
+    // $("#inputkey").on("click", function (event) {
+    //     event.preventDefault()
+    //     let inputKey = $("#inputkey").val().trim();
 
-        if (inputKey) {
+    //     if (inputKey) {
 
-            console.log("it's not empty")
+    //         console.log("it's not empty")
 
-        } else {
-            console.log("quiz authorization key is not correct")
-        }
-    })
+    //     } else {
+    //         console.log("quiz authorization key is not correct")
+    //     }
+    // })
 
     ////if student quiz key is success trigger student login modal 
 
@@ -51,16 +51,32 @@
     ////if login = success, show waiting page 
 
 
-    //input session id 
+    //input session id and connect to teacher's session
     var studentAnswers = []; //student answers array of objects
     $("#sessionEntry").on("click", function (e) {
         e.preventDefault();
         console.log("clicked")
         let studentSessionId = {sessionId : $("#inputkey").val().trim() + "student"};
-        sessionStorage.setItem("studentSession", $("#inputkey").val().trim() + "student")
-        sessionStorage.setItem("teacherSession", $("#inputkey").val().trim() + "teacher")
+        sessionStorage.setItem("studentSession", $("#inputkey").val().trim() + "student");
+        sessionStorage.setItem("teacherSession", $("#inputkey").val().trim() + "teacher");
+        sessionStorage.setItem("endSession",  $("#inputkey").val().trim() + "end")
+        //send student info to teacher's view
         socket.emit("studentSocket", studentSessionId);
+        
+        //get end from server
+        socket.on(sessionStorage.getItem("endSession"), function(){
+            let studentTest = {
+                userId : sessionStorage.getItem("id"),
+                session_id : $("#inputkey").val().trim(),
+                student_result : studentAnswers
+            }
 
+            $.post("/storeStudentAnswers", studentTest, function(){
+                console.log("results sent")
+            })
+        })
+
+        // get questions from server
         socket.on(sessionStorage.getItem("teacherSession"), function (data) {
             console.log(data)
             let answersObj = {
@@ -85,8 +101,6 @@
     /////once teacher starts quiz
     // GAME FUNCTION (STUDENT)
     //==================
-    
-    //pushing student object needs work
     $(".quiz-buttons").on("click", "button", function(){
         console.log($(this).attr("choice"))
         let questionIndex = studentAnswers.length-1;
@@ -103,12 +117,12 @@
 
 
 
-    
 
 
     
 
 
+    
     //get questions and answers from quiz json object 
     //loop through and render buttons with associated values on student page 
     //check if each answer is correct after each question.

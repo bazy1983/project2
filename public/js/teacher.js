@@ -145,6 +145,7 @@ $(document).ready(function () {
         let newRandom = Math.floor(Math.random() * 1000000);
         sessionStorage.setItem("teacherSession", newRandom + "teacher")
         sessionStorage.setItem("studentSession", newRandom + "student")
+        sessionStorage.setItem("endSession", newRandom + "end")
         $("#sessionNumber").text(newRandom);
         $.post("/sessionId", {
             session: newRandom
@@ -275,7 +276,7 @@ $(document).ready(function () {
     function gameSession(){
         if(iterator === questions.length){
             clearInterval(timer)
-
+            socket.emit("end", sessionStorage.getItem("endSession"))
             //end of quiz
             return
         }

@@ -3,7 +3,7 @@
 module.exports = function(sequelize, DataTypes){
     var test_result = sequelize.define("test_result", {
         student_result : {
-            type : DataTypes.STRING,
+            type : DataTypes.JSON,
             allowNull : false
         },
         session_id : {

@@ -27,4 +27,19 @@ module.exports = function(app){
         console.log(req.query)
     })
 
+    app.post("/storeStudentAnswers", function(req, res){
+        console.log(req.body)
+        db.test_result.create({
+            userId : req.body.userId,
+            session_id : req.body.session_id,
+            student_result : req.body.student_result
+        })
+        .then(function(){
+            res.status(201).end()
+        })
+        .catch(function(err){
+            console.log("saving student results unsuccessful");
+            console.log(err)
+        })
+    })
 }
