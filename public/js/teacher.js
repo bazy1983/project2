@@ -18,17 +18,17 @@ $(document).ready(function () {
                 teacherPassword = $("#loginPassword").val().trim()
             // if there are values 
             if (teacherUsername && teacherPassword) {
-                
+
                 var teacherLogin = {
                     username: teacherUsername,
                     password: teacherPassword
                 }
                 $.get("/teacherLogin", teacherLogin, function (data) {
-                    console.log(data)
-                    sessionStorage.setItem("id", data.id); // use it later on for test session
-                    $('#teacherLogin').modal('hide')
-                    //some dom manipulation
-                })
+                        console.log(data)
+                        sessionStorage.setItem("id", data.id); // use it later on for test session
+                        $('#teacherLogin').modal('hide')
+                        //some dom manipulation
+                    })
                     .fail(function (err) {
                         if (err.status === 403) {
                             // console.log(err.responseJSON)
@@ -116,7 +116,9 @@ $(document).ready(function () {
             //if new topic is created
             if (newTopic) {
                 //post new topic then post question with new topic
-                $.post("/create-new-topic", { topic_name: newTopic }, function (dbTopic) {
+                $.post("/create-new-topic", {
+                    topic_name: newTopic
+                }, function (dbTopic) {
                     //console.log(dbTopic)
                     question.topicId = dbTopic.id
                     $.post("/create-new-question", question, function (data) {
@@ -144,7 +146,9 @@ $(document).ready(function () {
         sendSessionQuestion = newRandom + "teacher";
         sessionStorage.setItem("session", sendSessionQuestion)
         $("#sessionNumber").text(newRandom);
-        $.post("/sessionId", { session: newRandom }, function () {
+        $.post("/sessionId", {
+            session: newRandom
+        }, function () {
             console.log("new session id sent to server")
         })
     })
@@ -219,7 +223,7 @@ $(document).ready(function () {
             for (let i = 0; i < data.length; i++) {
                 let formatedDate = moment(data[i].createdAt).format("MMM Do YYYY");
                 //console.log("date:" + formatedDate)
-                let tableRow = $("<tr dataID = '" + data[i].id + "' secret = '"+data[i].secret_key+"'>");
+                let tableRow = $("<tr dataID = '" + data[i].id + "' secret = '" + data[i].secret_key + "'>");
                 let tableCount = $("<th>").text(i + 1);
                 let tableDesc = $("<td>").text(data[i].desc);
                 let tableDate = $("<td>").text(formatedDate);
@@ -236,24 +240,28 @@ $(document).ready(function () {
         //query test table to get questions
         $.get("/testIdQuestions/" + testID, function (data) {
             //console.log(data);
-            $.get("/questionsPerTest", { allIds: data.question_ids }, function (questionData) {
+            $.get("/questionsPerTest", {
+                allIds: data.question_ids
+            }, function (questionData) {
                 //console.log(questionData);
 
             })
         })
     })
     //adding some classes to selected test table row, and remove them from its siblings
-    $("#testTable").on("click", "tr", function(){
+    $("#testTable").on("click", "tr", function () {
         $(this).toggleClass("testSelected table-warning").siblings().removeClass("testSelected table-warning");
     })
 
     var questions;
-    $("#startNewSession").on("click", function(){
+    $("#startNewSession").on("click", function () {
         var selectedTestId = $(".testSelected").attr("dataid");
         console.log(selectedTestId)
         $.get("/testIdQuestions/" + selectedTestId, function (data) {
             //console.log(data);
-            $.get("/questionsPerTest", { allIds: data.question_ids }, function (questionData) {
+            $.get("/questionsPerTest", {
+                allIds: data.question_ids
+            }, function (questionData) {
                 questions = questionData
                 gameSession()
 
@@ -263,39 +271,43 @@ $(document).ready(function () {
 
     //question  recursive function
     var iterator = 0;
-    function gameSession(){
-        if(iterator === questions.length){
+
+    function gameSession() {
+        if (iterator === questions.length) {
             clearInterval(timer)
 
             //end of quiz
             return
         }
         var counter = 10;
-        var currentSessionID = sessionStorage.getItem("session")     
+        var currentSessionID = sessionStorage.getItem("session")
         console.log(questions[iterator])
         let oneQuestionAtTime = questions[iterator];
         oneQuestionAtTime.sessionID = currentSessionID
         //DOM display question
-        // $.post("/questionToStudent", oneQuestionAtTime, function(){
-        //     console.log("sent question to student")
-        // })
+        $.post("/questionToStudent", oneQuestionAtTime, function () {
+            console.log("sent question to student")
+        })
         socket.emit("teacherSocket", oneQuestionAtTime)
-        var timer = setInterval(function(){
+        //SHOW QUESTION 
+        $(".question").html(oneQuestionAtTime.question_text);
+        // SHOW QUESTIONS
+        var timer = setInterval(function () {
             console.log("time: " + counter)
-            // TESTING HERE
+            // SHOWING TIMER
             $(".seconds").html(counter);
-            // FINISH TESTING HERE
+            // FINISH SHOWING TIMER
             counter--
             //DOM display counter
 
-            if(counter < 0) {
+            if (counter < 0) {
                 clearInterval(timer)
                 console.log("Correct answer is: " + questions[iterator].correct_answer)
                 //DOM display correct answer
-                setTimeout(function(){
+                setTimeout(function () {
                     iterator++
                     gameSession()
-                },2000)
+                }, 2000)
             }
         }, 1000)
 
