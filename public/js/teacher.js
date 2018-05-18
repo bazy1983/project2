@@ -299,8 +299,10 @@ $(document).ready(function () {
                 clearInterval(timer)
                 console.log("Correct answer is: " + questions[iterator].correct_answer)
                 //DOM display correct answer
+                $("#a"+questions[iterator].correct_answer).addClass("color")
                 setTimeout(function () {
                     iterator++
+                    $(".answer").removeClass("color")
                     gameSession()
                 }, 2000)
             }
