@@ -150,6 +150,7 @@ $(document).ready(function () {
         //listening for students joining the session
         socket.on(sessionStorage.getItem("studentSession"), function(data){
             console.log(data);
+            //DOM using data, append user name on teacher view
         })
     })
 

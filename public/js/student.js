@@ -78,12 +78,14 @@ $(document).ready(function(){
 
             $.post("/storeStudentAnswers", studentTest, function(){
                 console.log("results sent")
+                //DOM show student results
             })
         })
-
+        ////once teacher starts quiz
         // get questions from server
         socket.on(sessionStorage.getItem("teacherSession"), function (data) {
-            console.log(data)
+            console.log(data)// display question information
+            //set new object with default values 
             let answersObj = {
                 questionID : data.id,
                 correct : data.correct_answer,
@@ -103,13 +105,14 @@ $(document).ready(function(){
     })
 
 
-    /////once teacher starts quiz
+    
     // GAME FUNCTION (STUDENT)
     //==================
     $(".quiz-buttons").on("click", "button", function(){
         console.log($(this).attr("choice"))
         let questionIndex = studentAnswers.length-1;
         console.log("index" + questionIndex)
+        //change student answer from default (0), to the student choice 
         studentAnswers[questionIndex].answer = $(this).attr("choice")
         if($(this).attr("choice") == $(this).attr("correct")){
             studentAnswers[questionIndex].isCorrect = true;
