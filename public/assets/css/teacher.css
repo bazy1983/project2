@@ -2,3 +2,33 @@
     color : #f00;
     background: #FF0;
 }
+#top-nav {
+    position: fixed;
+    height: 50px;
+    color: green;
+}
+.sidebar {
+    position: fixed;
+    top: 51px;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    padding: 20px;
+    overflow-x: hidden;
+    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+    border-right: 1px solid #eee;
+  }
+
+.navbar-toggler-icon{
+    background-color: green;
+}
+
+.container-game{
+    height: 800px;
+    padding-left: 20%;
+    background-color: gray;
+}
+.results{
+    height: 800px;
+    background-color: green;
+}
