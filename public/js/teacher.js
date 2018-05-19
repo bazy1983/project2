@@ -131,7 +131,9 @@ $(document).ready(function () {
             } else {
                 question.topicId = existingTopic;
                 $.post("/create-new-question", question, function (data) {
-
+                // ALERT USER OF NEW QUESTION CREATED
+                $("#alertNewQuestion").text("You've created a new question!")
+            
                 })
                                  
             }

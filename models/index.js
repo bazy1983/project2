@@ -5,10 +5,6 @@ var path      = require('path');
 var Sequelize = require('sequelize');
 var basename  = path.basename(__filename);
 var env       = process.env.NODE_ENV || 'development';
-<<<<<<< HEAD
-// CHANGED TO CONFIG.JSON
-=======
->>>>>>> 23078f1441cb89af6efc06cb6d78e1bbb4a5d1a8
 var config    = require(__dirname + '/../config/config.json')[env];
 var db        = {};
 
