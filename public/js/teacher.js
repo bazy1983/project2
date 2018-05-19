@@ -308,15 +308,16 @@ $(document).ready(function () {
             console.log("time: " + counter)
             // SHOWING TIMER
            var showTimer =  $(".seconds").html(counter + " seconds remain");
-            // // FINISH SHOWING TIMER
-            //DOM display counter
-            // TESTING 
+            // FINISH SHOWING TIMER
+
+            //DOM PROGRESS BAR BEGINS
+         
            let newProgress = counter * 10;
            let percent  = newProgress + "%";
            $(".progress").css("width", percent);
            counter--
 
-            // TESTING DONE 
+            // DISPLAY PROGRESS BAR DONE 
 
             if (counter < 0) {
                 clearInterval(timer)
