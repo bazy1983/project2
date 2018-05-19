@@ -152,6 +152,7 @@ $(document).ready(function () {
         sessionStorage.setItem("studentSession", newRandom + "student");
         sessionStorage.setItem("endSession", newRandom + "end");
         sessionStorage.setItem("answeredSession", newRandom + "answered");
+        sessionStorage.setItem("pauseSession", newRandom + "pause");
         $("#sessionNumber").text(newRandom);
         //listening for students joining the session
         socket.on(sessionStorage.getItem("studentSession"), function(data){
@@ -289,7 +290,7 @@ $(document).ready(function () {
             socket.emit("end", sendTeacherid)
             return
         }
-        var counter = 4;
+        var counter = 4; //timer
         var currentSessionID = sessionStorage.getItem("teacherSession")     
         console.log(questions[iterator])
         let oneQuestionAtTime = questions[iterator];
@@ -316,6 +317,8 @@ $(document).ready(function () {
                 console.log("Correct answer is: " + questions[iterator].correct_answer)
                 //DOM display correct answer
                 $("#a"+questions[iterator].correct_answer).addClass("color")
+                let pause = {pauseSession :sessionStorage.getItem("pauseSession")}
+                socket.emit("pause", pause);
                 setTimeout(function () {
                     iterator++
                     $(".answer").removeClass("color")
