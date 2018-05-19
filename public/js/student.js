@@ -34,6 +34,7 @@ $(document).ready(function(){
                 sessionStorage.setItem("id", data.id);
                 sessionStorage.setItem("name", data.first_name + " " + data.last_name)
                 //some dom manipulation
+                console.log(data)
             })
                 .fail(function (err) {
                     if (err.status === 403) {
@@ -65,15 +66,17 @@ $(document).ready(function(){
         sessionStorage.setItem("studentSession", $("#inputkey").val().trim() + "student");
         sessionStorage.setItem("teacherSession", $("#inputkey").val().trim() + "teacher");
         sessionStorage.setItem("endSession",  $("#inputkey").val().trim() + "end")
+        sessionStorage.setItem("answeredSession",  $("#inputkey").val().trim() + "answered")
         //send student info to teacher's view
         socket.emit("studentSocket", studentSessionId);
         
         //get end from server
-        socket.on(sessionStorage.getItem("endSession"), function(){
+        socket.on(sessionStorage.getItem("endSession"), function(data){
             let studentTest = {
                 userId : sessionStorage.getItem("id"),
                 session_id : $("#inputkey").val().trim(),
-                student_result : studentAnswers
+                student_result : studentAnswers,
+                teacherId : data
             }
 
             $.post("/storeStudentAnswers", studentTest, function(){
@@ -110,6 +113,11 @@ $(document).ready(function(){
     //==================
     $(".quiz-buttons").on("click", "button", function(){
         console.log($(this).attr("choice"))
+        let sendAnswer = {
+            userID : sessionStorage.getItem("id"),
+            answeredSession : sessionStorage.getItem("answeredSession")
+        }
+        socket.emit("answered", sendAnswer)
         let questionIndex = studentAnswers.length-1;
         console.log("index" + questionIndex)
         //change student answer from default (0), to the student choice 

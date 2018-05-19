@@ -9,7 +9,11 @@ module.exports = function(sequelize, DataTypes){
         session_id : {
             type : DataTypes.STRING,
             allowNull: false
-        }  
+        },
+        teacherId : {
+            type : DataTypes.INTEGER,
+            allowNull : false
+        }
     })
 
     test_result.associate = function(models){

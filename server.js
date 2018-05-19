@@ -42,7 +42,10 @@ var server = app.listen(port, function(){
 
 var io = socket(server);
 
-var clients = 0;
+
+//WEB SOCKETS
+//==================
+
 //socket.io connection to emit and listen to keywords
 io.on("connection", function(socket){
     // console.log("client connected to socket ID: ", socket.id);
@@ -57,16 +60,17 @@ io.on("connection", function(socket){
 
     //listening for the end of session
     socket.on("end", function(endData){
-        console.log(endData)
-        io.emit(endData, "end of session")
+        io.emit(endData.endSession, endData.id)
     })
 
     //listening to student socket and emit to teacher using student session id
     socket.on("studentSocket", function(studentData){
-        //change emit keywork on the fly to target a session
-        console.log(studentData)
         io.emit(studentData.sessionId, studentData )
+    })
 
+    //student send their id when they answer the question
+    socket.on ("answered", function(data){
+        io.emit(data.answeredSession, data)
     })
 
     socket.on('disconnect', function () {

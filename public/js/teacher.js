@@ -30,10 +30,12 @@ $(document).ready(function () {
                     .fail(function (err) {
                         if (err.status === 403) {
                             // console.log(err.responseJSON)
+                            //DOM show unauthorized
 
                         } else {
                             //404 not found
                             // console.log(err.responseJSON)
+                            //show not found
 
                         }
                     })
@@ -147,11 +149,18 @@ $(document).ready(function () {
         sessionStorage.setItem("teacherSession", newRandom + "teacher");
         sessionStorage.setItem("studentSession", newRandom + "student");
         sessionStorage.setItem("endSession", newRandom + "end");
+        sessionStorage.setItem("answeredSession", newRandom + "answered");
         $("#sessionNumber").text(newRandom);
         //listening for students joining the session
         socket.on(sessionStorage.getItem("studentSession"), function(data){
             console.log(data);
             //DOM using data, append user name on teacher view
+        })
+
+        //listening for student answers
+        socket.on(sessionStorage.getItem("answeredSession"), function(studentAnswered){
+            console.log(studentAnswered)
+            //DOM to change student name color
         })
     })
 
@@ -271,7 +280,11 @@ $(document).ready(function () {
         
         if(iterator === questions.length){ //end of quiz
             clearInterval(timer)
-            socket.emit("end", sessionStorage.getItem("endSession"))
+            let sendTeacherid = {
+                id : sessionStorage.getItem("id"),
+                endSession : sessionStorage.getItem("endSession")
+            }
+            socket.emit("end", sendTeacherid)
             return
         }
         var counter = 4;
@@ -286,7 +299,7 @@ $(document).ready(function () {
         $(".question").html(oneQuestionAtTime.question_text);
         $("#a1").html(oneQuestionAtTime.answer1);
         $("#a2").html(oneQuestionAtTime.answer2);
-        $("#s3").html(oneQuestionAtTime.answer3);
+        $("#a3").html(oneQuestionAtTime.answer3);
         $("#a4").html(oneQuestionAtTime.answer4);
         var timer = setInterval(function () {
             console.log("time: " + counter)
@@ -312,5 +325,30 @@ $(document).ready(function () {
     }
 
 
+    //SHOW RESULTS FOR TEACHER
+    $("#viewAllResults").on("click", function(){
+        let teacherID = {
+            teacherId : sessionStorage.getItem("id")
+        };
+        $.get("/allTestResults", teacherID, function(data){
+            $("#resultTable").empty()
+            let correctAnswers = 0;
+            for (let i = 0; i <data.length; i++){
+                let formatedDate = moment(data[i].createdAt).format("MMM Do YYYY")
+                let fullName = data[i].user.first_name + " " + data[i].user.last_name;
+                for (let j = 0; j<data[i].student_result.length; j++){
+                    if(data[i].student_result[j].isCorrect === "true") correctAnswers++
+                }
+                let tableRow = $("<tr dataID = '" + data[i].id + "'>");
+                let tableCount = $("<th>").text(i + 1);
+                let tableSession = $("<td>").text(data[i].session_id);
+                let tableStudentName = $("<td>").text(fullName);
+                let tableResult = $("<td>").text(correctAnswers + "/" + data[i].student_result.length);
+                let tableDate = $("<td>").text(formatedDate);
+                let tableInfo = tableRow.append(tableCount, tableSession, tableStudentName, tableResult, tableDate)
+                $("#resultTable").append(tableInfo);
+            }
+        })
+    })
 
 })

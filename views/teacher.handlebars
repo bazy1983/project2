@@ -113,7 +113,7 @@
         <button class="btn btn-light" type="button" data-toggle="collapse" data-target="#multiCollapseExample4" aria-expanded="false"
             aria-controls="multiCollapseExample4" id="makeNewTestCollapse">Make A Test</button>
         <button class="btn btn-light" type="button" data-toggle="collapse" data-target="#multiCollapseExample3" aria-expanded="false"
-            aria-controls="multiCollapseExample3">View results</button>
+            aria-controls="multiCollapseExample3" id = "viewAllResults">View results</button>
     </p>
 </div>
 
@@ -130,7 +130,6 @@
         </thead>
         <tbody id="testTable">
             {{!-- here goes all questiona --}}
-
         </tbody>
     </table>
 </div>
@@ -141,7 +140,7 @@
 <div class="collapse multi-collapse" id="multiCollapseExample2">
     <div class="card card-body">
         <h2>Add A New Question</h2>
-        <div class="add question">
+        <div class="add_question">
             <div class="border rounded">
                 <p>Topic
                     <select class="form-control existingTopicNewQuestion" required id="all-topics"></select>
@@ -187,6 +186,20 @@
 <div class="collapse multi-collapse" id="multiCollapseExample3">
     <div class="card card-body">
         <h2>Results</h2>
+            <table class="table table-hover">
+        <thead>
+            <tr>
+                <th style="width : 10%" scope="col">#</th>
+                <th style="width : 15%" scope="col">Session</th>
+                <th style="width : 30%" scope="col">Student</th>
+                <th style="width : 20%" scope="col">Results</th>
+                <th style="width : 20%" scope="col">Date</th>
+            </tr>
+        </thead>
+        <tbody id="resultTable">
+            {{!-- here goes all results --}}
+        </tbody>
+    </table>
     </div>
 </div>
 <!--END TEACHER DASHBOARD TOGGLE-->
@@ -235,12 +248,17 @@
     <div class="row">
         <div class="col-10">
 
+<<<<<<< HEAD
             <!-- START TEST BUTTON  -->
             <button class="btn btn-light" id="startNewSession">Start Session</button>
             <!-- END OF START TEST BUTTON -->
 
             
             <br><div class="question">
+=======
+            <button class="btn btn-light" id="startNewSession">Start Session</button>
+            <div class="question">
+>>>>>>> 23078f1441cb89af6efc06cb6d78e1bbb4a5d1a8
                 Questions
             </div>
 
@@ -251,10 +269,14 @@
             <div class="answer" id="a4"></div>
 
             <div class="timer">
+<<<<<<< HEAD
                 <span class="seconds"></span>Timer</div>
 
             <div class="results"></div>
 
+=======
+                <span class="seconds"></span> Timer</div>
+>>>>>>> 23078f1441cb89af6efc06cb6d78e1bbb4a5d1a8
         </div>
     </div>
 </div>

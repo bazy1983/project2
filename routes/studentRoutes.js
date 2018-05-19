@@ -30,6 +30,7 @@ module.exports = function(app){
     app.post("/storeStudentAnswers", function(req, res){
         console.log(req.body)
         db.test_result.create({
+            teacherId : req.body.teacherId,
             userId : req.body.userId,
             session_id : req.body.session_id,
             student_result : req.body.student_result
