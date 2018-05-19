@@ -108,6 +108,7 @@ module.exports = function(app){
     app.post("/create-new-question", function(req, res){
         db.question.create(req.body)
         .then(function(data){
+            console.log(data);
             res.status(202).end()
         })
         .catch(function(err){

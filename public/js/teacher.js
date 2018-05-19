@@ -84,7 +84,7 @@ $(document).ready(function () {
     $("#addNewQuestionCollapse").on("click", function () {
         $.get("/questionCategories", function (data) {
             //build category dropdown list
-            //console.log(data);
+            // console.log(data);
             $("#all-topics").empty();
             for (let i = 0; i < data.length; i++) {
                 $("#all-topics").append($("<option value = '" + data[i].id + "'>").text(data[i].topic_name))
@@ -129,8 +129,9 @@ $(document).ready(function () {
             } else {
                 question.topicId = existingTopic;
                 $.post("/create-new-question", question, function (data) {
-                    //console.log(data)
+
                 })
+                                 
             }
         } else {
             console.log("one or more fields are not filled in")
@@ -247,7 +248,7 @@ $(document).ready(function () {
     $("#testTable").on("click", "tr", function(){
         $(this).toggleClass("testSelected table-warning").siblings().removeClass("testSelected table-warning");
     })
-
+    // ARRAY WHERE THE QUESTIONS WILL BE FILLED IN ONCE GAME BEGINS 
     var questions;
     $("#startNewSession").on("click", function () {
         var selectedTestId = $(".testSelected").attr("dataid");
