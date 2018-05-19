@@ -146,11 +146,18 @@ $(document).ready(function () {
         sessionStorage.setItem("teacherSession", newRandom + "teacher");
         sessionStorage.setItem("studentSession", newRandom + "student");
         sessionStorage.setItem("endSession", newRandom + "end");
+        sessionStorage.setItem("answeredSession", newRandom + "answered");
         $("#sessionNumber").text(newRandom);
         //listening for students joining the session
         socket.on(sessionStorage.getItem("studentSession"), function(data){
             console.log(data);
             //DOM using data, append user name on teacher view
+        })
+
+        //listening for student answers
+        socket.on(sessionStorage.getItem("answeredSession"), function(studentAnswered){
+            console.log(studentAnswered)
+            //DOM to change student name color
         })
     })
 

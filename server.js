@@ -66,7 +66,12 @@ io.on("connection", function(socket){
         //change emit keywork on the fly to target a session
         console.log(studentData)
         io.emit(studentData.sessionId, studentData )
+    })
 
+    //student send their id when they answer the question
+    socket.on ("answered", function(data){
+        console.log(data)
+        io.emit(data.answeredSession, data)
     })
 
     socket.on('disconnect', function () {
