@@ -2,7 +2,8 @@
     color : #f00;
     background: #FF0;
 }
-<<<<<<< HEAD
+
+/* progress bar starts here */
 
 .containerFluid {
  width: 100vw; 
@@ -10,7 +11,6 @@
  overflow: hidden; 
 
 }
-
 .progress{
     width: 100%;
     transition: 1s;
@@ -27,8 +27,8 @@
     font-size: 16pt; 
     color: #228B22;
     /* text-shadow: 1px 1px 1px #ccc; */
+    /*progress bar ends here */
     }
-=======
 #top-nav {
     position: fixed;
     height: 50px;
@@ -69,4 +69,3 @@ h1 {
     padding-bottom: 5px;
     border-bottom: 1px solid #eee;
   }
->>>>>>> 8cfdf42bf4036be86ec913a2612647a7b4486c08
