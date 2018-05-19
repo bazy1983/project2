@@ -2,7 +2,6 @@
     color : #f00;
     background: #FF0;
 }
-<<<<<<< HEAD
 
 .containerFluid {
  width: 100vw; 
@@ -28,7 +27,6 @@
     color: #228B22;
     /* text-shadow: 1px 1px 1px #ccc; */
     }
-=======
 #top-nav {
     position: fixed;
     height: 50px;
@@ -50,7 +48,6 @@
     background-color: green;
 }
 
-
 .container-game{
     height: 800px;
     padding-left: 20%;
@@ -69,4 +66,3 @@ h1 {
     padding-bottom: 5px;
     border-bottom: 1px solid #eee;
   }
->>>>>>> 8cfdf42bf4036be86ec913a2612647a7b4486c08
