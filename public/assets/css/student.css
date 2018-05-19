@@ -184,3 +184,9 @@ h2{
   tangerine: #E37222
   gray : #DFDCE3
   evening: #262228 */
+
+  /* class will be added to student buttons 
+  when the click or on wait for new question */
+  .disabled {
+    pointer-events : none
+  }
