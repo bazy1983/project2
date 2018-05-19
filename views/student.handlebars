@@ -1,39 +1,100 @@
-<!--BEGIN STUDENT NAVBAR--> 
-<nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-        <ul class="navbar-brand" href="#">Quizzie-Moto</ul>
-    
-        <div class="nav navbar-nav navbar-right">
+<!--BEGIN STUDENT NAVBAR-->
+<div id="nav-container">
+    <!-- mobile nav -->
+    <div id="nav">
+        <a id="link-hero" href="#hero" class="link"></a>
+        <a id="link-one" href="#one" class="link"></a>
+        <a id="link-two" href="#two" class="link"></a>
+        <a id="link-three" href="#three" class="link"></a>
+        <a id="link-four" href="#four" class="link"></a>
+    </div>
+
+    <!-- desktop nav -->
+    <ul id="menu">
+        <li data-menuanchor="firstPage">
+            <a id="menu-hero" href="#firstPage"></a>
+        </li>
+        <li data-menuanchor="secondPage">
+            <a id="menu-one" href="#secondPage"></a>
+        </li>
+        <li data-menuanchor="thirdPage">
+            <a id="menu-two" href="#thirdPage"></a>
+        </li>
+        <li data-menuanchor="fourthPage">
+            <a id="menu-three" href="#fourthPage"></a>
+        </li>
+        <li data-menuanchor="lastPage">
+            <a id="menu-four" href="#lastPage"></a>
+        </li>
+    </ul>
+
+</div>
+<!--END STUDENT NAVBAR-->
+
+<div id="fullpage">
+    <!--BEGIN MAIN/FIRST DISPLAY PAGE-->
+    <div id="hero" class="section">
+        <h1>Quazz-Moto</h1>
+        <p>A quiz app (and insert some more product fluff...)</p>
+        <div class="arrow-box">
+            <div class="arrow"></div>
+        </div>
+    </div>
+    <!--END MAIN/FIRST DISPLAY PAGE-->
+
+    <!--BEGIN STUDENT INPUT KEY DIV-->
+    <!--<div class="container">-->
+    <div id="one" class="section">
+        <h2>Input Quiz Key</h2>
+        <form class="col-md-6">
+            <div class="form-group">
+                <input type="number" class="form-control" id="inputkey" placeholder="Enter quiz key on the instructor's screen">
+            </div>
+            <button type="button" id="sessionEntry" class="btn btn-light">Join Quiz!</button>
+        </form>
+
+        <div class="container-fluid">
             <form class="form-inline">
                 <input type="text" class="form-control" id="studentUsername" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
                 <input type="password" class="form-control" id="inputPassword" placeholder="Password">
                 <button type="button" id="studentloginbtn" class="btn btn-light">Submit</button>
             </form>
         </div>
-    </div>
-</nav>
-<!--END STUDENT NAVBAR--> 
 
-<div class="container">
-<!--BEGIN STUDENT INPUT KEY DIV-->  
-    <form class="col-md-6">
-        <div class="form-group">
-            <input type="number" class="form-control" id="inputkey" placeholder="Enter quiz key on the instructor's screen">
+        <div class="arrow-box">
+            <div class="arrow"></div>
         </div>
-        <button type="button" id = "sessionEntry" class="btn btn-light">Join Quiz!</button>
-    </form>
+    </div>
+    <!--END STUDENT INPUT KEY DIV-->
 
-<!--END STUDENT INPUT KEY DIV-->
+    <!--BEGIN STUDENT WAITING SCREEN DIV-->
+    <div id="two" class="section">
+        <div class="waiting">
+            <h2>Waiting for others to join....</h2>
+        </div>
+        <div class="arrow-box">
+            <div class="arrow"></div>
+        </div>
+    </div>
+    <!--END STUDENT WAITING SCREEN DIV-->
 
-<!--BEGIN STUDENT WAITING SCREEN DIV-->  
-    <div class="waiting"></div>
-<!--END STUDENT WAITING SCREEN DIV-->
+    <!--BEGIN STUDENT QUIZ BUTTONS DIV-->
+    <div id="three" class="section">
+        <div class="three-text-wrapper">
+            <div class="quiz-buttons"></div>
+        </div>
+        <div class="arrow-box">
+            <div class="arrow"></div>
+        </div>
+    </div>
+    <!--END STUDENT QUIZ BUTTONS DIV-->
 
-<!--BEGIN STUDENT QUIZ BUTTONS DIV-->  
-    <div class="quiz-buttons"></div>
-<!--END STUDENT QUIZ BUTTONS DIV-->
+    <!--BEGIN STUDENT RESULTS DIV-->
+    <div id="four" class="section">
+        <div class="four-text-wrapper">
+            <div class="student-results"></div>
+            <h2>Results</h2>
+        </div>
+    </div>
 
-<!--BEGIN STUDENT RESULTS DIV-->  
-    <div class="student-results"></div>
-<!--END STUDENT RESULTS DIV -->
-</div>
+    <!--END STUDENT RESULTS DIV -->

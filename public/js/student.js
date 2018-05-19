@@ -5,16 +5,12 @@ $(document).ready(function(){
     // $("#inputkey").on("click", function (event) {
     //     event.preventDefault()
     //     let inputKey = $("#inputkey").val().trim();
-
     //     if (inputKey) {
-
     //         console.log("it's not empty")
-
     //     } else {
     //         console.log("quiz authorization key is not correct")
     //     }
     // })
-
     ////if student quiz key is success trigger student login modal 
 
     //STUDENT LOGIN
@@ -49,9 +45,7 @@ $(document).ready(function(){
         }
     })
 
-
     ////if login = success, show waiting page 
-
 
     //input session id and connect to teacher's session
     var studentAnswers = []; //student answers array of objects
@@ -108,7 +102,6 @@ $(document).ready(function(){
     })
 
 
-    
     // GAME FUNCTION (STUDENT)
     //==================
     $(".quiz-buttons").on("click", "button", function(){
@@ -127,24 +120,174 @@ $(document).ready(function(){
         } else {
             studentAnswers[questionIndex].isCorrect = false;
         }
-        console.log(studentAnswers)
-        
+        console.log(studentAnswers)  
     })
 
-
-
-
-
+    //SCROLL MAGIC FUNCTIONALITY 
+    //==========================
     
-
-
+    //FOR MOBILE 
+    if ($(window).width() < 1024) {
+     // alert('mobile');
+        $('#fullpage').fullpage({
+        autoScrolling: false,    //scroll
+        verticalCentered: false  //flex
+    });
     
-    //get questions and answers from quiz json object 
-    //loop through and render buttons with associated values on student page 
-    //check if each answer is correct after each question.
-    //if correct, score++
-    //call next question - repeat loop through all questions selected 
-    //at conclusion of game, display the score for the student in results div
+    // sidebar link smooth scroll to each div in mobile
+    var heroLink = $('#link-hero');
+    var hero = $('#hero');
+    var oneLink = $('#link-one');
+    var one = $('#one');
+    var twoLink = $('#link-two');
+    var two = $('#two');
+    var threeLink = $('#link-three');
+    var three = $('#three');
+    var fourLink = $('#link-four');
+    var four = $('#four');
+
+    heroLink.on('click', function(){
+        $('html, body').animate({
+        scrollTop: hero.offset().top
+      }, 1000)
+    });
+    oneLink.on('click', function(){
+        $('html, body').animate({
+        scrollTop: one.offset().top
+      }, 1000)
+    });
+    twoLink.on('click', function(){
+        $('html, body').animate({
+        scrollTop: two.offset().top
+      }, 1000)
+    });
+    threeLink.on('click', function(){
+        $('html, body').animate({
+        scrollTop: three.offset().top
+      }, 1000)
+    });
+    fourLink.on('click', function(){
+        $('html, body').animate({
+        scrollTop: four.offset().top
+    }, 1000)
+    });
+    }  
+  
+    ////DESKTOP VIEW 
+    else {
+     //alert('desktop'); 
+        $('#fullpage').fullpage({
+        anchors: ['firstPage', 'secondPage', 'thirdPage', 'fourthPage', 'lastPage'],
+        autoScrolling: true,      //scroll
+        verticalCentered: false   //flex
+        });
+    }
+
+  // scroll magic
+  var controller = new ScrollMagic.Controller();
+
+  //mobile hero
+  var mobileHero = new ScrollMagic.Scene({
+    triggerElement: '#hero',
+    duration: '100%',
+    triggerHook: 0, //position trigger
+    reverse: true, //animation always
+  })
+  .setClassToggle('#link-hero', 'link-active')
+  .addIndicators({
+    colorTrigger: 'black',
+    colorStart: '#000',
+  })
+  .addTo(controller);
+
+  //one
+  var mobileOne = new ScrollMagic.Scene({
+    triggerElement: '#one',
+    duration: '100%',
+    triggerHook: 0, 
+    reverse: true, 
+  })
+  .setClassToggle('#link-one', 'link-active')
+  .addTo(controller);
+  
+  // two
+  var mobileTwo = new ScrollMagic.Scene({
+    triggerElement: '#two',
+    duration: '100%',
+    triggerHook: 0, 
+    reverse: true, 
+  })
+  .setClassToggle('#link-two', 'link-active')
+  .addTo(controller);
+  // three
+  var mobileThree = new ScrollMagic.Scene({
+    triggerElement: '#three',
+    duration: '100%',
+    triggerHook: 0, 
+    reverse: true, 
+  })
+  .setClassToggle('#link-three', 'link-active')
+  .addTo(controller);
+
+   // four
+  var mobileFour = new ScrollMagic.Scene({
+    triggerElement: '#four',
+    duration: '100%',
+    triggerHook: 0, 
+    reverse: true, 
+  })
+  .setClassToggle('#link-four', 'link-active')
+  .addTo(controller);
 
 
-})
+  //desktop hero
+  var desktopHero = new ScrollMagic.Scene({
+    triggerElement: '#hero',
+    duration: '100%',
+    triggerHook: 0, 
+    reverse: true, 
+  })
+  .setClassToggle('#menu-hero', 'link-active')
+  .addTo(controller);
+  
+  // one
+  var desktopOne = new ScrollMagic.Scene({
+    triggerElement: '#one',
+    duration: '100%',
+    triggerHook: 0, 
+    reverse: true, 
+  })
+  .setClassToggle('#menu-one', 'link-active')
+  .addTo(controller);
+
+  // two
+  var desktopTwo = new ScrollMagic.Scene({
+    triggerElement: '#two',
+    duration: '100%',
+    triggerHook: 0, 
+    reverse: true, 
+  })
+  .setClassToggle('#menu-two', 'link-active')
+  .addTo(controller);
+
+  // three
+  var desktopThree = new ScrollMagic.Scene({
+    triggerElement: '#three',
+    duration: '100%',
+    triggerHook: 0, 
+    reverse: true, 
+  })
+  .setClassToggle('#menu-three', 'link-active')
+  .addTo(controller);
+
+  // four
+  var desktopFour = new ScrollMagic.Scene({
+    triggerElement: '#four',
+    duration: '100%',
+    triggerHook: 0, 
+    reverse: true, 
+  })
+  .setClassToggle('#menu-four', 'link-active')
+  .addTo(controller);
+  
+});

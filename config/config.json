@@ -1,8 +1,13 @@
 {
   "development": {
     "username": "root",
+<<<<<<< Updated upstream
     "password": "iwtmbabp2018",
     "database": "project2",
+=======
+    "password": "",
+    "database": "dev_db",
+>>>>>>> Stashed changes
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
