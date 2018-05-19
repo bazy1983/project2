@@ -23,6 +23,7 @@
     background-color: green;
 }
 
+
 .container-game{
     height: 800px;
     padding-left: 20%;
@@ -32,3 +33,12 @@
     height: 800px;
     background-color: green;
 }
+.multi-collapse{
+    height: 1000px;
+    padding-top: 80px;
+}
+h1 {
+    margin-bottom: 20px;
+    padding-bottom: 9px;
+    border-bottom: 1px solid #eee;
+  }

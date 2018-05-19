@@ -104,17 +104,8 @@
 <div class="container-fluid">
     <nav class="col-sm-4 col-md-2 hidden-xs-down bg-faded sidebar">
         <ul class="nav nav-pills flex-column">
-            
-        <div class="list-group" id="myList" role="tablist">
-            <a class="list-group-item list-group-item-action active" data-toggle="list" href="#" role="tab">Create New Question</a>
-            <a class="list-group-item list-group-item-action" data-toggle="list" href="#profile" role="tab">Profile</a>
-            <a class="list-group-item list-group-item-action" data-toggle="list" href="#messages" role="tab">Messages</a>
-            <a class="list-group-item list-group-item-action" data-toggle="list" href="#settings" role="tab">Settings</a>
-        </div>
-
-
         <li class="nav-item">
-            <a class="nav-link active" href="#">Overview <span class="sr-only">(current)</span></a>
+            <a class="nav-link active" href="#">Overview<span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
             <a class="nav-link" data-toggle="list" data-target="#multiCollapseExample2" aria-expanded="false" role="tab"
@@ -127,13 +118,13 @@
         </li>
 
         <li class="nav-item">
-            <button class="nav-link" type="button" data-toggle="collapse" data-target="#multiCollapseExample3" aria-expanded="false"
-            aria-controls="multiCollapseExample3" id="viewAllResults" href="#">View Results</button>
+            <a class="nav-link" data-toggle="list" data-target="#multiCollapseExample3" aria-expanded="false" role="tab"
+            aria-controls="multiCollapseExample3" id="viewAllResults" href="#">View Results</a>
         </li>
 
         <li class="nav-item">
-            <button class="nav-link" type="button" data-toggle="collapse" data-target="#multiCollapseExample1" aria-expanded="false"
-            aria-controls="multiCollapseExample1" id="getAllTests" href="#">Administer Quiz</button>
+            <a class="nav-link" data-toggle="list" data-target="#multiCollapseExample1" aria-expanded="false" role="tab"
+            aria-controls="multiCollapseExample1" id="getAllTests" href="#">Administer Quiz</a>
         </li>
         </ul>
     </nav>
@@ -155,7 +146,7 @@
 </div>
 -->
 
-<div class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3"><p>ResponsiveDashboard Section</p>
+<div class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
 <!--BEGIN TEACHER ADMINISTER QUIZ TOGGLE-->
 <div class="collapse multi-collapse" id="multiCollapseExample1">
     <table class="table table-hover">
@@ -187,12 +178,12 @@
         <h2>Add A New Question</h2>
         <div class="add_question">
             <div class="border rounded">
-                <p>Topic
-                    <select class="form-control existingTopicNewQuestion" required id="all-topics"></select>
-                </p>
-                <p>Add A New Topic:
-                    <input type="text" id="new-topic" class="form-control" required>
-                </p>
+            <p>Topic
+                <select class="form-control existingTopicNewQuestion" required id="all-topics"></select>
+            </p>
+            <p>Add A New Topic:
+                <input type="text" id="new-topic" class="form-control" required>
+            </p>
             </div>
             <p>Add A Question:
                 <input type="text" id="new-question" class="form-control" required>
