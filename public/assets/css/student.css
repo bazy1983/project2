@@ -81,10 +81,10 @@ h2{
   border: 2px solid #fff;
   border-radius: 50%;
   box-sizing: border-box;
-    display: block;
-    flex-direction: column;
-    height: 15px;
-    margin: 1.5em 0;
+  display: block;
+  flex-direction: column;
+  height: 15px;
+  margin: 1.5em 0;
   width: 15px;
 }
 #nav { 
