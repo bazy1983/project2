@@ -49,6 +49,9 @@ $(document).ready(function(){
 
     //input session id and connect to teacher's session
     var studentAnswers = []; //student answers array of objects
+    //calculate time difference between question start and click the button
+    var timeBeforeClick; 
+    var timeAfterClick;
     $("#sessionEntry").on("click", function (e) {
         e.preventDefault();
         console.log("clicked")
@@ -59,8 +62,9 @@ $(document).ready(function(){
         };
         sessionStorage.setItem("studentSession", $("#inputkey").val().trim() + "student");
         sessionStorage.setItem("teacherSession", $("#inputkey").val().trim() + "teacher");
-        sessionStorage.setItem("endSession",  $("#inputkey").val().trim() + "end")
+        sessionStorage.setItem("endSession",  $("#inputkey").val().trim() + "end");
         sessionStorage.setItem("answeredSession",  $("#inputkey").val().trim() + "answered")
+        sessionStorage.setItem("pauseSession",  $("#inputkey").val().trim() + "pause");
         //send student info to teacher's view
         socket.emit("studentSocket", studentSessionId);
         
@@ -87,7 +91,8 @@ $(document).ready(function(){
                 questionID : data.id,
                 correct : data.correct_answer,
                 answer : 0,
-                isCorrect : false
+                isCorrect : false,
+                clickingTime : 10000
             };
             studentAnswers.push(answersObj);
             $(".quiz-buttons").empty();
@@ -97,7 +102,15 @@ $(document).ready(function(){
             answerthree = $("<button question = '"+data.id+"' choice = '"+3+"' correct = '"+data.correct_answer+"'>").text("C"),
             answerfour = $("<button question = '"+data.id+"' choice = '"+4+"' correct = '"+data.correct_answer+"'>").text("D");
             $(".quiz-buttons").append(answerOne, answertwo, answerthree, answerfour);
-            console.log(studentAnswers)
+            timeBeforeClick = new Date();
+            console.log(timeBeforeClick)
+        })
+
+        //during the 2 second pause listen for pause to disable buttons
+        socket.on(sessionStorage.getItem("pauseSession"), function(){
+            //here where we disapble buttons
+            console.log("disabled")
+            $(".quiz-buttons button").addClass("disabled")
         })
     })
 
@@ -105,16 +118,19 @@ $(document).ready(function(){
     // GAME FUNCTION (STUDENT)
     //==================
     $(".quiz-buttons").on("click", "button", function(){
+        $(".quiz-buttons button").addClass("disabled")
+        timeAfterClick = new Date();
+        let deltaTime = timeAfterClick - timeBeforeClick; //calculating time it took student to answer the question
         console.log($(this).attr("choice"))
         let sendAnswer = {
             userID : sessionStorage.getItem("id"),
             answeredSession : sessionStorage.getItem("answeredSession")
         }
         socket.emit("answered", sendAnswer)
-        let questionIndex = studentAnswers.length-1;
-        console.log("index" + questionIndex)
+        let questionIndex = studentAnswers.length-1;//tracking the current default answer
         //change student answer from default (0), to the student choice 
         studentAnswers[questionIndex].answer = $(this).attr("choice")
+        studentAnswers[questionIndex].clickingTime = deltaTime
         if($(this).attr("choice") == $(this).attr("correct")){
             studentAnswers[questionIndex].isCorrect = true;
         } else {
@@ -238,6 +254,8 @@ $(document).ready(function(){
   })
   .setClassToggle('#link-four', 'link-active')
   .addTo(controller);
+
+    
 
 
   //desktop hero

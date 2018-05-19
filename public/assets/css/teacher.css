@@ -2,6 +2,7 @@
     color : #f00;
     background: #FF0;
 }
+<<<<<<< HEAD
 
 .containerFluid {
  width: 100vw; 
@@ -27,3 +28,45 @@
     color: #228B22;
     /* text-shadow: 1px 1px 1px #ccc; */
     }
+=======
+#top-nav {
+    position: fixed;
+    height: 50px;
+    color: green;
+}
+.sidebar {
+    position: fixed;
+    top: 51px;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    padding: 20px;
+    overflow-x: hidden;
+    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+    border-right: 1px solid #eee;
+  }
+
+.navbar-toggler-icon{
+    background-color: green;
+}
+
+
+.container-game{
+    height: 800px;
+    padding-left: 20%;
+    background-color: gray;
+}
+.results{
+    height: 800px;
+    background-color: green;
+}
+.multi-collapse{
+    height: 1000px;
+    padding-top: 80px;
+}
+h1 {
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #eee;
+  }
+>>>>>>> 8cfdf42bf4036be86ec913a2612647a7b4486c08

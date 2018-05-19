@@ -48,9 +48,7 @@ var io = socket(server);
 
 //socket.io connection to emit and listen to keywords
 io.on("connection", function(socket){
-    // console.log("client connected to socket ID: ", socket.id);
-    // clients ++;
-    // console.log("people connected to server: "+ clients)
+ 
 
     //listening to teacher socket and emit to student using teacher session id
     socket.on("teacherSocket", function(teacherData){
@@ -73,9 +71,11 @@ io.on("connection", function(socket){
         io.emit(data.answeredSession, data)
     })
 
+    socket.on("pause", function(data){
+        io.emit(data.pauseSession, "")
+    })
+
     socket.on('disconnect', function () {
-       // clients--;
-        //console.log("people connected to server: "+ clients)
-        //io.emit('user disconnected');
+        //user disconnected
       });
 })

@@ -1,15 +1,15 @@
 body {
-    font-family: 'Raleway', sans-serif;
-    text-align: center;
-    font-size: 18px;
-    margin: 0;
-    padding: 0;
-    color: #aaabb8;
+  font-family: 'Raleway', sans-serif;
+  text-align: center;
+  font-size: 18px;
+  margin: 0;
+  padding: 0;
+  color: #aaabb8;
 }
 h1{
   font-family: 'Oswald', sans-serif;
   font-size: 80px;
-  padding: 0;
+  padding: 5px;
 }
 h2{
   font-family: 'Oswald', sans-serif;
@@ -184,3 +184,9 @@ h2{
   tangerine: #E37222
   gray : #DFDCE3
   evening: #262228 */
+
+  /* class will be added to student buttons 
+  when the click or on wait for new question */
+  .disabled {
+    pointer-events : none
+  }

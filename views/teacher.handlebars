@@ -1,22 +1,19 @@
-<!--BEGIN TEACHER REGISTRATION DIV-->
-<nav class="navbar">
-    <div class="container-fluid">
-        <div class="navbar-brand" href="#">Quizzie-Moto</div>
-
-        <div class="nav navbar-nav navbar-right">
-            <form class="form-inline">
-                <!-- Trigger teacher registration modal -->
-                <button type="button" class="btn btn-light" data-toggle="modal" data-target="#teacherRegister" data-whatever="register">Sign Up</button>
-
-                <!-- Trigger login modal -->
-                <button type="button" class="btn btn-light" data-toggle="modal" data-target="#teacherLogin" data-whatever="login">Login</button>
+<!--BEGIN TEACHER TOP NAV BAR-->
+<nav class="navbar navbar-toggleable-md fixed-top bg-inverse" id="top-nav">
+    <a class="navbar-brand" href="#">Quizzie-Moto</a>
+    <button class="navbar-toggler navbar-toggler-right hidden-lg-up" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+          <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <form class="form-inline mt-2 mt-md-0">
+            <!-- Trigger register modal -->
+              <button type="button" class="btn btn-light" data-toggle="modal" data-target="#teacherRegister" data-whatever="register">Sign Up</button>
+            <!-- Trigger login modal -->
+              <button type="button" class="btn btn-light" data-toggle="modal" data-target="#teacherLogin" data-whatever="login">Login</button>
             </form>
         </div>
-
-    </div>
-    </div>
 </nav>
-<!-- END TEACHER NAVBAR-->
+<!--END TEACHER TOP NAV BAR-->
 
 <!-- BEGIN TEACHER REGISTRATION MODAL-->
 <div class="modal fade" id="teacherRegister" tabindex="-1" role="dialog" aria-labelledby="teacherRegisterLabel" aria-hidden="true">
@@ -93,7 +90,6 @@
                                 <button id="teacherloginbtn" type="submit" class="btn btn-light">Submit</button>
                             </div>
 
-
                         </div>
                     </div>
                 </form>
@@ -103,8 +99,40 @@
     </div>
 </div>
 <!-- END TEACHER LOGIN MODAL-->
-<!--BEGIN TEACHER MAIN DASHBOARD DIV-->
-<div class="dashboard">
+
+<!--BEGIN TEACHER SIDE NAV BAR-->
+<div class="container-fluid">
+    <nav class="col-sm-4 col-md-2 hidden-xs-down bg-faded sidebar">
+        <ul class="nav nav-pills flex-column">
+        <li class="nav-item">
+            <a class="nav-link active" href="#">Overview<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="list" data-target="#multiCollapseExample2" aria-expanded="false" role="tab"
+            aria-controls="multiCollapseExample2" id="addNewQuestionCollapse" href="#multiCollapseExample2">Create New Question</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="list" data-target="#multiCollapseExample4" aria-expanded="false" role="tab"
+            aria-controls="multiCollapseExample4" id="makeNewTestCollapse" href="#">Make A Quiz</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="list" data-target="#multiCollapseExample3" aria-expanded="false" role="tab"
+            aria-controls="multiCollapseExample3" id="viewAllResults" href="#">View Results</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="list" data-target="#multiCollapseExample1" aria-expanded="false" role="tab"
+            aria-controls="multiCollapseExample1" id="getAllTests" href="#">Administer Quiz</a>
+        </li>
+        </ul>
+    </nav>
+</div>
+<!--END TEACHER SIDE NAV BAR-->
+
+<!--BEGIN TEACHER MAIN DASHBOARD DIV - we can delete this before deployed-->
+<!--<div class="dashboard">
     <p>
         <button class="btn btn-light" type="button" data-toggle="collapse" data-target="#multiCollapseExample1" aria-expanded="false"
             aria-controls="multiCollapseExample1" id="getAllTests">Administer test</button>
@@ -116,7 +144,9 @@
             aria-controls="multiCollapseExample3" id = "viewAllResults">View results</button>
     </p>
 </div>
+-->
 
+<div class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
 <!--BEGIN TEACHER ADMINISTER QUIZ TOGGLE-->
 <div class="collapse multi-collapse" id="multiCollapseExample1">
     <table class="table table-hover">
@@ -129,11 +159,17 @@
             </tr>
         </thead>
         <tbody id="testTable">
-            {{!-- here goes all questiona --}}
+            {{!-- here goes all questions --}}
         </tbody>
     </table>
+   
+<!--BEGIN TEACHER START QUIZ DIV-->
+    <div submit="start-button">
+        <button class="btn btn-light" id="sessionID">Generate Session</button>
+        <p id="sessionNumber"></p>
+    </div>
+<!--END TEACHER START QUIZ DIV-->
 </div>
-
 <!--END TEACHER ADMINISTER QUIZ TOGGLE-->
 
 <!--BEGIN TEACHER CREATE QUIZ BUTTONS DIV-->
@@ -142,12 +178,12 @@
         <h2>Add A New Question</h2>
         <div class="add_question">
             <div class="border rounded">
-                <p>Topic
-                    <select class="form-control existingTopicNewQuestion" required id="all-topics"></select>
-                </p>
-                <p>Add A New Topic:
-                    <input type="text" id="new-topic" class="form-control" required>
-                </p>
+            <p>Topic
+                <select class="form-control existingTopicNewQuestion" required id="all-topics"></select>
+            </p>
+            <p>Add A New Topic:
+                <input type="text" id="new-topic" class="form-control" required>
+            </p>
             </div>
             <p>Add A Question:
                 <input type="text" id="new-question" class="form-control" required>
@@ -180,7 +216,6 @@
             <button id="addNewQuestionbtn" type="submit" class="btn btn-light" value="">Submit</button>
         </div>
         
-
     </div>
 </div>
 
@@ -239,19 +274,13 @@
 </div>
 <!--END TEACHER DASHBOARD TOGGLE-->
 
-<!--BEGIN TEACHER START QUIZ DIV-->
-<div submit="start-button">
-    <button class="btn btn-light" id="sessionID">Generate Session</button>
-    <p id="sessionNumber"></p>
-
-</div>
-<!--END TEACHER START QUIZ DIV-->
-
 <!--BEGIN RUN QUIZ-->
 <div class="container-game">
     <div class="row">
         <div class="col-10">
 
+
+            <p>Notes: once the start session button is clicked, .show() this section on new screen without nav bars</p>
             <button class="btn btn-light" id="startNewSession">Start Session</button>
             <div class="question">
                 Questions
@@ -263,6 +292,7 @@
             <div class="answer" id="a3"></div>
             <div class="answer" id="a4"></div>
 
+<<<<<<< HEAD
 <!--testing -->
             <div class = "containerFluid">
                 <div class = "progress">
@@ -274,10 +304,23 @@
 
             <div class="results"></div>
 
+=======
+            <div class="timer">
+                <span class="seconds"></span>Timer</div>
+>>>>>>> 8cfdf42bf4036be86ec913a2612647a7b4486c08
         </div>
     </div>
 </div>
 <!--END RUN QUIZ-->
 
+<!-- BEGIN TEACHER RESULTS DIV -->
+<div class="results">
+    Note: display results on new screen from student view? 
+</div>
+<!-- END TEACHER RESULTS DIV -->
 
 </div>
+</div>
+
+
+
