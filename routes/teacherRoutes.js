@@ -201,4 +201,20 @@ module.exports = function(app){
 
         res.status(200).end();
     })
+
+    app.get("/allTestResults", function(req, res){
+        db.test_result.findAll({
+            where : {
+                teacherId : req.query.teacherId
+            },
+            include : [db.user]
+        })
+        .then(function(data){
+            res.send(data)
+        })
+        .catch(function(err){
+            console.log("something when wrong grabbing teachers test results");
+            console.log(err)
+        })
+    })
 }

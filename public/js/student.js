@@ -71,11 +71,12 @@ $(document).ready(function(){
         socket.emit("studentSocket", studentSessionId);
         
         //get end from server
-        socket.on(sessionStorage.getItem("endSession"), function(){
+        socket.on(sessionStorage.getItem("endSession"), function(data){
             let studentTest = {
                 userId : sessionStorage.getItem("id"),
                 session_id : $("#inputkey").val().trim(),
-                student_result : studentAnswers
+                student_result : studentAnswers,
+                teacherId : data
             }
 
             $.post("/storeStudentAnswers", studentTest, function(){
