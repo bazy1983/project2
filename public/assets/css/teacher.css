@@ -2,3 +2,28 @@
     color : #f00;
     background: #FF0;
 }
+
+.containerFluid {
+ width: 100vw; 
+ height: 25px; 
+ overflow: hidden; 
+
+}
+
+.progress{
+    width: 100%;
+    transition: 1s;
+    overflow: hidden;
+    height: 25px; 
+    border-radius: 12px;
+}
+
+.seconds {
+    background: linear-gradient(0.25turn,
+     #3f87a6, #ebf8e1, #f69d3c);
+    width: 100vw; 
+    height: 25px;
+    font-size: 16pt; 
+    color: #228B22;
+    /* text-shadow: 1px 1px 1px #ccc; */
+    }

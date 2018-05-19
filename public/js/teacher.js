@@ -306,10 +306,16 @@ $(document).ready(function () {
         var timer = setInterval(function () {
             console.log("time: " + counter)
             // SHOWING TIMER
-            $(".seconds").html(counter);
-            // FINISH SHOWING TIMER
-            counter--
+           var showTimer =  $(".seconds").html(counter + " seconds remain");
+            // // FINISH SHOWING TIMER
             //DOM display counter
+            // TESTING 
+           let newProgress = counter * 10;
+           let percent  = newProgress + "%";
+           $(".progress").css("width", percent);
+           counter--
+
+            // TESTING DONE 
 
             if (counter < 0) {
                 clearInterval(timer)
