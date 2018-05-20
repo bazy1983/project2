@@ -58,7 +58,11 @@ $(document).ready(function () {
         sessionStorage.setItem("answeredSession", $("#inputkey").val().trim() + "answered")
         sessionStorage.setItem("pauseSession", $("#inputkey").val().trim() + "pause");
         //send student info to teacher's view
+
         socket.emit("studentSocket", studentSessionId);
+            // TESTING TRIGGER NAVIGATE TO NEXT SECTION
+            $("#tellStudentWait").html("You are logged!");
+            // END TRIGGER NAVIGATE
 
         //get end from server
         socket.on(sessionStorage.getItem("endSession"), function (data) {
