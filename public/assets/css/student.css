@@ -193,12 +193,12 @@ p{
   gray : #DFDCE3
   evening: #262228 */
 
-.quiz-buttons {
+/* .quiz-buttons {
   height: 30%;
   width: 45%;
   background-color: red;
   padding: 10px;
-}
+} */
   /* class will be added to student buttons 
   when the click or on wait for new question */
   .disabled {

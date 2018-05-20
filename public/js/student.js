@@ -100,10 +100,10 @@ $(document).ready(function () {
             studentAnswers.push(answersObj);
             $(".quiz-buttons").empty();
             //append buttons
-            let answerOne = $("<button question = '" + data.id + "' choice = '" + 1 + "' correct = '" + data.correct_answer + "'>").text("A"),
-                answertwo = $("<button question = '" + data.id + "' choice = '" + 2 + "' correct = '" + data.correct_answer + "'>").text("B"),
-                answerthree = $("<button question = '" + data.id + "' choice = '" + 3 + "' correct = '" + data.correct_answer + "'>").text("C"),
-                answerfour = $("<button question = '" + data.id + "' choice = '" + 4 + "' correct = '" + data.correct_answer + "'>").text("D");
+            let answerOne = $("<button class = 'btn btn-primary quizbtn' question = '" + data.id + "' choice = '" + 1 + "' correct = '" + data.correct_answer + "'>").text("A"),
+                answertwo = $("<button class = 'btn btn-warning quizbtn' question = '" + data.id + "' choice = '" + 2 + "' correct = '" + data.correct_answer + "'>").text("B"),
+                answerthree = $("<button class = 'btn btn-info quizbtn' question = '" + data.id + "' choice = '" + 3 + "' correct = '" + data.correct_answer + "'>").text("C"),
+                answerfour = $("<button class = 'btn btn-danger quizbtn' question = '" + data.id + "' choice = '" + 4 + "' correct = '" + data.correct_answer + "'>").text("D");
             $(".quiz-buttons").append(answerOne, answertwo, answerthree, answerfour);
             timeBeforeClick = new Date();
             console.log(timeBeforeClick)
