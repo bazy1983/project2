@@ -112,6 +112,7 @@ p{
 .link-active {
   background-color: #fff;
 }
+
 @media screen and (max-width: 1024px) {
   #nav { 
     display: block;
