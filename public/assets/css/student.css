@@ -8,13 +8,20 @@
 }
 
 h1{
+  text-align: center;
   font-family: 'Oswald', sans-serif;
   font-size: 80px;
   padding: 5px;
 }
 h2{
+  text-align: center;
   font-family: 'Oswald', sans-serif;
   font-size: 50px;
+}
+
+p{
+  font-size: 8px;
+  color: gray;
 }
 /*BACKGROUND CONTAINERS */
 #hero{ 
@@ -155,9 +162,10 @@ h2{
   align-items: center;
   display: flex;
   flex-direction: column;
-  height: 80vh;
+  height: 60vh;
   justify-content: center;
 }
+
 #link {
   bottom: 20px;
   color: #fff;

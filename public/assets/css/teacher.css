@@ -52,14 +52,17 @@ textarea.form-control {
   }
 
 .container-game{
-    height: 800px;
+    height: 900px;
+    padding-top: 20px;
+    
 }
 .results{
-    height: 800px;
+    height: 900px;
+
 }
 .multi-collapse{
     height: 900px;
-    padding-top: 30px;
+    padding-top: 20px;
 }
 h1 {
     margin-bottom: 10px;
