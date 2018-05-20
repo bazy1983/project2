@@ -31,7 +31,9 @@ $(document).ready(function () {
                     }
                 })
         } else {
-            console.log("form must be filled in")
+            // Error message if form left empty
+            $("#error-message1").text("Your form must be filled in.");
+
         }
     })
 

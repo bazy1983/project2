@@ -47,9 +47,11 @@
     <!--<div class="container">-->
     <div id="one" class="section">
         <h2>Input Quiz Key</h2>
-        <form  id  = "oneForm" class="col-md-4 col-sm-4 hidden">
+        <form id="oneForm" class="col-md-4 col-sm-4 hidden">
             <div class="form-group">
-                <p><input type="number" class="form-control" id="inputkey" placeholder="Enter quiz key on the instructor's screen"></p>
+                <p>
+                    <input type="number" class="form-control" id="inputkey" placeholder="Enter quiz key on the instructor's screen">
+                </p>
             </div>
             <button type="button" id="sessionEntry" class="btn btn-outline-light btn-block">Join Quiz!</button>
         </form>
@@ -58,8 +60,13 @@
             <form class="col-md-4 col-sm-4">
                 <input type="text" class="form-control" id="studentUsername" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
                 <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+                <br>
                 <button type="button" id="studentloginbtn" class="btn btn-outline-light">Submit</button>
+                <!--error message if left empty --->
+                <div id="error-message1"></div>
+                
             </form>
+
         </div>
 
         <div class="arrow-box">
@@ -95,21 +102,21 @@
         <div class="four-text-wrapper">
             <div class="student-results"></div>
             <h2>Results</h2>
-            <p class = "student-name"></p>
+            <p class="student-name"></p>
             <table class="table table-hover">
-        <thead>
-            <tr>
-                <th style="width : 10%" scope="col">#</th>
-                <th style="width : 30%" scope="col">Correct</th>
-                <th style="width : 30%" scope="col">Your</th>
-                <th style="width: 30%">Time</th>
-            </tr>
-        </thead>
-        <tbody id="resultTable">
-            {{!-- here goes all questions --}}
-        </tbody>
-    </table>
-        <p class = "finalResults"></p>
+                <thead>
+                    <tr>
+                        <th style="width : 10%" scope="col">#</th>
+                        <th style="width : 30%" scope="col">Correct</th>
+                        <th style="width : 30%" scope="col">Your</th>
+                        <th style="width: 30%">Time</th>
+                    </tr>
+                </thead>
+                <tbody id="resultTable">
+                    {{!-- here goes all questions --}}
+                </tbody>
+            </table>
+            <p class="finalResults"></p>
         </div>
     </div>
 
