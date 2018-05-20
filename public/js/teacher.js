@@ -26,7 +26,7 @@ $(document).ready(function () {
                         $('#teacherLogin').modal('hide')
                         //remove buttons and add teacher's name
                         $(".loginButtons").empty()
-                        .append($("<p>").text(`Welcome ${data.firstName} ${data.lastName}`))
+                        .append($("<p class = 'logged-in'>").text(`Welcome ${data.firstName} ${data.lastName}`))
                     })
                     .fail(function (err) {
                         if (err.status === 403) {
@@ -351,6 +351,7 @@ $(document).ready(function () {
 
     //SHOW RESULTS FOR TEACHER
     $("#viewAllResults").on("click", function(){
+        console.log("get all results")
         let teacherID = {
             teacherId : sessionStorage.getItem("id")
         };
@@ -374,7 +375,7 @@ $(document).ready(function () {
 
                 let tableInfo = tableRow.append(tableCount, tableSession, tableStudentName, tableResult, tableDate)
                 // testing
-                console.lolg("line");
+                console.log("line");
                 $("#resultTable").append(tableInfo);
             }
         })

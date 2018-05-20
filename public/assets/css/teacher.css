@@ -54,6 +54,7 @@ textarea.form-control {
 .container-game{
     height: 900px;
     padding-top: 20px;
+    margin-left: 250px;
     
 }
 .results{
@@ -113,4 +114,8 @@ h1 {
 
 .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
     background: #f00
+}
+
+.logged-in {
+    font-size: 19px
 }
