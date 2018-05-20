@@ -1,17 +1,5 @@
-$(document).ready(function(){
-    var socket = io(); // websocket connection
-    // //STUDENT QUIZ KEY
-    // //==================
-    // $("#inputkey").on("click", function (event) {
-    //     event.preventDefault()
-    //     let inputKey = $("#inputkey").val().trim();
-    //     if (inputKey) {
-    //         console.log("it's not empty")
-    //     } else {
-    //         console.log("quiz authorization key is not correct")
-    //     }
-    // })
-    ////if student quiz key is success trigger student login modal 
+$(document).ready(function () {
+    var socket = io(); // websocket connection 
 
     //STUDENT LOGIN
     //==================
@@ -50,36 +38,51 @@ $(document).ready(function(){
     //input session id and connect to teacher's session
     var studentAnswers = []; //student answers array of objects
     //calculate time difference between question start and click the button
-    var timeBeforeClick; 
+    var timeBeforeClick;
     var timeAfterClick;
     $("#sessionEntry").on("click", function (e) {
         e.preventDefault();
         console.log("clicked")
         let studentSessionId = {
-            sessionId : $("#inputkey").val().trim() + "student",
-            userId : sessionStorage.getItem("id"),
-            name : sessionStorage.getItem("name")
+            sessionId: $("#inputkey").val().trim() + "student",
+            userId: sessionStorage.getItem("id"),
+            name: sessionStorage.getItem("name")
         };
         sessionStorage.setItem("studentSession", $("#inputkey").val().trim() + "student");
         sessionStorage.setItem("teacherSession", $("#inputkey").val().trim() + "teacher");
-        sessionStorage.setItem("endSession",  $("#inputkey").val().trim() + "end");
-        sessionStorage.setItem("answeredSession",  $("#inputkey").val().trim() + "answered")
-        sessionStorage.setItem("pauseSession",  $("#inputkey").val().trim() + "pause");
+        sessionStorage.setItem("endSession", $("#inputkey").val().trim() + "end");
+        sessionStorage.setItem("answeredSession", $("#inputkey").val().trim() + "answered")
+        sessionStorage.setItem("pauseSession", $("#inputkey").val().trim() + "pause");
         //send student info to teacher's view
         socket.emit("studentSocket", studentSessionId);
-        
+
         //get end from server
-        socket.on(sessionStorage.getItem("endSession"), function(data){
+        socket.on(sessionStorage.getItem("endSession"), function (data) {
             let studentTest = {
-                userId : sessionStorage.getItem("id"),
-                session_id : $("#inputkey").val().trim(),
-                student_result : studentAnswers,
-                teacherId : data
+                userId: sessionStorage.getItem("id"),
+                session_id: $("#inputkey").val().trim(),
+                student_result: studentAnswers,
+                teacherId: data
             }
 
-            $.post("/storeStudentAnswers", studentTest, function(){
+            $.post("/storeStudentAnswers", studentTest, function () {
                 console.log("results sent")
                 //DOM show student results
+                $(".student-name").html(sessionStorage.getItem("name"))
+                var correctCount = 0;
+                var totalTime = 0;
+                for (let i = 0; i <studentAnswers.length; i++){
+                    totalTime += studentAnswers[i].clickingTime;
+                    if (studentAnswers[i].isCorrect) correctCount++;
+                    let tr = $("<tr>"),
+                        tCount = $("<th>").text(i + 1),
+                        tCorrect = $("<td>").text(studentAnswers[i].correct),
+                        tAnswer = $("<td>").text(studentAnswers[i].answer),
+                        tTime = $("<td>").text(studentAnswers[i].clickingTime + "ms"),
+                        newRow = tr.append(tCount, tCorrect, tAnswer, tTime);
+                    $("#resultTable").append(newRow)
+                }
+                $(".finalResults").text(`You answered ${correctCount}/${studentAnswers.length} correctly and your total time is ${totalTime}ms`)
             })
         })
         ////once teacher starts quiz
@@ -88,26 +91,26 @@ $(document).ready(function(){
             console.log(data)// display question information
             //set new object with default values 
             let answersObj = {
-                questionID : data.id,
-                correct : data.correct_answer,
-                answer : 0,
-                isCorrect : false,
-                clickingTime : 10000
+                questionID: data.id,
+                correct: data.correct_answer,
+                answer: 0,
+                isCorrect: false,
+                clickingTime: 10000
             };
             studentAnswers.push(answersObj);
             $(".quiz-buttons").empty();
             //append buttons
-            let answerOne = $("<button question = '"+data.id+"' choice = '"+1+"' correct = '"+data.correct_answer+"'>").text("A"),
-            answertwo = $("<button question = '"+data.id+"' choice = '"+2+"' correct = '"+data.correct_answer+"'>").text("B"),
-            answerthree = $("<button question = '"+data.id+"' choice = '"+3+"' correct = '"+data.correct_answer+"'>").text("C"),
-            answerfour = $("<button question = '"+data.id+"' choice = '"+4+"' correct = '"+data.correct_answer+"'>").text("D");
+            let answerOne = $("<button question = '" + data.id + "' choice = '" + 1 + "' correct = '" + data.correct_answer + "'>").text("A"),
+                answertwo = $("<button question = '" + data.id + "' choice = '" + 2 + "' correct = '" + data.correct_answer + "'>").text("B"),
+                answerthree = $("<button question = '" + data.id + "' choice = '" + 3 + "' correct = '" + data.correct_answer + "'>").text("C"),
+                answerfour = $("<button question = '" + data.id + "' choice = '" + 4 + "' correct = '" + data.correct_answer + "'>").text("D");
             $(".quiz-buttons").append(answerOne, answertwo, answerthree, answerfour);
             timeBeforeClick = new Date();
             console.log(timeBeforeClick)
         })
 
         //during the 2 second pause listen for pause to disable buttons
-        socket.on(sessionStorage.getItem("pauseSession"), function(){
+        socket.on(sessionStorage.getItem("pauseSession"), function () {
             //here where we disapble buttons
             console.log("disabled")
             $(".quiz-buttons button").addClass("disabled")
@@ -117,195 +120,195 @@ $(document).ready(function(){
 
     // GAME FUNCTION (STUDENT)
     //==================
-    $(".quiz-buttons").on("click", "button", function(){
+    $(".quiz-buttons").on("click", "button", function () {
         $(".quiz-buttons button").addClass("disabled")
         timeAfterClick = new Date();
         let deltaTime = timeAfterClick - timeBeforeClick; //calculating time it took student to answer the question
         console.log($(this).attr("choice"))
         let sendAnswer = {
-            userID : sessionStorage.getItem("id"),
-            answeredSession : sessionStorage.getItem("answeredSession")
+            userID: sessionStorage.getItem("id"),
+            answeredSession: sessionStorage.getItem("answeredSession")
         }
         socket.emit("answered", sendAnswer)
-        let questionIndex = studentAnswers.length-1;//tracking the current default answer
+        let questionIndex = studentAnswers.length - 1;//tracking the current default answer
         //change student answer from default (0), to the student choice 
         studentAnswers[questionIndex].answer = $(this).attr("choice")
         studentAnswers[questionIndex].clickingTime = deltaTime
-        if($(this).attr("choice") == $(this).attr("correct")){
+        if ($(this).attr("choice") == $(this).attr("correct")) {
             studentAnswers[questionIndex].isCorrect = true;
         } else {
             studentAnswers[questionIndex].isCorrect = false;
         }
-        console.log(studentAnswers)  
+        console.log(studentAnswers)
     })
 
     //SCROLL MAGIC FUNCTIONALITY 
     //==========================
-    
+
     //FOR MOBILE 
     if ($(window).width() < 1024) {
-     // alert('mobile');
+        // alert('mobile');
         $('#fullpage').fullpage({
-        autoScrolling: false,    //scroll
-        verticalCentered: false  //flex
-    });
-    
-    // sidebar link smooth scroll to each div in mobile
-    var heroLink = $('#link-hero');
-    var hero = $('#hero');
-    var oneLink = $('#link-one');
-    var one = $('#one');
-    var twoLink = $('#link-two');
-    var two = $('#two');
-    var threeLink = $('#link-three');
-    var three = $('#three');
-    var fourLink = $('#link-four');
-    var four = $('#four');
+            autoScrolling: false,    //scroll
+            verticalCentered: false  //flex
+        });
 
-    heroLink.on('click', function(){
-        $('html, body').animate({
-        scrollTop: hero.offset().top
-      }, 1000)
-    });
-    oneLink.on('click', function(){
-        $('html, body').animate({
-        scrollTop: one.offset().top
-      }, 1000)
-    });
-    twoLink.on('click', function(){
-        $('html, body').animate({
-        scrollTop: two.offset().top
-      }, 1000)
-    });
-    threeLink.on('click', function(){
-        $('html, body').animate({
-        scrollTop: three.offset().top
-      }, 1000)
-    });
-    fourLink.on('click', function(){
-        $('html, body').animate({
-        scrollTop: four.offset().top
-    }, 1000)
-    });
-    }  
-  
-    ////DESKTOP VIEW 
-    else {
-     //alert('desktop'); 
-        $('#fullpage').fullpage({
-        anchors: ['firstPage', 'secondPage', 'thirdPage', 'fourthPage', 'lastPage'],
-        autoScrolling: true,      //scroll
-        verticalCentered: false   //flex
+        // sidebar link smooth scroll to each div in mobile
+        var heroLink = $('#link-hero');
+        var hero = $('#hero');
+        var oneLink = $('#link-one');
+        var one = $('#one');
+        var twoLink = $('#link-two');
+        var two = $('#two');
+        var threeLink = $('#link-three');
+        var three = $('#three');
+        var fourLink = $('#link-four');
+        var four = $('#four');
+
+        heroLink.on('click', function () {
+            $('html, body').animate({
+                scrollTop: hero.offset().top
+            }, 1000)
+        });
+        oneLink.on('click', function () {
+            $('html, body').animate({
+                scrollTop: one.offset().top
+            }, 1000)
+        });
+        twoLink.on('click', function () {
+            $('html, body').animate({
+                scrollTop: two.offset().top
+            }, 1000)
+        });
+        threeLink.on('click', function () {
+            $('html, body').animate({
+                scrollTop: three.offset().top
+            }, 1000)
+        });
+        fourLink.on('click', function () {
+            $('html, body').animate({
+                scrollTop: four.offset().top
+            }, 1000)
         });
     }
 
-  // scroll magic
-  var controller = new ScrollMagic.Controller();
+    ////DESKTOP VIEW 
+    else {
+        //alert('desktop'); 
+        $('#fullpage').fullpage({
+            anchors: ['firstPage', 'secondPage', 'thirdPage', 'fourthPage', 'lastPage'],
+            autoScrolling: true,      //scroll
+            verticalCentered: false   //flex
+        });
+    }
 
-  //mobile hero
-  var mobileHero = new ScrollMagic.Scene({
-    triggerElement: '#hero',
-    duration: '100%',
-    triggerHook: 0, //position trigger
-    reverse: true, //animation always
-  })
-  .setClassToggle('#link-hero', 'link-active')
-  .addIndicators({
-    colorTrigger: 'black',
-    colorStart: '#000',
-  })
-  .addTo(controller);
+    // scroll magic
+    var controller = new ScrollMagic.Controller();
 
-  //one
-  var mobileOne = new ScrollMagic.Scene({
-    triggerElement: '#one',
-    duration: '100%',
-    triggerHook: 0, 
-    reverse: true, 
-  })
-  .setClassToggle('#link-one', 'link-active')
-  .addTo(controller);
-  
-  // two
-  var mobileTwo = new ScrollMagic.Scene({
-    triggerElement: '#two',
-    duration: '100%',
-    triggerHook: 0, 
-    reverse: true, 
-  })
-  .setClassToggle('#link-two', 'link-active')
-  .addTo(controller);
-  // three
-  var mobileThree = new ScrollMagic.Scene({
-    triggerElement: '#three',
-    duration: '100%',
-    triggerHook: 0, 
-    reverse: true, 
-  })
-  .setClassToggle('#link-three', 'link-active')
-  .addTo(controller);
+    //mobile hero
+    var mobileHero = new ScrollMagic.Scene({
+        triggerElement: '#hero',
+        duration: '100%',
+        triggerHook: 0, //position trigger
+        reverse: true, //animation always
+    })
+        .setClassToggle('#link-hero', 'link-active')
+        .addIndicators({
+            colorTrigger: 'black',
+            colorStart: '#000',
+        })
+        .addTo(controller);
 
-   // four
-  var mobileFour = new ScrollMagic.Scene({
-    triggerElement: '#four',
-    duration: '100%',
-    triggerHook: 0, 
-    reverse: true, 
-  })
-  .setClassToggle('#link-four', 'link-active')
-  .addTo(controller);
+    //one
+    var mobileOne = new ScrollMagic.Scene({
+        triggerElement: '#one',
+        duration: '100%',
+        triggerHook: 0,
+        reverse: true,
+    })
+        .setClassToggle('#link-one', 'link-active')
+        .addTo(controller);
 
-    
+    // two
+    var mobileTwo = new ScrollMagic.Scene({
+        triggerElement: '#two',
+        duration: '100%',
+        triggerHook: 0,
+        reverse: true,
+    })
+        .setClassToggle('#link-two', 'link-active')
+        .addTo(controller);
+    // three
+    var mobileThree = new ScrollMagic.Scene({
+        triggerElement: '#three',
+        duration: '100%',
+        triggerHook: 0,
+        reverse: true,
+    })
+        .setClassToggle('#link-three', 'link-active')
+        .addTo(controller);
+
+    // four
+    var mobileFour = new ScrollMagic.Scene({
+        triggerElement: '#four',
+        duration: '100%',
+        triggerHook: 0,
+        reverse: true,
+    })
+        .setClassToggle('#link-four', 'link-active')
+        .addTo(controller);
 
 
-  //desktop hero
-  var desktopHero = new ScrollMagic.Scene({
-    triggerElement: '#hero',
-    duration: '100%',
-    triggerHook: 0, 
-    reverse: true, 
-  })
-  .setClassToggle('#menu-hero', 'link-active')
-  .addTo(controller);
-  
-  // one
-  var desktopOne = new ScrollMagic.Scene({
-    triggerElement: '#one',
-    duration: '100%',
-    triggerHook: 0, 
-    reverse: true, 
-  })
-  .setClassToggle('#menu-one', 'link-active')
-  .addTo(controller);
 
-  // two
-  var desktopTwo = new ScrollMagic.Scene({
-    triggerElement: '#two',
-    duration: '100%',
-    triggerHook: 0, 
-    reverse: true, 
-  })
-  .setClassToggle('#menu-two', 'link-active')
-  .addTo(controller);
 
-  // three
-  var desktopThree = new ScrollMagic.Scene({
-    triggerElement: '#three',
-    duration: '100%',
-    triggerHook: 0, 
-    reverse: true, 
-  })
-  .setClassToggle('#menu-three', 'link-active')
-  .addTo(controller);
+    //desktop hero
+    var desktopHero = new ScrollMagic.Scene({
+        triggerElement: '#hero',
+        duration: '100%',
+        triggerHook: 0,
+        reverse: true,
+    })
+        .setClassToggle('#menu-hero', 'link-active')
+        .addTo(controller);
 
-  // four
-  var desktopFour = new ScrollMagic.Scene({
-    triggerElement: '#four',
-    duration: '100%',
-    triggerHook: 0, 
-    reverse: true, 
-  })
-  .setClassToggle('#menu-four', 'link-active')
-  .addTo(controller);
-  
+    // one
+    var desktopOne = new ScrollMagic.Scene({
+        triggerElement: '#one',
+        duration: '100%',
+        triggerHook: 0,
+        reverse: true,
+    })
+        .setClassToggle('#menu-one', 'link-active')
+        .addTo(controller);
+
+    // two
+    var desktopTwo = new ScrollMagic.Scene({
+        triggerElement: '#two',
+        duration: '100%',
+        triggerHook: 0,
+        reverse: true,
+    })
+        .setClassToggle('#menu-two', 'link-active')
+        .addTo(controller);
+
+    // three
+    var desktopThree = new ScrollMagic.Scene({
+        triggerElement: '#three',
+        duration: '100%',
+        triggerHook: 0,
+        reverse: true,
+    })
+        .setClassToggle('#menu-three', 'link-active')
+        .addTo(controller);
+
+    // four
+    var desktopFour = new ScrollMagic.Scene({
+        triggerElement: '#four',
+        duration: '100%',
+        triggerHook: 0,
+        reverse: true,
+    })
+        .setClassToggle('#menu-four', 'link-active')
+        .addTo(controller);
+
 });

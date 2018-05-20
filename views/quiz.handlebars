@@ -1,0 +1,13 @@
+<div class="login">
+    login here
+</div>
+
+<div class="quiz" quizId="{{testId}}" teacherId="{{userId}}">
+    {{#each questions}}
+    <p questionid = "{{id}}">{{question_text}}</p>
+    <p guess = "1" correct = "{{correct_answer}}" >{{answer1}}</p>
+    <p guess = "2" correct = "{{correct_answer}}">{{answer2}}</p>
+    <p guess = "3" correct = "{{correct_answer}}">{{answer3}}</p>
+    <p guess = "4" correct = "{{correct_answer}}">{{answer4}}</p>
+    {{/each}}
+</div>
