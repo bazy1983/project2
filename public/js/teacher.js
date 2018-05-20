@@ -247,6 +247,7 @@ $(document).ready(function () {
         })
     })
 
+    
     //when clicking on view button
     $("#testTable").on("click", "tr button", function () {
         var testID = $(this).parent().parent().attr("dataID");
