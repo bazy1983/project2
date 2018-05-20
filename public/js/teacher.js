@@ -22,10 +22,11 @@ $(document).ready(function () {
                     password: teacherPassword
                 }
                 $.get("/teacherLogin", teacherLogin, function (data) {
-                        console.log(data)
                         sessionStorage.setItem("id", data.id); // use it later on for test session
                         $('#teacherLogin').modal('hide')
-                        //some dom manipulation
+                        //remove buttons and add teacher's name
+                        $(".loginButtons").empty()
+                        .append($("<p>").text(`Welcome ${data.firstName} ${data.lastName}`))
                     })
                     .fail(function (err) {
                         if (err.status === 403) {
@@ -157,7 +158,9 @@ $(document).ready(function () {
         //listening for students joining the session
         socket.on(sessionStorage.getItem("studentSession"), function(data){
             console.log(data);
-            //DOM using data, append user name on teacher view
+            //show connected student on the teacher's view
+            let connectedStudent = $("<div class = 'student"+data.userId+"'>").text(data.name)
+            $(".showStudentName").append(connectedStudent)
         })
 
         //listening for student answers
