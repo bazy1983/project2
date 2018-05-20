@@ -156,9 +156,40 @@
         <p id="sessionNumber"></p>
         <div class="showStudentName"></div>
     </div>
-<!--END TEACHER START QUIZ DIV-->
+
+<!--BEGIN START SESSION BUTTON (UNDER ADMIN QUIZ)-->
+<div class="container-game">
+    <h2>Enter the Session ID:</h2>
+    <div class="row">
+        <div class="col-10">
+            <p>Notes: once the start session button is clicked, .show() this section on new screen without nav bars</p>
+            <button class="btn btn-light" id="startNewSession">Start Session</button>
+            <div class="question">
+                Questions
+            </div>
+
+            <!--<div class="answers">Answers</div>-->
+            <div class="answer" id="a1"></div>
+            <div class="answer" id="a2"></div>
+            <div class="answer" id="a3"></div>
+            <div class="answer" id="a4"></div>
+
+<!--PROGRESS BAR BEGINS -->
+            <div class = "containerFluid">
+                <div class = "progress">
+                    <div class ="seconds"></div>
+                </div>
+            </div>
+<!-- PROGRESS BAR ENDS --> 
+
+        </div>
+    </div>
 </div>
-<!--END TEACHER ADMINISTER QUIZ TOGGLE-->
+
+<!-- END TESTING  -->
+<!--END RUN QUIZ-->
+
+</div>
 
 <!--BEGIN TEACHER CREATE QUIZ BUTTONS DIV-->
 <div class="collapse multi-collapse" id="multiCollapseExample2">
@@ -265,35 +296,7 @@
 </div>
 <!--END TEACHER DASHBOARD TOGGLE-->
 
-<!--BEGIN RUN QUIZ-->
-<div class="container-game">
-    <h2>Enter the Session ID:</h2>
-    <div class="row">
-        <div class="col-10">
-            <p>Notes: once the start session button is clicked, .show() this section on new screen without nav bars</p>
-            <button class="btn btn-light" id="startNewSession">Start Session</button>
-            <div class="question">
-                Questions
-            </div>
 
-            <!--<div class="answers">Answers</div>-->
-            <div class="answer" id="a1"></div>
-            <div class="answer" id="a2"></div>
-            <div class="answer" id="a3"></div>
-            <div class="answer" id="a4"></div>
-
-<!--testing -->
-            <div class = "containerFluid">
-                <div class = "progress">
-                    <div class ="seconds"></div>
-                </div>
-            </div>
-<!-- PROGRESS BAR ENDS --> 
-
-        </div>
-    </div>
-</div>
-<!--END RUN QUIZ-->
 
 <!-- BEGIN TEACHER RESULTS DIV -->
 {{!-- <div class="results">
