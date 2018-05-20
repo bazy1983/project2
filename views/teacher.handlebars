@@ -82,7 +82,9 @@
                                 <p>Password:
                                     <input type="password" id="loginPassword" class="form-control" required>
                                 </p>
-                                <p id="errorMessage"><span></span></p>
+                                <p id="errorMessage">
+                                    <span></span>
+                                </p>
 
                                 <div class="modal-footer">
                                     <button id="teacherloginbtn" type="submit" class="btn btn-light">Submit</button>
@@ -100,17 +102,18 @@
     <!-- END TEACHER LOGIN MODAL-->
 
     <!--BEGIN TEACHER SIDE NAV BAR-->
-    <div class="container-fluid">
-        <nav class="col-sm-3 col-md-2 hidden-xs-down bg-faded sidebar">
-            <h1 id="navName">Quizzie-Moto</h1>
-            <ul class="nav nav-pills flex-column">
+    <nav class="col-sm-3 col-md-2 hidden-xs-down bg-faded sidebar">
+        <h1 id="navName">Quizzie-Moto</h1>
+            <ul class="nav flex-column">
+
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="list" data-target="multiCollapseExample6" aria-expanded="false" role="tab" aria-controls="multiCollapseExample6"
-                        id="overview" href="#multiCollapseExample6">Overview</a>
+                    <button class="nav-link" data-target="overview-dash" aria-expanded="false" role="tab" aria-controls="multiCollapseExample6"
+                        href="#" id="overview-dash">Overview</button>
                 </li>
+
                 <li class="nav-item">
                     <a class="nav-link" data-toggle="list" data-target="#multiCollapseExample2" aria-expanded="false" role="tab" aria-controls="multiCollapseExample2"
-                        id="addNewQuestionCollapse" href="#multiCollapseExample2">Create New Question</a>
+                        id="addNewQuestionCollapse" href="#">Create New Question</a>
                 </li>
 
                 <li class="nav-item">
@@ -127,21 +130,21 @@
                     <a class="nav-link" data-toggle="list" data-target="#multiCollapseExample1" aria-expanded="false" role="tab" aria-controls="multiCollapseExample1"
                         id="getAllTests" href="#">Administer Quiz</a>
                 </li>
+
             </ul>
         </nav>
-    </div>
     <!--END TEACHER SIDE NAV BAR-->
 
     <div class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
         <!--BEGIN TEACHER ADMINISTER QUIZ TOGGLE-->
 
         <!--BEGIN TEACHER OVERVIEW TOGGLE-->
-
-        <div class="collapse multi-collapse" id="multiCollapseExample6">
+        <div class="collapse multi-collapse" id="overview-dash">
             <h1>Overview</h1>
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore quasi necessitatibus ipsa reprehenderit fugit
                 iste qui. Nostrum est alias voluptatum ratione, non aut tempore dolor impedit dignissimos, ut, vitae fugiat.</p>
         </div>
+
         <!--END TEACHER OVERVIEW TOGGLE-->
         <div class="collapse multi-collapse" id="multiCollapseExample1">
             <h2>Administer Quiz</h2>
@@ -276,28 +279,25 @@
         <div class="container-game">
             <h2>Enter the Session ID:</h2>
             <div class="row">
-                <div class="col-10">
-                    <p>Notes: once the start session button is clicked, .show() this section on new screen without nav bars</p>
-                    <button class="btn btn-light" id="startNewSession">Start Session</button>
-                    <div class="question">
-                        Questions
-                    </div>
-
-                    <!--<div class="answers">Answers</div>-->
-                    <div class="answer" id="a1"></div>
-                    <div class="answer" id="a2"></div>
-                    <div class="answer" id="a3"></div>
-                    <div class="answer" id="a4"></div>
-
-                    <!--testing -->
-                    <div class="containerFluid">
-                        <div class="progress">
-                            <div class="seconds"></div>
-                        </div>
-                    </div>
-                    <!-- PROGRESS BAR ENDS -->
-
+                <p>Notes: once the start session button is clicked, .show() this section on new screen without nav bars</p>
+                <button class="btn btn-light" id="startNewSession">Start Session</button>
+                <div class="question">
+                    Questions
                 </div>
+
+                <!--<div class="answers">Answers</div>-->
+                <div class="answer" id="a1"></div>
+                <div class="answer" id="a2"></div>
+                <div class="answer" id="a3"></div>
+                <div class="answer" id="a4"></div>
+
+                <!--testing -->
+                <div class="containerFluid">
+                    <div class="progress">
+                        <div class="seconds"></div>
+                    </div>
+                </div>
+                <!-- PROGRESS BAR ENDS -->
             </div>
         </div>
         <!--END RUN QUIZ-->
@@ -308,6 +308,4 @@
             Note: display results on new screen from student view?
         </div> --}}
         <!-- END TEACHER RESULTS DIV -->
-
     </div>
-</div>
