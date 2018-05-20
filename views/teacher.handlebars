@@ -1,14 +1,14 @@
 <div class="teacher-body">
 <!--BEGIN TEACHER TOP NAV BAR-->
- <nav class="navbar fixed-top navbar-light bg-light">
+ <nav class="navbar">
     <div class="container-fluid">
-        <div class="navbar-brand fixed-top" href="#">Quizzie-Moto</div>
+        <div class="navbar-brand"></div>
             <div class="nav navbar-nav navbar-right">
                 <form class="form-inline mt-2 mt-md-0 loginButtons">
                     <!-- Trigger register modal -->
-                    <button type="button" class="btn btn-outline-light" data-toggle="modal" data-target="#teacherRegister" data-whatever="register">Sign Up</button>
+                    <button type="button" class="btn btn-outline-light" id="loginBtn" data-toggle="modal" data-target="#teacherRegister" data-whatever="register">Sign Up</button>
                     <!-- Trigger login modal -->
-                    <button type="button" class="btn btn-outline-light" data-toggle="modal" data-target="#teacherLogin" data-whatever="login">Login</button>
+                    <button type="button" class="btn btn-outline-light" data-toggle="modal" id="loginBtn" data-target="#teacherLogin" data-whatever="login">Login</button>
                 </form>
             </div>
     </div>
@@ -103,6 +103,7 @@
 <!--BEGIN TEACHER SIDE NAV BAR-->
 <div class="container-fluid">
     <nav class="col-sm-3 col-md-2 hidden-xs-down bg-faded sidebar">
+        <h1 id="navName">Quizzie-Moto</h1>
         <ul class="nav nav-pills flex-column">
         <li class="nav-item">
             <a class="nav-link" data-toggle="list" data-target="#" aria-expanded="false" role="tab">Overview</a>
@@ -151,7 +152,7 @@
    
 <!--BEGIN TEACHER START QUIZ DIV-->
     <div submit="start-button">
-        <button class="btn btn-light" id="sessionID">Generate Session</button>
+        <button class="btn btn-outline-light btn-lg" id="sessionID">Generate Session</button>
         <p id="sessionNumber"></p>
         <div class="showStudentName"></div>
     </div>
@@ -199,7 +200,7 @@
             <p id="alertNewQuestion"></p>
 
             </div>
-            <button id="addNewQuestionbtn" type="submit" class="btn btn-light" value="">Submit</button>
+            <button id="addNewQuestionbtn" type="submit" class="btn btn-outline-light btn-block" value="">Submit</button>
         </div>
         
 </div>

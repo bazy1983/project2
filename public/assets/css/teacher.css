@@ -1,11 +1,17 @@
 .teacher-body{
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Oswald', sans-serif, 'Raleway', sans-serif;
     font-size: 16px;
     margin: 0;
-    padding: 0;
+    padding: 5px;
     background: #2B7A78;
-    color: #aaabb8;
+    color: #DEF2F1;
 }
+
+textarea.form-control {
+    background: transparent;
+    color: #DEF2F1;
+}
+
 .color {
     color : #f00;
     background: #FF0;
@@ -33,19 +39,15 @@
     /* text-shadow: 1px 1px 1px #ccc; */
     /*progress bar ends here */
     }
-#top-nav {
-    position: fixed;
-    height: 50px;
-}
 .sidebar {
     position: fixed;
     background-color: #17252A;
-    top: 50px;
+    height: 100%;
     bottom: 0;
     left: 0;
     z-index: 1000;
     padding: 10px;
-    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+    overflow-y: auto; 
     border-right: 1px solid 
   }
 
@@ -56,24 +58,52 @@
     height: 800px;
 }
 .multi-collapse{
-    height: 1000px;
-    padding-top: 80px;
+    height: 900px;
+    padding-top: 30px;
 }
 h1 {
     margin-bottom: 10px;
     padding-bottom: 5px;
     border-bottom: 1px solid #eee;
-  }
+}
 
+
+/*side nav bar */
 .nav-link{
     background-color: transparent;
     color: #eee;  
+    font-family: 'Raleway', sans-serif;
+    margin-top: 5px;
 }
 .nav-item{
     background-color: transparent;
     color: white;
     border: 1px;
+    padding: 5px;
 }
-.navbar{
-    background-color:#17252A;
+#navName{
+    font-size: 24px;
+    text-align: left;
+    padding-bottom: 20px;
+}
+
+.nav-link active {
+    background-color: #DEF2F1;
+}
+
+.modal-content{
+    background-color :#F78733; 
+    border: 5px;
+    padding: 1px;
+    margin: 1px;
+}
+#loginBtn{
+    padding: 50px, 30px,10px, 30px;
+    margin: 10px;
+    font-size: 24px;
+}
+#sessionNumber{
+    margin-top: 20px;
+    padding: 10px;
+    font-size: 24px;
 }
