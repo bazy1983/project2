@@ -39,28 +39,21 @@
 }
 .sidebar {
     position: fixed;
-    top: 51px;
+    background-color: #17252A;
+    top: 50px;
     bottom: 0;
     left: 0;
     z-index: 1000;
-    padding: 20px;
-    overflow-x: hidden;
+    padding: 10px;
     overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
-    border-right: 1px solid #eee;
+    border-right: 1px solid 
   }
-
-.navbar-toggler-icon{
-    background-color: green;
-}
 
 .container-game{
     height: 800px;
-    padding-left: 20%;
-    background-color: gray;
 }
 .results{
     height: 800px;
-    background-color: green;
 }
 .multi-collapse{
     height: 1000px;
@@ -74,13 +67,13 @@ h1 {
 
 .nav-link{
     background-color: transparent;
-    color: #eee;
+    color: #eee;  
 }
 .nav-item{
     background-color: transparent;
     color: white;
     border: 1px;
 }
-.a{
-    color:white;
+.navbar{
+    background-color:#17252A;
 }
