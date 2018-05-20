@@ -139,7 +139,6 @@ $(document).ready(function () {
                                  
             }
         } else {
-            // console.log("one or more fields are not filled in")
             $("#alertNewQuestion").text("One or more of your fields are not filled in!")
 
 
@@ -223,7 +222,9 @@ $(document).ready(function () {
         }
 
         $.post("/makeAtest", newTest, function (data) {
-            // console.log(data);
+            // MESSAGE TO USER WHEN TEST CREATED 
+            $("#alertNewTest").text(newTest.desc + " has been created!")
+
         })
     })
 
