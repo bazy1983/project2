@@ -26,10 +26,10 @@ module.exports = function(app){
                      res.send(user)
                      
                  } else {
-                     res.status(401).send("Unauthorized Access")
+                     res.status(401).send("Unauthorized Access");
                  } 
             } else {
-                res.status(404).send({message : "either user id or password is incorrect"})
+                res.status(404).send({message : "either user id or password is incorrect"});
             }
         })
         .catch(function(err){

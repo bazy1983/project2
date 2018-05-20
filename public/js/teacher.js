@@ -22,27 +22,37 @@ $(document).ready(function () {
                     password: teacherPassword
                 }
                 $.get("/teacherLogin", teacherLogin, function (data) {
-                        sessionStorage.setItem("id", data.id); // use it later on for test session
-                        $('#teacherLogin').modal('hide')
-                        //remove buttons and add teacher's name
-                        $(".loginButtons").empty()
+                    sessionStorage.setItem("id", data.id); // use it later on for test session
+                    $('#teacherLogin').modal('hide')
+                    //remove buttons and add teacher's name
+                    $(".loginButtons").empty()
                         .append($("<p class = 'logged-in'>").text(`Welcome ${data.firstName} ${data.lastName}`))
-                    })
+                })
                     .fail(function (err) {
+                        console.log(err.status);
                         if (err.status === 403) {
                             // console.log(err.responseJSON)
                             //DOM show unauthorized
+                        } else if (err.status === 401) {
+                            $("#errorMessage").text("You are not authorized to login as a teacher");
+                            $("#loginUsername").val("");
+                            $("#loginPassword").val("");
 
-                        } else {
+                        } else if (err.status === 404) {
                             //404 not found
                             // console.log(err.responseJSON)
                             //show not found
+                            $("#errorMessage").text("Either your user id or password is incorrect. Try again");
+                            $("#loginUsername").val("");
+                            $("#loginPassword").val("");
 
                         }
                     })
             } else {
-                console.log("form must be filled in")
-                $("#errorMessage").text("form must be filled in")
+                console.log("form must be filled in");
+                $("#errorMessage").text("form must be filled in");
+                $("#loginUsername").val("");
+                $("#loginPassword").val("");
             }
         })
     });
@@ -70,9 +80,19 @@ $(document).ready(function () {
             };
             $.post("/teacherSignUp", newRegistration, function (data) {
                 console.log(data)
+                $("#authMessage").text("Your user account is pending approval")
                 //display message
+                $("#first_name").val("");
+                $("#last_name").val("");
+                $("#email").val("");
+                $("#registerUsername").val("");
+                $("#registerPassword").val("");
+                $("#authtoken").val("");
+
+
             }).fail(function (err) {
-                console.log("Token error")
+                console.log("Token error");
+                $("#authtoken").val("");
             })
         } else {
             console.log("one or more fields are empty")
@@ -132,11 +152,11 @@ $(document).ready(function () {
             } else {
                 question.topicId = existingTopic;
                 $.post("/create-new-question", question, function (data) {
-                // ALERT USER OF NEW QUESTION CREATED
-                $("#alertNewQuestion").text("You've created a new question!")
-            
+                    // ALERT USER OF NEW QUESTION CREATED
+                    $("#alertNewQuestion").text("You've created a new question!")
+
                 })
-                                 
+
             }
         } else {
             $("#alertNewQuestion").text("One or more of your fields are not filled in!")
@@ -156,18 +176,18 @@ $(document).ready(function () {
         sessionStorage.setItem("endSession", newRandom + "end");
         sessionStorage.setItem("answeredSession", newRandom + "answered");
         sessionStorage.setItem("pauseSession", newRandom + "pause");
-        $("#sessionNumber").text("Session ID: "+ newRandom);
+        $("#sessionNumber").text("Session ID: " + newRandom);
         ;
         //listening for students joining the session
-        socket.on(sessionStorage.getItem("studentSession"), function(data){
+        socket.on(sessionStorage.getItem("studentSession"), function (data) {
             console.log(data);
             //show connected student on the teacher's view
-            let connectedStudent = $("<div class = 'student"+data.userId+"'>").text(data.name)
+            let connectedStudent = $("<div class = 'student" + data.userId + "'>").text(data.name)
             $(".showStudentName").append(connectedStudent)
         })
 
         //listening for student answers
-        socket.on(sessionStorage.getItem("answeredSession"), function(studentAnswered){
+        socket.on(sessionStorage.getItem("answeredSession"), function (studentAnswered) {
             console.log(studentAnswered)
             //DOM to change student name color
         })
@@ -270,7 +290,7 @@ $(document).ready(function () {
 
     //adding some classes to selected test table row, and remove them from its siblings
     var iterator;
-    $("#testTable").on("click", "tr", function(){
+    $("#testTable").on("click", "tr", function () {
         $(this).toggleClass("testSelected table-warning").siblings().removeClass("testSelected table-warning");
     })
     // ARRAY WHERE THE QUESTIONS WILL BE FILLED IN ONCE GAME BEGINS 
@@ -292,24 +312,24 @@ $(document).ready(function () {
     })
 
     //question  recursive function
-    function gameSession(){
-        
-        if(iterator === questions.length){ //end of quiz
+    function gameSession() {
+
+        if (iterator === questions.length) { //end of quiz
             clearInterval(timer)
             let sendTeacherid = {
-                id : sessionStorage.getItem("id"),
-                endSession : sessionStorage.getItem("endSession")
+                id: sessionStorage.getItem("id"),
+                endSession: sessionStorage.getItem("endSession")
             }
             socket.emit("end", sendTeacherid)
             return
         }
         var counter = 4; //timer
-        var currentSessionID = sessionStorage.getItem("teacherSession")     
+        var currentSessionID = sessionStorage.getItem("teacherSession")
         console.log(questions[iterator])
         let oneQuestionAtTime = questions[iterator];
         oneQuestionAtTime.sessionID = currentSessionID
         //DOM display question
-        
+
         socket.emit("teacherSocket", oneQuestionAtTime)
         //SHOW QUESTION 
         $(".question").html(oneQuestionAtTime.question_text);
@@ -320,15 +340,15 @@ $(document).ready(function () {
         var timer = setInterval(function () {
             console.log("time: " + counter)
             // SHOWING TIMER
-           var showTimer =  $(".seconds").html(counter + " seconds remain");
+            var showTimer = $(".seconds").html(counter + " seconds remain");
             // FINISH SHOWING TIMER
 
             //DOM PROGRESS BAR BEGINS
-         
-           let newProgress = counter * 10;
-           let percent  = newProgress + "%";
-           $(".progress").css("width", percent);
-           counter--
+
+            let newProgress = counter * 10;
+            let percent = newProgress + "%";
+            $(".progress").css("width", percent);
+            counter--
 
             // DISPLAY PROGRESS BAR DONE 
 
@@ -336,8 +356,8 @@ $(document).ready(function () {
                 clearInterval(timer)
                 console.log("Correct answer is: " + questions[iterator].correct_answer)
                 //DOM display correct answer
-                $("#a"+questions[iterator].correct_answer).addClass("color")
-                let pause = {pauseSession :sessionStorage.getItem("pauseSession")}
+                $("#a" + questions[iterator].correct_answer).addClass("color")
+                let pause = { pauseSession: sessionStorage.getItem("pauseSession") }
                 socket.emit("pause", pause);
                 setTimeout(function () {
                     iterator++
@@ -351,19 +371,19 @@ $(document).ready(function () {
 
 
     //SHOW RESULTS FOR TEACHER
-    $("#viewAllResults").on("click", function(){
+    $("#viewAllResults").on("click", function () {
         console.log("get all results")
         let teacherID = {
-            teacherId : sessionStorage.getItem("id")
+            teacherId: sessionStorage.getItem("id")
         };
-        $.get("/allTestResults", teacherID, function(data){
+        $.get("/allTestResults", teacherID, function (data) {
             $("#resultTable").empty()
-            for (let i = 0; i <data.length; i++){
+            for (let i = 0; i < data.length; i++) {
                 let correctAnswers = 0;
                 let formatedDate = moment(data[i].createdAt).format("MMM Do YYYY")
                 let fullName = data[i].user.first_name + " " + data[i].user.last_name;
-                for (let j = 0; j<data[i].student_result.length; j++){
-                    if(data[i].student_result[j].isCorrect === "true") correctAnswers++
+                for (let j = 0; j < data[i].student_result.length; j++) {
+                    if (data[i].student_result[j].isCorrect === "true") correctAnswers++
                 }
                 let tableRow = $("<tr dataID = '" + data[i].id + "'>");
                 let tableCount = $("<th>").text(i + 1);
