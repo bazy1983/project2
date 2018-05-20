@@ -157,6 +157,7 @@ $(document).ready(function () {
         sessionStorage.setItem("answeredSession", newRandom + "answered");
         sessionStorage.setItem("pauseSession", newRandom + "pause");
         $("#sessionNumber").text("Session ID: "+ newRandom);
+        ;
         //listening for students joining the session
         socket.on(sessionStorage.getItem("studentSession"), function(data){
             console.log(data);

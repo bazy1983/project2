@@ -54,6 +54,7 @@ textarea.form-control {
 .container-game{
     height: 900px;
     padding-top: 20px;
+    text-align: center;
     
 }
 .results{
