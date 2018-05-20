@@ -100,7 +100,7 @@ h1 {
     padding: 1px;
     margin: 1px;
 }
-#loginBtn{
+.loginBtn{
     padding: 50px, 30px,10px, 30px;
     margin: 10px;
     font-size: 24px;
@@ -109,4 +109,8 @@ h1 {
     margin-top: 20px;
     padding: 10px;
     font-size: 24px;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    background: #f00
 }
