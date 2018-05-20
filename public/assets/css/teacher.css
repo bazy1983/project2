@@ -1,3 +1,12 @@
+.teacher-body{
+    font-family: 'Raleway', sans-serif;
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+    background: #2B7A78;
+    color: #aaabb8;
+}
+
 .color {
     color : #f00;
     background: #FF0;
