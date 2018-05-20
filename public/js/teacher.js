@@ -356,8 +356,13 @@ $(document).ready(function () {
                 let tableSession = $("<td>").text(data[i].session_id);
                 let tableStudentName = $("<td>").text(fullName);
                 let tableResult = $("<td>").text(correctAnswers + "/" + data[i].student_result.length);
+                // testing 
+                console.log("line 360");
                 let tableDate = $("<td>").text(formatedDate);
+
                 let tableInfo = tableRow.append(tableCount, tableSession, tableStudentName, tableResult, tableDate)
+                // testing
+                console.lolg("line");
                 $("#resultTable").append(tableInfo);
             }
         })
