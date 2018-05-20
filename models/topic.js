@@ -5,12 +5,14 @@ module.exports = function(sequelize, DataTypes){
             allowNull : false,
             unique : true
         },  
-    })
+    },
+    { freezeTableName: true })
 
     topic.associate = function(models){
         topic.hasMany(models.question, {
             onDelete : "cascade"
-        });
+        },
+        { freezeTableName: true });
     };
     return topic
 }
