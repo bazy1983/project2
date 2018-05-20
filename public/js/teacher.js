@@ -156,7 +156,7 @@ $(document).ready(function () {
         sessionStorage.setItem("endSession", newRandom + "end");
         sessionStorage.setItem("answeredSession", newRandom + "answered");
         sessionStorage.setItem("pauseSession", newRandom + "pause");
-        $("#sessionNumber").text("Session ID: " + newRandom);
+        $("#sessionNumber").text("Session ID: "+ newRandom);
         //listening for students joining the session
         socket.on(sessionStorage.getItem("studentSession"), function(data){
             console.log(data);
@@ -247,7 +247,6 @@ $(document).ready(function () {
         })
     })
 
-    
     //when clicking on view button
     $("#testTable").on("click", "tr button", function () {
         var testID = $(this).parent().parent().attr("dataID");
