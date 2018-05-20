@@ -115,7 +115,7 @@ $(document).ready(function () {
         socket.on(sessionStorage.getItem("pauseSession"), function () {
             //here where we disapble buttons
             console.log("disabled")
-            $(".quiz-buttons").addClass("disabled")
+            $(".quizbtn").addClass("disabled")
         })
     })
 
@@ -123,7 +123,7 @@ $(document).ready(function () {
     // GAME FUNCTION (STUDENT)
     //==================
     $(".quiz-buttons").on("click", "button", function () {
-        $(".quiz-buttons").addClass("disabled")
+        $(".quizbtn").addClass("disabled")
         timeAfterClick = new Date();
         let deltaTime = timeAfterClick - timeBeforeClick; //calculating time it took student to answer the question
         console.log($(this).attr("choice"))
