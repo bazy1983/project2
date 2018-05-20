@@ -62,7 +62,7 @@ $(document).ready(function () {
                 userId: sessionStorage.getItem("id"),
                 session_id: $("#inputkey").val().trim(),
                 student_result: studentAnswers,
-                teacherId: data
+                teacherId: parseInt(data)
             }
 
             $.post("/storeStudentAnswers", studentTest, function () {
