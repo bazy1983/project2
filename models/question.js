@@ -28,15 +28,13 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.BOOLEAN,
             defaultValue: true
         }
-    },
-        { freezeTableName: true });
+    });
     question.associate = function (models) {
         question.belongsTo(models.topic, {
             foreignKey: {
                 allowNull: false
             }
-        },
-            { freezeTableName: true });
+        });
     };
     return question;
 }

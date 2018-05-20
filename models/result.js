@@ -14,16 +14,14 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.INTEGER,
             allowNull: false
         }
-    },
-        { freezeTableName: true })
+    })
 
     test_result.associate = function (models) {
         test_result.belongsTo(models.user, {
             foreignKey: {
                 allowNull: false
             }
-        },
-            { freezeTableName: true });
+        });
 
     };
     return test_result

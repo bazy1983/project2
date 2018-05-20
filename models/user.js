@@ -26,14 +26,12 @@ module.exports = function(sequelize, DataTypes) {
             type : DataTypes.BOOLEAN,
             defaultValue : true
         }
-    },
-    { freezeTableName: true });
+    });
     //association
     user.associate = function(models){
         user.hasMany(models.test, {
             onDelete : "cascade"
-        },
-        { freezeTableName: true });
+        });
     };
     return user
 }

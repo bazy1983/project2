@@ -5,15 +5,13 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false,
             defaultValue: 3
         }
-    },
-        { freezeTableName: true });
+    });
     role.associate = function (models) {
         role.belongsTo(models.user, {
             foreignKey: {
                 allowNull: false
             }
-        },
-        { freezeTableName: true });
+        });
     };
     return role;
 }
