@@ -217,3 +217,13 @@ p{
 .container-fluid, section {
   align-content: center;
 }
+
+.hidden {
+  display: none!important;
+}
+
+.loginCenter {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}

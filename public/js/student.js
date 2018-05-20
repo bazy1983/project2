@@ -17,7 +17,9 @@ $(document).ready(function () {
                 //console.log(data)
                 sessionStorage.setItem("id", data.id);
                 sessionStorage.setItem("name", data.first_name + " " + data.last_name)
-                //some dom manipulation
+                //hide login  form and display session form
+                $(".loginCenter").addClass("hidden")
+                $("#oneForm").removeClass("hidden");
                 console.log(data)
             })
                 .fail(function (err) {
