@@ -1,8 +1,8 @@
 <div class="teacher-body">
-<!--BEGIN TEACHER TOP NAV BAR-->
- <nav class="navbar">
-    <div class="container-fluid">
-        <div class="navbar-brand"></div>
+    <!--BEGIN TEACHER TOP NAV BAR-->
+    <nav class="navbar">
+        <div class="container-fluid">
+            <div class="navbar-brand"></div>
             <div class="nav navbar-nav navbar-right">
                 <form class="form-inline mt-2 mt-md-0 loginButtons">
                     <!-- Trigger register modal -->
@@ -11,306 +11,303 @@
                     <button type="button" class="btn btn-outline-light" data-toggle="modal" id="loginBtn" data-target="#teacherLogin" data-whatever="login">Login</button>
                 </form>
             </div>
-    </div>
-</nav>
-<!--END TEACHER TOP NAV BAR-->
-
-<!-- BEGIN TEACHER REGISTRATION MODAL-->
-<div class="modal fade" id="teacherRegister" tabindex="-1" role="dialog" aria-labelledby="teacherRegisterLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="teacherRegisterLabel">New Teacher Registration</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-
-            <div class="modal-body">
-                <form>
-                    <div class="form-group">
-                        <div class="register">
-                            <p>First Name:
-                                <input type="text" id="first_name" class="form-control" required>
-                            </p>
-                            <p>Last Name:
-                                <input type="text" id="last_name" class="form-control" required>
-                            </p>
-                            <p>Email Address:
-                                <input type="text" id="email" class="form-control" required>
-                            </p>
-                            <p>Username:
-                                <input type="text" id="registerUsername" class="form-control" aria-label="Username" aria-describedby="basic-addon1" required>
-                            </p>
-                            <p>Password:
-                                <input type="password" id="registerPassword" class="form-control" required>
-                            </p>
-                            <p>Authorization Code:
-                                <input type="text" id="authtoken" class="form-control" required>
-                            </p>
-
-                            <div class="modal-footer">
-                                <button id="teacherSignUpbtn" type="submit" class="btn btn-outline-light">Submit</button>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
         </div>
-    </div>
-</div>
-<!--END TEACHER REGISTRATION MODAL-->
-
-<!-- BEGIN TEACHER LOGIN MODAL-->
-<div class="modal fade" id="teacherLogin" tabindex="-1" role="dialog" aria-labelledby="teacherLoginLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="teacherLoginLabel">Teacher Login</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-
-            <div class="modal-body">
-                <form>
-                    <div class="form-group">
-                        <div class="login">
-                            <p>Username:
-                                <input type="text" id="loginUsername" class="form-control" aria-label="Username" required>
-                            </p>
-                            <p>Password:
-                                <input type="password" id="loginPassword" class="form-control" required>
-                            </p>
-                            <p id="errorMessage"></p>
-
-                            <div class="modal-footer">
-                                <button id="teacherloginbtn" type="submit" class="btn btn-light">Submit</button>
-                            </div>
-
-                        </div>
-                    </div>
-                </form>
-            </div>
-
-        </div>
-    </div>
-</div>
-
-<!-- END TEACHER LOGIN MODAL-->
-
-<!--BEGIN TEACHER SIDE NAV BAR-->
-<div class="container-fluid">
-    <nav class="col-sm-3 col-md-2 hidden-xs-down bg-faded sidebar">
-        <h1 id="navName">Quizzie-Moto</h1>
-        <ul class="nav nav-pills flex-column">
-        <li class="nav-item">
-            <a class="nav-link" data-toggle="list" data-target="multiCollapseExample6" aria-expanded="false" role="tab"
-            aria-controls="multiCollapseExample6" id="overview" href="#multiCollapseExample6">Overview</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" data-toggle="list" data-target="#multiCollapseExample2" aria-expanded="false" role="tab"
-            aria-controls="multiCollapseExample2" id="addNewQuestionCollapse" href="#multiCollapseExample2">Create New Question</a>
-        </li>
-
-        <li class="nav-item">
-            <a class="nav-link" data-toggle="list" data-target="#multiCollapseExample4" aria-expanded="false" role="tab"
-            aria-controls="multiCollapseExample4" id="makeNewTestCollapse" href="#">Make A Quiz</a>
-        </li>
-
-        <li class="nav-item">
-            <a class="nav-link" data-toggle="list" data-target="#multiCollapseExample3" aria-expanded="false" role="tab"
-            aria-controls="multiCollapseExample3" id="viewAllResults" href="#">View Results</a>
-        </li>
-
-        <li class="nav-item">
-            <a class="nav-link" data-toggle="list" data-target="#multiCollapseExample1" aria-expanded="false" role="tab"
-            aria-controls="multiCollapseExample1" id="getAllTests" href="#">Administer Quiz</a>
-        </li>
-        </ul>
     </nav>
-</div>
-<!--END TEACHER SIDE NAV BAR-->
+    <!--END TEACHER TOP NAV BAR-->
 
-<div class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
-<!--BEGIN TEACHER ADMINISTER QUIZ TOGGLE-->
-<!--BEGIN TEACHER OVERVIEW TOGGLE-->
-    <div class="collapse multi-collapse" id="multiCollapseExample6">
-        <h1>Overview</h1>
-    </div>
-<!--END TEACHER OVERVIEW TOGGLE-->
+    <!-- BEGIN TEACHER REGISTRATION MODAL-->
+    <div class="modal fade" id="teacherRegister" tabindex="-1" role="dialog" aria-labelledby="teacherRegisterLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="teacherRegisterLabel">New Teacher Registration</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
 
-<div class="collapse multi-collapse" id="multiCollapseExample1">
-    <h2>Administer Quiz</h2>
-    <table class="table table-hover">
-        <thead>
-            <tr>
-                <th style="width : 10%" scope="col">#</th>
-                <th style="width : 60%" scope="col">Test</th>
-                <th style="width : 20%" scope="col">Created At</th>
-                <th style="width: 10%">View</th>
-            </tr>
-        </thead>
-        <tbody id="testTable">
-            {{!-- here goes all questions --}}
-        </tbody>
-    </table>
-   
-<!--BEGIN TEACHER START QUIZ DIV-->
-    <div submit="start-button">
-        <button class="btn btn-outline-light btn-lg" id="sessionID">Generate Session</button>
-        <p id="sessionNumber"></p>
-        <div class="showStudentName"></div>
-    </div>
-<!--END TEACHER START QUIZ DIV-->
-</div>
-<!--END TEACHER ADMINISTER QUIZ TOGGLE-->
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <div class="register">
+                                <p>First Name:
+                                    <input type="text" id="first_name" class="form-control" required>
+                                </p>
+                                <p>Last Name:
+                                    <input type="text" id="last_name" class="form-control" required>
+                                </p>
+                                <p>Email Address:
+                                    <input type="text" id="email" class="form-control" required>
+                                </p>
+                                <p>Username:
+                                    <input type="text" id="registerUsername" class="form-control" aria-label="Username" aria-describedby="basic-addon1" required>
+                                </p>
+                                <p>Password:
+                                    <input type="password" id="registerPassword" class="form-control" required>
+                                </p>
+                                <p>Authorization Code:
+                                    <input type="text" id="authtoken" class="form-control" required>
+                                </p>
 
-<!--BEGIN TEACHER CREATE QUIZ BUTTONS DIV-->
-<div class="collapse multi-collapse" id="multiCollapseExample2">
-    <h2>Add Questions</h2>
-        <div class="add_question">
-            <div class="border rounded">
-            <p>Topic
-                <select class="form-control existingTopicNewQuestion" required id="all-topics"></select>
-            </p>
-            <p>Add A New Topic:
-                <input type="text" id="new-topic" class="form-control" required>
-            </p>
-            </div>
-            <p>Add A Question:
-                <input type="text" id="new-question" class="form-control" required>
-            </p>
-            <p>Option A:
-                <input type="text" id="answer1" class="form-control" required>
-            </p>
-            <p>Option B:
-                <input type="text" id="answer2" class="form-control" required>
-            </p>
-            <p>Option C:
-                <input type="text" id="answer3" class="form-control" required>
-            </p>
-            <p>Option D:
-                <input type="text" id="answer4" class="form-control" required>
-            </p>
-
-            <div class="form-group">
-                <label for="correct-answer">Correct Answer:</label>
-                <select class="form-control" required id="correct-answer">
-                    <option value="1">A</option>
-                    <option value="2">B</option>
-                    <option value="3">C</option>
-                    <option value="4">D</option>
-                </select>
-                <!-- USER ALERT: QUESTION CREATED --> 
-            <p id="alertNewQuestion"></p>
-
-            </div>
-            <button id="addNewQuestionbtn" type="submit" class="btn btn-outline-light btn-block" value="">Submit</button>
-        </div>
-        
-</div>
-
-<!--END TEACHER CREATES QUIZ TOGGLE-->
-
-<!--BEGIN TEACHER DASHBOARD TOGGLE-->
-<div class="collapse multi-collapse" id="multiCollapseExample3">
-        <h2>Results</h2>
-            <table class="table table-hover">
-        <thead>
-            <tr>
-                <th style="width : 10%" scope="col">#</th>
-                <th style="width : 15%" scope="col">Session</th>
-                <th style="width : 30%" scope="col">Student</th>
-                <th style="width : 20%" scope="col">Results</th>
-                <th style="width : 20%" scope="col">Date</th>
-            </tr>
-        </thead>
-
-        <!-- RESULTS TESTING --> 
-        <tbody id="resultTable">
-            {{!-- here goes all results --}}
-        </tbody>
-
-        <!--FINISH TESTING -->
-        
-    </table>
-</div>
-<!--END TEACHER DASHBOARD TOGGLE-->
-
-<!--BEGIN TEACHER MAKE A TEST-->
-<div class="collapse multi-collapse" id="multiCollapseExample4">
-        <h2>Create New Quiz</h2>
-        <p>Topic
-            <select class="form-control newQuizTopic" required id="all-topics-test"></select>
-        </p>
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th style="width : 10%" scope="col">#</th>
-                    <th style="width : 90%" scope="col">Question</th>
-                </tr>
-            </thead>
-            <tbody id="questionTable">
-                {{!-- here goes all questiona --}}
-
-            </tbody>
-        </table>
-        <div class="input-group mb-3">
-            <input type="text" class="form-control" id="testDescription" placeholder="Add Description" aria-label="Recipient's username"
-                aria-describedby="basic-addon2">
-            <div class="input-group-append">
-                <button class="composeTestBTN btn btn-secondary" type="button">Compose test</button>
-            </div>
-        </div>
-        <!-- MESSAGE TO USER WHEN NEW TEST IS CREATED -->
-        <p id="alertNewTest"></p>
-
-</div>
-
-</div>
-<!--END TEACHER DASHBOARD TOGGLE-->
-
-
-
-<!--BEGIN RUN QUIZ-->
-<div class="container-game">
-    <h2>Enter the Session ID:</h2>
-    <div class="row">
-        <div class="col-10">
-            <p>Notes: once the start session button is clicked, .show() this section on new screen without nav bars</p>
-            <button class="btn btn-light" id="startNewSession">Start Session</button>
-            <div class="question">
-                Questions
-            </div>
-
-            <!--<div class="answers">Answers</div>-->
-            <div class="answer" id="a1"></div>
-            <div class="answer" id="a2"></div>
-            <div class="answer" id="a3"></div>
-            <div class="answer" id="a4"></div>
-
-<!--testing -->
-            <div class = "containerFluid">
-                <div class = "progress">
-                    <div class ="seconds"></div>
+                                <div class="modal-footer">
+                                    <button id="teacherSignUpbtn" type="submit" class="btn btn-outline-light">Submit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
-<!-- PROGRESS BAR ENDS --> 
-
         </div>
     </div>
-</div>
-<!--END RUN QUIZ-->
+    <!--END TEACHER REGISTRATION MODAL-->
 
-<!-- BEGIN TEACHER RESULTS DIV -->
-{{!-- <div class="results">
-    Note: display results on new screen from student view? 
-</div> --}}
-<!-- END TEACHER RESULTS DIV -->
+    <!-- BEGIN TEACHER LOGIN MODAL-->
+    <div class="modal fade" id="teacherLogin" tabindex="-1" role="dialog" aria-labelledby="teacherLoginLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="teacherLoginLabel">Teacher Login</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
 
-</div>
-</div>
-</div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <div class="login">
+                                <p>Username:
+                                    <input type="text" id="loginUsername" class="form-control" aria-label="Username" required>
+                                </p>
+                                <p>Password:
+                                    <input type="password" id="loginPassword" class="form-control" required>
+                                </p>
+                                <p id="errorMessage"><span></span></p>
 
+                                <div class="modal-footer">
+                                    <button id="teacherloginbtn" type="submit" class="btn btn-light">Submit</button>
+                                </div>
 
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- END TEACHER LOGIN MODAL-->
+
+    <!--BEGIN TEACHER SIDE NAV BAR-->
+    <div class="container-fluid">
+        <nav class="col-sm-3 col-md-2 hidden-xs-down bg-faded sidebar">
+            <h1 id="navName">Quizzie-Moto</h1>
+            <ul class="nav nav-pills flex-column">
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="list" data-target="multiCollapseExample6" aria-expanded="false" role="tab" aria-controls="multiCollapseExample6"
+                        id="overview" href="#multiCollapseExample6">Overview</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="list" data-target="#multiCollapseExample2" aria-expanded="false" role="tab" aria-controls="multiCollapseExample2"
+                        id="addNewQuestionCollapse" href="#multiCollapseExample2">Create New Question</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="list" data-target="#multiCollapseExample4" aria-expanded="false" role="tab" aria-controls="multiCollapseExample4"
+                        id="makeNewTestCollapse" href="#">Make A Quiz</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="list" data-target="#multiCollapseExample3" aria-expanded="false" role="tab" aria-controls="multiCollapseExample3"
+                        id="viewAllResults" href="#">View Results</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="list" data-target="#multiCollapseExample1" aria-expanded="false" role="tab" aria-controls="multiCollapseExample1"
+                        id="getAllTests" href="#">Administer Quiz</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <!--END TEACHER SIDE NAV BAR-->
+
+    <div class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
+        <!--BEGIN TEACHER ADMINISTER QUIZ TOGGLE-->
+
+        <!--BEGIN TEACHER OVERVIEW TOGGLE-->
+
+        <div class="collapse multi-collapse" id="multiCollapseExample6">
+            <h1>Overview</h1>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore quasi necessitatibus ipsa reprehenderit fugit
+                iste qui. Nostrum est alias voluptatum ratione, non aut tempore dolor impedit dignissimos, ut, vitae fugiat.</p>
+        </div>
+        <!--END TEACHER OVERVIEW TOGGLE-->
+        <div class="collapse multi-collapse" id="multiCollapseExample1">
+            <h2>Administer Quiz</h2>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th style="width : 10%" scope="col">#</th>
+                        <th style="width : 60%" scope="col">Test</th>
+                        <th style="width : 20%" scope="col">Created At</th>
+                        <th style="width: 10%">View</th>
+                    </tr>
+                </thead>
+                <tbody id="testTable">
+                    {{!-- here goes all questions --}}
+                </tbody>
+            </table>
+
+            <!--BEGIN TEACHER START QUIZ DIV-->
+            <div submit="start-button">
+                <button class="btn btn-outline-light btn-lg" id="sessionID">Generate Session</button>
+                <p id="sessionNumber"></p>
+                <div class="showStudentName"></div>
+            </div>
+            <!--END TEACHER START QUIZ DIV-->
+        </div>
+        <!--END TEACHER ADMINISTER QUIZ TOGGLE-->
+
+        <!--BEGIN TEACHER CREATE QUIZ BUTTONS DIV-->
+        <div class="collapse multi-collapse" id="multiCollapseExample2">
+            <h2>Add Questions</h2>
+            <div class="add_question">
+                <div class="border rounded">
+                    <p>Topic
+                        <select class="form-control existingTopicNewQuestion" required id="all-topics"></select>
+                    </p>
+                    <p>Add A New Topic:
+                        <input type="text" id="new-topic" class="form-control" required>
+                    </p>
+                </div>
+                <p>Add A Question:
+                    <input type="text" id="new-question" class="form-control" required>
+                </p>
+                <p>Option A:
+                    <input type="text" id="answer1" class="form-control" required>
+                </p>
+                <p>Option B:
+                    <input type="text" id="answer2" class="form-control" required>
+                </p>
+                <p>Option C:
+                    <input type="text" id="answer3" class="form-control" required>
+                </p>
+                <p>Option D:
+                    <input type="text" id="answer4" class="form-control" required>
+                </p>
+
+                <div class="form-group">
+                    <label for="correct-answer">Correct Answer:</label>
+                    <select class="form-control" required id="correct-answer">
+                        <option value="1">A</option>
+                        <option value="2">B</option>
+                        <option value="3">C</option>
+                        <option value="4">D</option>
+                    </select>
+                    <!-- USER ALERT: QUESTION CREATED -->
+                    <p id="alertNewQuestion"></p>
+
+                </div>
+                <button id="addNewQuestionbtn" type="submit" class="btn btn-outline-light btn-block" value="">Submit</button>
+            </div>
+
+        </div>
+
+        <!--END TEACHER CREATES QUIZ TOGGLE-->
+
+        <!--BEGIN TEACHER DASHBOARD TOGGLE-->
+        <div class="collapse multi-collapse" id="multiCollapseExample3">
+            <h2>Results</h2>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th style="width : 10%" scope="col">#</th>
+                        <th style="width : 15%" scope="col">Session</th>
+                        <th style="width : 30%" scope="col">Student</th>
+                        <th style="width : 20%" scope="col">Results</th>
+                        <th style="width : 20%" scope="col">Date</th>
+                    </tr>
+                </thead>
+
+                <!-- RESULTS TESTING -->
+                <tbody id="resultTable">
+                    {{!-- here goes all results --}}
+                </tbody>
+
+                <!--FINISH TESTING -->
+
+            </table>
+        </div>
+        <!--END TEACHER DASHBOARD TOGGLE-->
+
+        <!--BEGIN TEACHER MAKE A TEST-->
+        <div class="collapse multi-collapse" id="multiCollapseExample4">
+            <h2>Create New Quiz</h2>
+            <p>Topic
+                <select class="form-control newQuizTopic" required id="all-topics-test"></select>
+            </p>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th style="width : 10%" scope="col">#</th>
+                        <th style="width : 90%" scope="col">Question</th>
+                    </tr>
+                </thead>
+                <tbody id="questionTable">
+                    {{!-- here goes all questiona --}}
+
+                </tbody>
+            </table>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" id="testDescription" placeholder="Add Description" aria-label="Recipient's username"
+                    aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                    <button class="composeTestBTN btn btn-secondary" type="button">Compose test</button>
+                </div>
+            </div>
+            <!-- MESSAGE TO USER WHEN NEW TEST IS CREATED -->
+            <p id="alertNewTest"></p>
+
+        </div>
+        <!--END TEACHER DASHBOARD TOGGLE-->
+
+        <!--BEGIN RUN QUIZ-->
+        <div class="container-game">
+            <h2>Enter the Session ID:</h2>
+            <div class="row">
+                <div class="col-10">
+                    <p>Notes: once the start session button is clicked, .show() this section on new screen without nav bars</p>
+                    <button class="btn btn-light" id="startNewSession">Start Session</button>
+                    <div class="question">
+                        Questions
+                    </div>
+
+                    <!--<div class="answers">Answers</div>-->
+                    <div class="answer" id="a1"></div>
+                    <div class="answer" id="a2"></div>
+                    <div class="answer" id="a3"></div>
+                    <div class="answer" id="a4"></div>
+
+                    <!--testing -->
+                    <div class="containerFluid">
+                        <div class="progress">
+                            <div class="seconds"></div>
+                        </div>
+                    </div>
+                    <!-- PROGRESS BAR ENDS -->
+
+                </div>
+            </div>
+        </div>
+        <!--END RUN QUIZ-->
+
+        <!-- BEGIN TEACHER RESULTS DIV -->
+        {{!--
+        <div class="results">
+            Note: display results on new screen from student view?
+        </div> --}}
+        <!-- END TEACHER RESULTS DIV -->
+
+    </div>
+</div>
