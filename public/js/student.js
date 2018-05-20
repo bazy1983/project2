@@ -61,7 +61,7 @@ $(document).ready(function () {
 
         socket.emit("studentSocket", studentSessionId);
             // TESTING TRIGGER NAVIGATE TO NEXT SECTION
-            $("#tellStudentWait").html("You are logged!");
+            $("#tellStudentWait").html("You are logged in!");
             // END TRIGGER NAVIGATE
 
         //get end from server
