@@ -107,8 +107,8 @@
             <ul class="nav flex-column">
 
                 <li class="nav-item">
-                    <button class="nav-link" data-target="overview-dash" aria-expanded="false" role="tab" aria-controls="multiCollapseExample6"
-                        href="#" id="overview-dash">Overview</button>
+                    <a class="nav-link" data-toggle="list" data-target="#multiCollapseExample6" aria-expanded="false" aria-controls="#multiCollapseExample6"
+                        href="#" id="overview-dash">Overview</a>
                 </li>
 
                 <li class="nav-item">
@@ -139,14 +139,16 @@
         <!--BEGIN TEACHER ADMINISTER QUIZ TOGGLE-->
 
         <!--BEGIN TEACHER OVERVIEW TOGGLE-->
-        <div class="collapse multi-collapse" id="overview-dash">
+        <div class="collapse multi-collapse" id="#multiCollapseExample6">
             <h1>Overview</h1>
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore quasi necessitatibus ipsa reprehenderit fugit
                 iste qui. Nostrum est alias voluptatum ratione, non aut tempore dolor impedit dignissimos, ut, vitae fugiat.</p>
         </div>
 
         <!--END TEACHER OVERVIEW TOGGLE-->
-        <div class="collapse multi-collapse" id="multiCollapseExample1">
+
+    <!--BEGIN TEACHER START QUIZ DIV-->
+    <div class="collapse multi-collapse" id="multiCollapseExample1">
             <h2>Administer Quiz</h2>
             <table class="table table-hover">
                 <thead>
@@ -162,14 +164,41 @@
                 </tbody>
             </table>
 
-            <!--BEGIN TEACHER START QUIZ DIV-->
+
             <div submit="start-button">
                 <button class="btn btn-outline-light btn-lg" id="sessionID">Generate Session</button>
                 <p id="sessionNumber"></p>
                 <div class="showStudentName"></div>
             </div>
             <!--END TEACHER START QUIZ DIV-->
+
+            <!--BEGIN RUN QUIZ-->
+        <div class="container-game">
+            <h2>Enter the Session ID:</h2>
+                <div class="row">
+                <p>Notes: once the start session button is clicked, .show() this section on new screen without nav bars</p>
+                <button class="btn btn-light" id="startNewSession">Start Session</button>
+                <div class="question">
+                    Questions
+                </div>
+
+                <!--<div class="answers">Answers</div>-->
+                <div class="answer" id="a1"></div>
+                <div class="answer" id="a2"></div>
+                <div class="answer" id="a3"></div>
+                <div class="answer" id="a4"></div>
+
+                <!--testing -->
+                <div class="containerFluid">
+                    <div class="progress">
+                        <div class="seconds"></div>
+                    </div>
+                </div>
+                <!-- PROGRESS BAR ENDS -->
+                </div>
         </div>
+        <!--END RUN QUIZ-->
+    </div>
         <!--END TEACHER ADMINISTER QUIZ TOGGLE-->
 
         <!--BEGIN TEACHER CREATE QUIZ BUTTONS DIV-->
@@ -275,32 +304,7 @@
         </div>
         <!--END TEACHER DASHBOARD TOGGLE-->
 
-        <!--BEGIN RUN QUIZ-->
-        <div class="container-game">
-            <h2>Enter the Session ID:</h2>
-            <div class="row">
-                <p>Notes: once the start session button is clicked, .show() this section on new screen without nav bars</p>
-                <button class="btn btn-light" id="startNewSession">Start Session</button>
-                <div class="question">
-                    Questions
-                </div>
 
-                <!--<div class="answers">Answers</div>-->
-                <div class="answer" id="a1"></div>
-                <div class="answer" id="a2"></div>
-                <div class="answer" id="a3"></div>
-                <div class="answer" id="a4"></div>
-
-                <!--testing -->
-                <div class="containerFluid">
-                    <div class="progress">
-                        <div class="seconds"></div>
-                    </div>
-                </div>
-                <!-- PROGRESS BAR ENDS -->
-            </div>
-        </div>
-        <!--END RUN QUIZ-->
 
         <!-- BEGIN TEACHER RESULTS DIV -->
         {{!--
@@ -309,3 +313,4 @@
         </div> --}}
         <!-- END TEACHER RESULTS DIV -->
     </div>
+</div>
