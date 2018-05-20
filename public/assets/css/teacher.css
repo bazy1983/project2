@@ -14,7 +14,7 @@ textarea.form-control {
 
 .color {
     color : #f00;
-    background: #FF0;
+    background: #F7B733;
 }
 .containerFluid {
     width: 100%; 
@@ -112,5 +112,5 @@ h1 {
 }
 
 .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
-    background: #f00
+    background: #F7B733;
 }
