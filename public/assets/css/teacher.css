@@ -1,3 +1,7 @@
+body {
+    width: 99vw;
+    overflow: scroll;
+}
 .teacher-body{
     font-family: 'Raleway', sans-serif;
     font-size: 16px;
@@ -11,13 +15,13 @@
     background: #FF0;
 }
 .containerFluid {
- width: 100vw; 
+ width: 100%; 
  height: 25px; 
  overflow: hidden; 
 }
 .progress{
     width: 100%;
-    transition: 1s;
+    transition: 1s linear;
     overflow: hidden;
     height: 25px; 
     border-radius: 12px;
