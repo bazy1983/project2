@@ -1,15 +1,19 @@
+.teacher-body{
+    font-family: 'Raleway', sans-serif;
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+    background: #2B7A78;
+    color: #aaabb8;
+}
 .color {
     color : #f00;
     background: #FF0;
 }
-
-/* progress bar starts here */
-
 .containerFluid {
  width: 100vw; 
  height: 25px; 
  overflow: hidden; 
-
 }
 .progress{
     width: 100%;
@@ -32,33 +36,24 @@
 #top-nav {
     position: fixed;
     height: 50px;
-    color: green;
 }
 .sidebar {
     position: fixed;
-    top: 51px;
+    background-color: #17252A;
+    top: 50px;
     bottom: 0;
     left: 0;
     z-index: 1000;
-    padding: 20px;
-    overflow-x: hidden;
+    padding: 10px;
     overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
-    border-right: 1px solid #eee;
+    border-right: 1px solid 
   }
-
-.navbar-toggler-icon{
-    background-color: green;
-}
-
 
 .container-game{
     height: 800px;
-    padding-left: 20%;
-    background-color: gray;
 }
 .results{
     height: 800px;
-    background-color: green;
 }
 .multi-collapse{
     height: 1000px;
@@ -69,3 +64,16 @@ h1 {
     padding-bottom: 5px;
     border-bottom: 1px solid #eee;
   }
+
+.nav-link{
+    background-color: transparent;
+    color: #eee;  
+}
+.nav-item{
+    background-color: transparent;
+    color: white;
+    border: 1px;
+}
+.navbar{
+    background-color:#17252A;
+}

@@ -241,18 +241,23 @@ $(document).ready(function () {
     })
 
     //when clicking on view button
-    $("#testTable").on("click", "td button", function () {
+    $("#testTable").on("click", "tr button", function () {
         var testID = $(this).parent().parent().attr("dataID");
+        var secretId = $(this).parent().parent().attr("secret")
+        var link = `https://quizzie-moto.herokuapp.com/${secretId}/${testID}`
+        var local = `http://localhost:3000/${secretId}/${testID}`
+        console.log(link)
+        console.log(local)
         //query test table to get questions
-        $.get("/testIdQuestions/" + testID, function (data) {
-            //console.log(data);
-            $.get("/questionsPerTest", {
-                allIds: data.question_ids
-            }, function (questionData) {
-                //console.log(questionData);
-
-            })
-        })
+        // $.get("/testIdQuestions/" + testID, function (data) {
+        //     //console.log(data);
+        //     $.get("/questionsPerTest", {
+        //         allIds: data.question_ids
+        //     }, function (questionData) {
+        //         console.log(questionData);
+        //         //add small div coming up from the bottom of the page with link
+        //     })
+        // })
     })
 
     //adding some classes to selected test table row, and remove them from its siblings
@@ -344,8 +349,8 @@ $(document).ready(function () {
         };
         $.get("/allTestResults", teacherID, function(data){
             $("#resultTable").empty()
-            let correctAnswers = 0;
             for (let i = 0; i <data.length; i++){
+                let correctAnswers = 0;
                 let formatedDate = moment(data[i].createdAt).format("MMM Do YYYY")
                 let fullName = data[i].user.first_name + " " + data[i].user.last_name;
                 for (let j = 0; j<data[i].student_result.length; j++){

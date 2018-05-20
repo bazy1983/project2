@@ -1,4 +1,4 @@
-body {
+.student-body {
   font-family: 'Raleway', sans-serif;
   text-align: center;
   font-size: 18px;
@@ -189,4 +189,6 @@ h2{
   when the click or on wait for new question */
   .disabled {
     pointer-events : none
-  }
+}
+
+
