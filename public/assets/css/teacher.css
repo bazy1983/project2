@@ -77,7 +77,7 @@ h1 {
     font-family: 'Oswald', sans-serif, 'Raleway', sans-serif;
     margin-top: 5px;
 }
-.nav-item{
+.list-group-item{
     background-color: transparent;
     color: #eee;  
     border: 1px;
@@ -90,7 +90,7 @@ h1 {
     color: #eee;  
 }
 .modal-content{
-    background-color :#F78733; 
+    background-color :#F7B733;
     border: 5px;
     padding: 1px;
     margin: 1px;
