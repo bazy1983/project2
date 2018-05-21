@@ -120,15 +120,15 @@
                     <a class="nav-link" data-toggle="list" data-target="#multiCollapseExample4" aria-expanded="false" role="tab" aria-controls="multiCollapseExample4"
                         id="makeNewTestCollapse" href="#">Make A Quiz</a>
                 </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="list" data-target="#multiCollapseExample1" aria-expanded="false" role="tab" aria-controls="multiCollapseExample1"
+                    id="getAllTests" href="#">Administer Quiz</a>
+                </li>
 
                 <li class="nav-item">
                     <a class="nav-link" data-toggle="list" data-target="#multiCollapseExample3" aria-expanded="false" role="tab" aria-controls="multiCollapseExample3"
                         id="viewAllResults" href="#">View Results</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="list" data-target="#multiCollapseExample1" aria-expanded="false" role="tab" aria-controls="multiCollapseExample1"
-                        id="getAllTests" href="#">Administer Quiz</a>
                 </li>
 
             </ul>
@@ -167,20 +167,21 @@
 
             <div submit="start-button">
                 <button class="btn btn-outline-light btn-lg" id="sessionID">Generate Session</button>
-                <p class="sessionNumber"></p>
+                <p class="sessionNumber" id="sml"></p>
+                <br>
                 <div class="showStudentName"></div>
             </div>
             <!--END TEACHER START QUIZ DIV-->
 
         <!--BEGIN RUN QUIZ-->
         <div class="container-game">
-            <h2>Enter the Session ID:</h2><h2 class="sessionNumber"></h2>
+            <h2 class="sessionNumber"></h2>
                 <div class="row">
-                <button class="btn btn-outline-light" id="startNewSession">Start Session</button>
-                <div class="question">
-                    Questions
+                <button class="btn btn-outline-light btn-lg" id="startNewSession">Start Session</button>
                 </div>
-
+                <div class="question">
+                    Question: 
+                </div>
                 <!--<div class="answers">Answers</div>-->
                 <div class="answer" id="a1"></div>
                 <div class="answer" id="a2"></div>
@@ -194,7 +195,6 @@
                     </div>
                 </div>
                 <!-- PROGRESS BAR ENDS -->
-                </div>
         </div>
         <!--END RUN QUIZ-->
     </div>
@@ -307,13 +307,5 @@
             <p>I HATE YOU, BOOTSTRAP</p>[]
             
         </div>
-
-
-        <!-- BEGIN TEACHER RESULTS DIV -->
-        {{!--
-        <div class="results">
-            Note: display results on new screen from student view?
-        </div> --}}
-        <!-- END TEACHER RESULTS DIV -->
     </div>
 </div>
