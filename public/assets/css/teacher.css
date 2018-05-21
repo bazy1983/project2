@@ -9,6 +9,12 @@
     border-radius: 0;
 }
 
+.logged-in{
+    font-size: 20px;
+    margin: 0px;
+    padding: 10px;
+}
+
 textarea.form-control {
     background: transparent;
     color: #DEF2F1;
