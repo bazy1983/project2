@@ -32,8 +32,10 @@ require("./routes/studentRoutes")(app);
 //html routes
 require("./routes/htmlRoutes")(app);
 
+//db.sequelize.sync();
 
-db.sequelize.sync()
+//remember to comment this out before you push to github
+db.sequelize.sync({force:false});
 
 
 var server = app.listen(port, function(){

@@ -146,6 +146,14 @@ $(document).ready(function () {
                     question.topicId = dbTopic.id
                     $.post("/create-new-question", question, function (data) {
                         //console.log(data)
+                        $("#alertNewQuestion").text("You've created a new question!");
+                        $("#new-question").val("");
+                        $("#answer1").val("");
+                        $("#answer2").val("");
+                        $("#answer3").val("");
+                        $("#answer4").val("");
+                        $("#correct-answer").val("");
+                        //$("#new-topic").val("");
                     })
                 })
                 //else use existing topic
@@ -153,7 +161,14 @@ $(document).ready(function () {
                 question.topicId = existingTopic;
                 $.post("/create-new-question", question, function (data) {
                     // ALERT USER OF NEW QUESTION CREATED
-                    $("#alertNewQuestion").text("You've created a new question!")
+                    $("#alertNewQuestion").text("You've created a new question!");
+                    $("#alertNewQuestion").text("You've created a new question!");
+                    $("#new-question").val("");
+                    $("#answer1").val("");
+                    $("#answer2").val("");
+                    $("#answer3").val("");
+                    $("#answer4").val("");
+                    $("#correct-answer").val("");
 
                 })
 
@@ -368,8 +383,6 @@ $(document).ready(function () {
         }, 1000)
 
     }
-
-
     //SHOW RESULTS FOR TEACHER
     $("#viewAllResults").on("click", function () {
         console.log("get all results")
