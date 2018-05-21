@@ -103,6 +103,11 @@ $(document).ready(function () {
         socket.on(sessionStorage.getItem("teacherSession"), function (data) {
             console.log(data)// display question information
             //set new object with default values 
+            //  TRANSITION NEXT PAGE WHEN TEACHER PRESSES START
+         var position = $("#three").position();
+         console.log(position);
+         scroll(0,position.top);
+            //  TRANSITION TO NEXT PAGE ENDS 
             let answersObj = {
                 questionID: data.id,
                 correct: data.correct_answer,
