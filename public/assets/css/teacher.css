@@ -13,6 +13,10 @@ textarea.form-control {
     background: transparent;
     color: #DEF2F1;
 }
+.form-group p{
+    color: #17252A;
+    font-size: 12px;
+}
 
 .containerFluid {
     width: 100%; 
@@ -69,6 +73,9 @@ h1 {
     font-family: 'Oswald', sans-serif, 'Raleway', sans-serif;
     margin-top: 5px;
 }
+.nav-link.hover { 
+    color: #17252A;
+}
 .list-group-item{
     background-color: transparent;
     color: #eee;  
@@ -115,4 +122,5 @@ h1 {
 .color {
     color : #f00;
     background: #F7B733;
+    border: 25px solid green;
 }
