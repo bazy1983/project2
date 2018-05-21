@@ -232,7 +232,7 @@ p{
 }
 
 .loginCenter {
-  text-align: center;
+  padding: 10px;
   display: flex;
   justify-content: center;
 }

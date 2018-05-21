@@ -48,7 +48,9 @@
                                 <p>Authorization Code:
                                     <input type="text" id="authtoken" class="form-control" required>
                                 </p>
-                                <p id="authMessage"><span></span></p>
+                                <p id="authMessage">
+                                    <span></span>
+                                </p>
                                 <div class="modal-footer">
                                     <button id="teacherSignUpbtn" type="submit" class="btn btn-outline-light">Submit</button>
                                 </div>
@@ -104,34 +106,34 @@
     <!--BEGIN TEACHER SIDE NAV BAR-->
     <div class="col-sm-3 col-md-2 hidden-xs-down bg-faded sidebar">
         <h1 id="navName">Quizzie-Moto</h1>
-            <ul class="nav flex-column">
-        
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="list" data-target="#multiCollapseExample0" aria-expanded="false" role="tab" aria-controls="multiCollapseExample0"
+        <ul class="nav flex-column">
+
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="list" data-target="#multiCollapseExample0" aria-expanded="false" role="tab" aria-controls="multiCollapseExample0"
                     id="0" href="#">Overview</a>
-                </li>
+            </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="list" data-target="#multiCollapseExample2" aria-expanded="false" role="tab" aria-controls="multiCollapseExample2"
-                        id="addNewQuestionCollapse" href="#">Create New Question</a>
-                </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="list" data-target="#multiCollapseExample2" aria-expanded="false" role="tab" aria-controls="multiCollapseExample2"
+                    id="addNewQuestionCollapse" href="#">Create New Question</a>
+            </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="list" data-target="#multiCollapseExample4" aria-expanded="false" role="tab" aria-controls="multiCollapseExample4"
-                        id="makeNewTestCollapse" href="#">Make A Quiz</a>
-                </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="list" data-target="#multiCollapseExample4" aria-expanded="false" role="tab" aria-controls="multiCollapseExample4"
+                    id="makeNewTestCollapse" href="#">Make A Quiz</a>
+            </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="list" data-target="#multiCollapseExample1" aria-expanded="false" role="tab" aria-controls="multiCollapseExample1"
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="list" data-target="#multiCollapseExample1" aria-expanded="false" role="tab" aria-controls="multiCollapseExample1"
                     id="getAllTests" href="#">Administer Quiz</a>
-                </li>
+            </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="list" data-target="#multiCollapseExample3" aria-expanded="false" role="tab" aria-controls="multiCollapseExample3"
-                        id="viewAllResults" href="#">View Results</a>
-                </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="list" data-target="#multiCollapseExample3" aria-expanded="false" role="tab" aria-controls="multiCollapseExample3"
+                    id="viewAllResults" href="#">View Results</a>
+            </li>
 
-            </ul>
+        </ul>
     </div>
     <!--END TEACHER SIDE NAV BAR-->
 
@@ -147,8 +149,8 @@
 
         <!--END TEACHER OVERVIEW TOGGLE-->
 
-    <!--BEGIN TEACHER START QUIZ DIV-->
-    <div class="collapse multi-collapse" id="multiCollapseExample1">
+        <!--BEGIN TEACHER START QUIZ DIV-->
+        <div class="collapse multi-collapse" id="multiCollapseExample1">
             <h2>Administer Quiz</h2>
             <table class="table table-hover">
                 <thead>
@@ -173,13 +175,13 @@
             </div>
             <!--END TEACHER START QUIZ DIV-->
 
-        <!--BEGIN RUN QUIZ-->
-        <div class="container-game">
-            <button class="btn btn-outline-light btn-lg" id="startNewSession">Start Session</button>
-            <h2 class="sessionNumber"></h2>
+            <!--BEGIN RUN QUIZ-->
+            <div class="container-game">
+                <button class="btn btn-outline-light btn-lg" id="startNewSession">Start Session</button>
+                <h2 class="sessionNumber"></h2>
 
                 <div class="question">
-                    Question: 
+                    Question:
                 </div>
                 <!--<div class="answers">Answers</div>-->
                 <div class="answer" id="a1"></div>
@@ -194,9 +196,9 @@
                     </div>
                 </div>
                 <!-- PROGRESS BAR ENDS -->
+            </div>
+            <!--END RUN QUIZ-->
         </div>
-        <!--END RUN QUIZ-->
-    </div>
         <!--END TEACHER ADMINISTER QUIZ TOGGLE-->
 
         <!--BEGIN TEACHER CREATE QUIZ BUTTONS DIV-->
@@ -303,11 +305,23 @@
         <!--END TEACHER DASHBOARD TOGGLE-->
         <div class="collapse multi-collapse" id="multiCollapseExample0">
             <h2>Overview</h2>
-
-            
-
-
-
-        </div>
+                <div class="row-overview">
+                    <p>Dear teachers, 
+                        <br>
+                        We think you’re amazing and the work you do is valuable. This is why we created Quizzie-Moto,
+                        a simple and accessible quiz generator. 
+                        <br>
+                        It takes less than 10 minutes to create a quiz! We built it for educators like you who are on the go and need to check for understanding. How to use Quizzie-Moto:
+                        <br>
+                        1. Add new questions and topics. 
+                        <br>
+                        2. Create a new test and add all the questions you’d like. 
+                        <br>
+                        3. Generate the session ID that students will use to login and click START. 
+                        <br>
+                        Your students just need to access the link on their mobile device, login, and input the quiz code. Your test is ready to go! Afterwards,
+                        check the summary of results.</p>
+                </div>
+            </div>
     </div>
 </div>
