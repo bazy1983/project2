@@ -311,6 +311,7 @@ $(document).ready(function () {
     // ARRAY WHERE THE QUESTIONS WILL BE FILLED IN ONCE GAME BEGINS 
     var questions;
     $("#startNewSession").on("click", function () {
+        $(this).hide("#startNewSession", "session");
         var selectedTestId = $(".testSelected").attr("dataid");
         console.log(selectedTestId)
         $.get("/testIdQuestions/" + selectedTestId, function (data) {
@@ -348,10 +349,10 @@ $(document).ready(function () {
         socket.emit("teacherSocket", oneQuestionAtTime)
         //SHOW QUESTION 
         $(".question").html(oneQuestionAtTime.question_text);
-        $("#a1").html(oneQuestionAtTime.answer1);
-        $("#a2").html(oneQuestionAtTime.answer2);
-        $("#a3").html(oneQuestionAtTime.answer3);
-        $("#a4").html(oneQuestionAtTime.answer4);
+        $("#a1").html("A.) " + oneQuestionAtTime.answer1);
+        $("#a2").html("B.) " + oneQuestionAtTime.answer2);
+        $("#a3").html("C.) " + oneQuestionAtTime.answer3);
+        $("#a4").html("D.) " + oneQuestionAtTime.answer4);
         var timer = setInterval(function () {
             console.log("time: " + counter)
             // SHOWING TIMER

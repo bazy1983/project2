@@ -20,14 +20,14 @@ textarea.form-control {
 
 .containerFluid {
     width: 100%; 
-    height: 25px; 
+    height: 100px; 
     overflow: hidden; 
 }
 .progress{
     width: 100%;
     transition: linear;
     overflow: hidden;
-    height: 25px; 
+    height: 50px; 
     border-radius: 12px;
 }
 
@@ -35,9 +35,10 @@ textarea.form-control {
     background: linear-gradient(0.25turn,
      #3f87a6, #ebf8e1, #f69d3c);
     width: 100vw; 
-    height: 25px;
-    font-size: 16pt; 
-    color: #228B22;
+    height: 50px;
+    font-size: 28px; 
+    text-align: center;
+    color: black;
     /* text-shadow: 1px 1px 1px #ccc; */
     /*progress bar ends here */
 }
@@ -117,13 +118,25 @@ h1 {
 
 .question{
     text-align: center;
-    font-size: 60px;
+    font-size: 70px;
+    padding: 30px;
 }
 .answer{
     text-align: center;
-    font-size: 40px;
+    font-size: 50px;
+    padding-bottom: 20px;
 }
 
 .color {
     background: #F7B733;
+}
+
+#startNewSession{
+    align-content: center;
+    width: 300px;
+    margin-left: 20px;
+}
+
+.container-game{
+    height: 1000px;
 }
