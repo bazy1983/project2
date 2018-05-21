@@ -338,7 +338,7 @@ $(document).ready(function () {
             socket.emit("end", sendTeacherid)
             return
         }
-        var counter = 4; //timer
+        var counter = 10; //timer
         var currentSessionID = sessionStorage.getItem("teacherSession")
         console.log(questions[iterator])
         let oneQuestionAtTime = questions[iterator];
