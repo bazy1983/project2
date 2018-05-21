@@ -140,3 +140,13 @@ h1 {
 .container-game{
     height: 1000px;
 }
+
+.anchorLink {
+    margin-top: 14px;
+    background: transparent;
+    border: 1px solid #e9f4f9;
+    border-radius: 5px;
+    padding: 5px 20px;
+    color: #e9f4f9;
+    line-height: 45px;
+}

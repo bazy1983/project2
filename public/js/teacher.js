@@ -49,7 +49,6 @@ $(document).ready(function () {
                         }
                     })
             } else {
-                console.log("form must be filled in");
                 $("#errorMessage").text("form must be filled in");
                 $("#loginUsername").val("");
                 $("#loginPassword").val("");
@@ -79,7 +78,6 @@ $(document).ready(function () {
                 token: newTeacherToken
             };
             $.post("/teacherSignUp", newRegistration, function (data) {
-                console.log(data)
                 $("#authMessage").text("Your user account is pending approval")
                 //display message
                 $("#first_name").val("");
@@ -276,8 +274,9 @@ $(document).ready(function () {
                 let tableCount = $("<th>").text(i + 1);
                 let tableDesc = $("<td>").text(data[i].desc);
                 let tableDate = $("<td>").text(formatedDate);
-                let tableButton = $("<td><button class = 'viewQuestion btn btn-light'>View</button></td>");
-                let tableInfo = tableRow.append(tableCount, tableDesc, tableDate, tableButton)
+                let viewButton = $("<a class = 'anchorLink' href = '"+`https://quizzie-moto.herokuapp.com/${data[i].secret_key}/${data[i].id}`+"' target = '_blank'>View</a>");
+                //let tableButton = $("<td><button class = 'viewQuestion btn btn-light'>View</button></td>");
+                let tableInfo = tableRow.append(tableCount, tableDesc, tableDate, viewButton)
                 $("#testTable").append(tableInfo);
             }
         })
