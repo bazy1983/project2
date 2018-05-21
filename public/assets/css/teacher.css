@@ -155,3 +155,14 @@ h1 {
     font-size: 20px;
     font-family: 'Calibri, 'Trebuchet MS', sans-serif;
 }
+
+.textColor {
+    color: #f69d3c
+}
+
+.showStudentName {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    font-size: 25px;
+}

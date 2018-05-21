@@ -29,7 +29,7 @@ $(document).ready(function () {
                         .append($("<p class = 'logged-in'>").text(`Welcome ${data.firstName} ${data.lastName}`))
                 })
                     .fail(function (err) {
-                        console.log(err.status);
+                        //console.log(err.status);
                         if (err.status === 403) {
                             // console.log(err.responseJSON)
                             //DOM show unauthorized
@@ -89,11 +89,11 @@ $(document).ready(function () {
 
 
             }).fail(function (err) {
-                console.log("Token error");
+                //console.log("Token error");
                 $("#authtoken").val("");
             })
         } else {
-            console.log("one or more fields are empty")
+            //console.log("one or more fields are empty")
         }
     })
 
@@ -183,6 +183,8 @@ $(document).ready(function () {
     // CREATE SESSION ID 
     var sendSessionQuestion; //that to set socket.io keyword in server
     $("#sessionID").on("click", function () {
+        $(this).hide();
+
         let newRandom = Math.floor(Math.random() * 1000000);
         sessionStorage.setItem("teacherSession", newRandom + "teacher");
         sessionStorage.setItem("studentSession", newRandom + "student");
@@ -193,7 +195,7 @@ $(document).ready(function () {
         ;
         //listening for students joining the session
         socket.on(sessionStorage.getItem("studentSession"), function (data) {
-            console.log(data);
+            //console.log(data);
             //show connected student on the teacher's view
             let connectedStudent = $("<div class = 'student" + data.userId + "'>").text(data.name)
             $(".showStudentName").append(connectedStudent)
@@ -201,8 +203,10 @@ $(document).ready(function () {
 
         //listening for student answers
         socket.on(sessionStorage.getItem("answeredSession"), function (studentAnswered) {
-            console.log(studentAnswered)
+            //console.log(studentAnswered)
+            $(".student"+studentAnswered.userID).addClass("textColor")
             //DOM to change student name color
+
         })
     })
 
@@ -282,14 +286,14 @@ $(document).ready(function () {
         })
     })
 
-    //when clicking on view button
+    //when clicking on view button -- deprecated
     $("#testTable").on("click", "tr button", function () {
         var testID = $(this).parent().parent().attr("dataID");
         var secretId = $(this).parent().parent().attr("secret")
         var link = `https://quizzie-moto.herokuapp.com/${secretId}/${testID}`
         var local = `http://localhost:3000/${secretId}/${testID}`
-        console.log(link)
-        console.log(local)
+        // console.log(link)
+        // console.log(local)
         //query test table to get questions
         // $.get("/testIdQuestions/" + testID, function (data) {
         //     //console.log(data);
@@ -310,9 +314,9 @@ $(document).ready(function () {
     // ARRAY WHERE THE QUESTIONS WILL BE FILLED IN ONCE GAME BEGINS 
     var questions;
     $("#startNewSession").on("click", function () {
-        $(this).hide("#startNewSession", "session");
         var selectedTestId = $(".testSelected").attr("dataid");
-        console.log(selectedTestId)
+        if(selectedTestId != undefined) $(this).hide();
+        //console.log(selectedTestId)
         $.get("/testIdQuestions/" + selectedTestId, function (data) {
             //console.log(data);
             $.get("/questionsPerTest", {
@@ -336,16 +340,19 @@ $(document).ready(function () {
                 endSession: sessionStorage.getItem("endSession")
             }
             socket.emit("end", sendTeacherid)
+            $(".displayQuestions").empty()
+            $(".question").html("Session Ended!")
             return
         }
         var counter = 10; //timer
         var currentSessionID = sessionStorage.getItem("teacherSession")
-        console.log(questions[iterator])
+        //console.log(questions[iterator])
         let oneQuestionAtTime = questions[iterator];
         oneQuestionAtTime.sessionID = currentSessionID
         //DOM display question
 
         socket.emit("teacherSocket", oneQuestionAtTime)
+        $(".showStudentName").children().removeClass("textColor")
         //SHOW QUESTION 
         $(".question").html(oneQuestionAtTime.question_text);
         $("#a1").html("A.) " + oneQuestionAtTime.answer1);
@@ -353,7 +360,7 @@ $(document).ready(function () {
         $("#a3").html("C.) " + oneQuestionAtTime.answer3);
         $("#a4").html("D.) " + oneQuestionAtTime.answer4);
         var timer = setInterval(function () {
-            console.log("time: " + counter)
+            //console.log("time: " + counter)
             // SHOWING TIMER
             var showTimer = $(".seconds").html(counter + " seconds remain");
             // FINISH SHOWING TIMER
@@ -385,7 +392,7 @@ $(document).ready(function () {
     }
     //SHOW RESULTS FOR TEACHER
     $("#viewAllResults").on("click", function () {
-        console.log("get all results")
+        //console.log("get all results")
         let teacherID = {
             teacherId: sessionStorage.getItem("id")
         };
@@ -404,12 +411,12 @@ $(document).ready(function () {
                 let tableStudentName = $("<td>").text(fullName);
                 let tableResult = $("<td>").text(correctAnswers + "/" + data[i].student_result.length);
                 // testing 
-                console.log("line 360");
+                //console.log("line 360");
                 let tableDate = $("<td>").text(formatedDate);
 
                 let tableInfo = tableRow.append(tableCount, tableSession, tableStudentName, tableResult, tableDate)
                 // testing
-                console.log("line");
+                //console.log("line");
                 $("#resultTable").append(tableInfo);
             }
         })

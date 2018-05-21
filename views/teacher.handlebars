@@ -167,27 +167,34 @@
             </table>
 
 
-            <div submit="start-button">
-                <button class="btn btn-outline-light btn-lg" id="sessionID">Generate Session</button>
-                <p class="sessionNumber" id="sml"></p>
+            <div submit="start-button" class="text-center">
+                <button class="btn btn-outline-light btn-lg ml-4" id="sessionID">Generate Session</button>
+
                 <br>
-                <div class="showStudentName"></div>
             </div>
             <!--END TEACHER START QUIZ DIV-->
 
             <!--BEGIN RUN QUIZ-->
             <div class="container-game">
-                <button class="btn btn-outline-light btn-lg" id="startNewSession">Start Session</button>
+                <div class="text-center">
+
+                    <button class="btn btn-outline-light btn-lg" id="startNewSession">Start Session</button>
+                </div>
                 <h2 class="sessionNumber"></h2>
+
+                <div class="showStudentName"></div>
+
 
                 <div class="question">
                     Question:
                 </div>
-                <!--<div class="answers">Answers</div>-->
-                <div class="answer" id="a1"></div>
-                <div class="answer" id="a2"></div>
-                <div class="answer" id="a3"></div>
-                <div class="answer" id="a4"></div>
+                <div class="displayQuestions">
+                    <!--<div class="answers">Answers</div>-->
+                    <div class="answer" id="a1"></div>
+                    <div class="answer" id="a2"></div>
+                    <div class="answer" id="a3"></div>
+                    <div class="answer" id="a4"></div>
+                </div>
 
                 <!--testing -->
                 <div class="containerFluid">
@@ -305,23 +312,18 @@
         <!--END TEACHER DASHBOARD TOGGLE-->
         <div class="collapse multi-collapse" id="multiCollapseExample0">
             <h2>Overview</h2>
-                <div class="row-overview">
-                    <p>Dear teachers, 
-                        <br>
-                        We think you’re amazing and the work you do is valuable. This is why we created Quizzie-Moto,
-                        a simple and accessible quiz generator. 
-                        <br>
-                        It takes less than 10 minutes to create a quiz! We built it for educators like you who are on the go and need to check for understanding. How to use Quizzie-Moto:
-                        <br>
-                        1. Add new questions and topics. 
-                        <br>
-                        2. Create a new test and add all the questions you’d like. 
-                        <br>
-                        3. Generate the session ID that students will use to login and click START. 
-                        <br>
-                        Your students just need to access the link on their mobile device, login, and input the quiz code. Your test is ready to go! Afterwards,
-                        check the summary of results.</p>
-                </div>
+            <div class="row-overview">
+                <p>Dear teachers,
+                    <br> We think you’re amazing and the work you do is valuable. This is why we created Quizzie-Moto, a simple
+                    and accessible quiz generator.
+                    <br> It takes less than 10 minutes to create a quiz! We built it for educators like you who are on the go
+                    and need to check for understanding. How to use Quizzie-Moto:
+                    <br> 1. Add new questions and topics.
+                    <br> 2. Create a new test and add all the questions you’d like.
+                    <br> 3. Generate the session ID that students will use to login and click START.
+                    <br> Your students just need to access the link on their mobile device, login, and input the quiz code. Your
+                    test is ready to go! Afterwards, check the summary of results.</p>
             </div>
+        </div>
     </div>
 </div>

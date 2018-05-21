@@ -20,7 +20,7 @@ $(document).ready(function () {
                 //hide login  form and display session form
                 $(".loginCenter").addClass("hidden")
                 $("#oneForm").removeClass("hidden");
-                console.log(data)
+                //console.log(data)
             })
                 .fail(function (err) {
                     if (err.status === 403) {
@@ -48,10 +48,10 @@ $(document).ready(function () {
         e.preventDefault();
               //AUTO NAVIGATE TO NEXT PAGE UPON SUBMIT
               var position = $("#two").position();
-              console.log(position);
+              //console.log(position);
               scroll(0,position.top);
               // FINISH AUTO NAV UPON SUBMIT
-        console.log("clicked")
+        //console.log("clicked")
         let studentSessionId = {
             sessionId: $("#inputkey").val().trim() + "student",
             userId: sessionStorage.getItem("id"),
@@ -79,7 +79,7 @@ $(document).ready(function () {
             }
 
             $.post("/storeStudentAnswers", studentTest, function () {
-                console.log("results sent")
+                //console.log("results sent")
                 //DOM show student results
                 $(".student-name").html(sessionStorage.getItem("name"))
                 var correctCount = 0;
@@ -101,11 +101,11 @@ $(document).ready(function () {
         ////once teacher starts quiz
         // get questions from server
         socket.on(sessionStorage.getItem("teacherSession"), function (data) {
-            console.log(data)// display question information
+            //console.log(data)// display question information
             //set new object with default values 
             //  TRANSITION NEXT PAGE WHEN TEACHER PRESSES START
          var position = $("#three").position();
-         console.log(position);
+         //console.log(position);
          scroll(0,position.top);
             //  TRANSITION TO NEXT PAGE ENDS 
             let answersObj = {
@@ -124,7 +124,7 @@ $(document).ready(function () {
                 answerfour = $("<button class = 'btn btn-danger quizbtn' question = '" + data.id + "' choice = '" + 4 + "' correct = '" + data.correct_answer + "'>").text("D");
             $(".quiz-buttons").append(answerOne, answertwo, answerthree, answerfour);
             timeBeforeClick = new Date();
-            console.log(timeBeforeClick)
+            //console.log(timeBeforeClick)
         })
 
         //during the 2 second pause listen for pause to disable buttons
@@ -142,7 +142,7 @@ $(document).ready(function () {
         $(".quizbtn").addClass("disabled")
         timeAfterClick = new Date();
         let deltaTime = timeAfterClick - timeBeforeClick; //calculating time it took student to answer the question
-        console.log($(this).attr("choice"))
+        //console.log($(this).attr("choice"))
         let sendAnswer = {
             userID: sessionStorage.getItem("id"),
             answeredSession: sessionStorage.getItem("answeredSession")
