@@ -15,7 +15,7 @@ module.exports = function(app){
             }
         })
         .then(function(data){
-            res.status(200).send(data);
+            if(data)res.send(data);
         })
         .catch(function(err){
             console.log("selecting one student failed");
