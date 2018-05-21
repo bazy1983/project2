@@ -1,5 +1,5 @@
 $(document).ready(function () {
-
+    $("#0").click();
     var socket = io(); // websocket connection
     //TEACHER LOGIN
 
