@@ -116,10 +116,14 @@ h1 {
 }
 
 .question{
+    text-align: center;
     font-size: 60px;
+}
+answer{
+    text-align: center;
+    font-size: 40px;
 }
 
 .color {
     background: #F7B733;
-    border: 25px solid green;
 }
