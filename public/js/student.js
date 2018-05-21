@@ -46,6 +46,11 @@ $(document).ready(function () {
     var timeAfterClick;
     $("#sessionEntry").on("click", function (e) {
         e.preventDefault();
+              //AUTO NAVIGATE TO NEXT PAGE UPON SUBMIT
+              var position = $("#two").position();
+              console.log(position);
+              scroll(0,position.top);
+              // FINISH AUTO NAV UPON SUBMIT
         console.log("clicked")
         let studentSessionId = {
             sessionId: $("#inputkey").val().trim() + "student",
