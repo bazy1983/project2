@@ -140,3 +140,9 @@ h1 {
 .container-game{
     height: 1000px;
 }
+
+.row-overview p{
+    text-align: center;
+    font-size: 20px;
+    font-family: 'Calibri, 'Trebuchet MS', sans-serif;
+}
